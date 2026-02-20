@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katrin Hammon | Architektin in Flensburg | 21 Jahre Erfahrung</title>
+  <meta name="description" content="Freischaffende Architektin in Flensburg. 500+ Projekte, persönliche Betreuung, Spezialistin für Bauen im Außenbereich. Kostenloses Erstgespräch.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400;1,14..32,500&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Architect",
+    "name": "Katrin Hammon",
+    "description": "Freischaffende Architektin in Flensburg",
+    "address": { "@type": "PostalAddress", "streetAddress": "Grönholm 7b", "addressLocality": "Freienwill", "postalCode": "24991", "addressRegion": "SH", "addressCountry": "DE" },
+    "telephone": "+4916094182990",
+    "email": "katrin@hammon-architektur.de",
+    "url": "https://hammon-architektur.de",
+    "areaServed": ["Flensburg", "Schleswig-Flensburg", "Nordfriesland", "Rendsburg-Eckernförde"]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0b0e;
+      --surface-1: #111214;
+      --surface-2: #1a1b1e;
+      --surface-3: #242528;
+      --surface-4: #3a3b3e;
+      --copper: #c08040;
+      --copper-light: #d4974f;
+      --copper-glow: rgba(192, 128, 64, 0.12);
+      --warm: #f5f2ed;
+      --warm-2: #edeae4;
+      --cream: #faf8f5;
+      --text-dark: #1a1b1e;
+      --text-body: #4a4843;
+      --text-muted: #7a756d;
+      --text-light: rgba(248, 246, 243, 0.75);
+      --text-light-muted: rgba(248, 246, 243, 0.5);
+      --font: 'Inter', system-ui, sans-serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --max-w: 1260px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text-dark);
+      background: var(--cream);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* ===== ANIMATIONS ===== */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; } .d4 { transition-delay: 0.4s; }
+
+    /* ===== COMMON: OVERLINE ===== */
+    .overline {
+      font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--copper); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .overline::before { content: ''; width: 24px; height: 1.5px; background: var(--copper); }
+
+    /* ===== COMMON: SECTION HEADING ===== */
+    .section-title {
+      font-size: clamp(30px, 3.5vw, 44px);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font); font-size: 12px; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 16px 36px; border: none; cursor: pointer;
+      transition: all 0.4s var(--ease);
+    }
+    .btn svg { width: 14px; height: 14px; transition: transform 0.3s var(--ease); }
+    .btn:hover svg { transform: translateX(4px); }
+    .btn-copper { background: var(--copper); color: #fff; }
+    .btn-copper:hover { background: var(--copper-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(192,128,64,0.3); }
+    .btn-outline { background: transparent; border: 1.5px solid var(--copper); color: var(--copper); }
+    .btn-outline:hover { background: var(--copper); color: #fff; }
+    .btn-dark { background: var(--text-dark); color: var(--cream); }
+    .btn-dark:hover { background: var(--surface-4); transform: translateY(-2px); }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 24px 0;
+      transition: all 0.5s var(--ease);
+    }
+    header.scrolled {
+      background: rgba(10, 11, 14, 0.95);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      padding: 12px 0;
+    }
+    header .container { display: flex; justify-content: space-between; align-items: center; }
+    /* Task 1: Logo viel größer, schrumpft beim Scroll */
+    .logo img {
+      height: 60px; width: auto;
+      transition: height 0.5s var(--ease);
+    }
+    header.scrolled .logo img { height: 28px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 13px; font-weight: 500; letter-spacing: 0.3px;
+      color: rgba(255,255,255,0.6); transition: color 0.3s;
+    }
+    .nav-links a:hover { color: #fff; }
+    /* Task 2: CTA → Kontakt */
+    .header-cta {
+      font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--copper); border: 1px solid rgba(192,128,64,0.4);
+      padding: 10px 24px; transition: all 0.3s;
+    }
+    .header-cta:hover { background: var(--copper); color: #fff; }
+    .burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .burger span { display: block; width: 20px; height: 1.5px; background: #fff; margin: 5px 0; transition: 0.3s; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      background: var(--black);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 100px 0 0;
+    }
+    /* Task 3: Hintergrund-Muster (dezent, architektonisch) */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      opacity: 0.045;
+      background-image:
+        linear-gradient(var(--copper) 1px, transparent 1px),
+        linear-gradient(90deg, var(--copper) 1px, transparent 1px);
+      background-size: 80px 80px;
+      z-index: 1;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      align-items: center;
+      width: 100%;
+      position: relative; z-index: 2;
+    }
+    .hero-text {
+      padding-bottom: 40px;
+      padding-right: 48px;
+    }
+    .hero-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--copper); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-label::before { content: ''; width: 24px; height: 1.5px; background: var(--copper); }
+    /* Task 4: Titel schlanker, mehr Letter-Spacing */
+    .hero-name {
+      font-size: clamp(54px, 7vw, 88px);
+      font-weight: 600;
+      line-height: 0.95;
+      letter-spacing: -1px;
+      color: var(--cream);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    /* Task 5: Subtext besser lesbar */
+    .hero-sub {
+      font-size: 17px; font-weight: 400; line-height: 1.75;
+      color: rgba(248, 246, 243, 0.7);
+      max-width: 420px;
+      margin-bottom: 40px;
+    }
+    /* Task 3: Portrait-Unterkante elegant (Gradient am unteren Rand) */
+    .hero-portrait {
+      display: flex; justify-content: flex-end; align-items: flex-end;
+      position: relative;
+      align-self: end;
+    }
+    .hero-portrait img {
+      max-height: 82vh; width: auto; object-fit: contain;
+      position: relative; z-index: 2;
+    }
+    .hero-portrait::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: -20%; right: -20%;
+      height: 120px;
+      background: linear-gradient(transparent, var(--black));
+      z-index: 3;
+    }
+    .hero-line {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--copper), transparent);
+      opacity: 0.25;
+      z-index: 4;
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      background: var(--warm);
+      padding: 120px 0;
+    }
+    .about .section-title { margin-bottom: 48px; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .about-intro {
+      font-size: clamp(19px, 2vw, 22px);
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--text-dark);
+    }
+    .about-intro p { margin-bottom: 20px; }
+    .about-benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .about-benefit {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(26,27,30,0.1);
+    }
+    .about-benefit:first-child { padding-top: 0; }
+    .about-benefit:last-child { border-bottom: none; }
+    .about-benefit-icon {
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--copper);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .about-benefit-icon svg { width: 22px; height: 22px; }
+    .about-benefit h3 {
+      font-size: 15px; font-weight: 700;
+      margin-bottom: 4px; color: var(--text-dark);
+    }
+    .about-benefit p {
+      font-size: 15px; line-height: 1.65;
+      color: var(--text-muted); margin: 0;
+    }
+
+    /* ===== STATS ===== */
+    .stats {
+      background: var(--warm);
+      padding: 0 0 120px;
+    }
+    /* Task 9: Nur 3 Stats, zentriert in Boxen */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid rgba(26,27,30,0.1);
+      border-bottom: 1px solid rgba(26,27,30,0.1);
+    }
+    .stat-item {
+      padding: 48px 32px;
+      text-align: center;
+      border-right: 1px solid rgba(26,27,30,0.1);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: clamp(40px, 5vw, 56px);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--text-dark);
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+    .stat-num .plus { color: var(--copper); }
+    .stat-desc {
+      font-size: 13px; font-weight: 500;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ===== PHILOSOPHIE / CTA-BANNER (Dark, Screenshot-Referenz) ===== */
+    .philosophy {
+      background: var(--black);
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .philosophy-text .overline { color: var(--copper); }
+    .philosophy-text .section-title {
+      color: var(--cream);
+      font-style: italic;
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+    .philosophy-text p {
+      font-size: 17px; line-height: 1.85; font-weight: 400;
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+    .philosophy-text p:last-of-type { margin-bottom: 32px; }
+    .philosophy-text .btn { margin-bottom: 48px; }
+    .philosophy-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      padding-top: 40px;
+      border-top: 1px solid var(--surface-3);
+    }
+    .phi-feature .phi-icon {
+      width: 42px; height: 42px;
+      border: 1.5px solid var(--copper);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+      color: var(--copper);
+    }
+    .phi-feature h4 {
+      font-size: 14px; font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+    .phi-feature p {
+      font-size: 13px; line-height: 1.6;
+      color: var(--text-light-muted);
+      margin-bottom: 0;
+    }
+    .philosophy-portrait {
+      display: flex; justify-content: center; align-items: flex-end;
+      position: relative;
+    }
+    .philosophy-portrait img {
+      max-height: 540px; width: auto;
+      position: relative; z-index: 2;
+    }
+    .philosophy-portrait::before {
+      content: '';
+      position: absolute; top: 15%; right: -5%;
+      width: 70%; height: 70%;
+      background: radial-gradient(circle, var(--copper-glow) 0%, transparent 70%);
+      filter: blur(60px);
+      z-index: 1;
+    }
+    .philosophy-portrait::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: -10%; right: -10%;
+      height: 120px;
+      background: linear-gradient(transparent, var(--black));
+      z-index: 3;
+    }
+
+    /* ===== SERVICES ===== */
+    .services {
+      background: var(--cream);
+      padding: 120px 0;
+    }
+    /* Task 11: Overline + bessere Überschrift, konsistent */
+    .services-top {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 64px; gap: 40px;
+    }
+    .services-top .section-title { margin-top: 0; }
+    .services-top p {
+      max-width: 380px;
+      color: var(--text-muted);
+      font-size: 16px;
+      text-align: right;
+    }
+    .cards-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .card {
+      background: var(--warm);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+    }
+    .card-img {
+      aspect-ratio: 16/10;
+      overflow: hidden;
+    }
+    .card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+    .card:hover .card-img img { transform: scale(1.03); }
+    .card-body { padding: 28px 28px 32px; }
+    .card-body h3 {
+      font-size: 15px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin-bottom: 12px; color: var(--text-dark);
+    }
+    .card-body p {
+      font-size: 14px; line-height: 1.75;
+      color: var(--text-body);
+    }
+
+    /* §35 Feature */
+    .feature {
+      background: var(--surface-2);
+      border-radius: 8px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .feature-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; min-height: 400px;
+    }
+    .feature-body {
+      padding: 56px 48px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .feature-body .overline { color: var(--copper); }
+    .feature-body h3 {
+      font-size: clamp(22px, 2.5vw, 30px);
+      font-weight: 600; line-height: 1.2;
+      color: var(--cream); margin-bottom: 20px;
+      letter-spacing: -0.3px;
+    }
+    .feature-body p {
+      font-size: 15px; line-height: 1.75;
+      color: var(--text-light); margin-bottom: 32px;
+    }
+
+    /* ===== PROCESS ===== */
+    .process {
+      background: var(--warm);
+      padding: 120px 0;
+    }
+    .process-head {
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto 64px;
+    }
+    .process-head .overline { justify-content: center; }
+    .process-head .section-title { margin-bottom: 12px; }
+    .process-head p { color: var(--text-muted); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .step {
+      background: #fff;
+      border-radius: 6px;
+      padding: 40px 28px;
+      transition: transform 0.4s var(--ease);
+    }
+    .step:hover { transform: translateY(-3px); }
+    .step-num {
+      font-size: 48px; font-weight: 800;
+      color: var(--copper); opacity: 0.2;
+      line-height: 1; margin-bottom: 16px;
+      letter-spacing: -2px;
+    }
+    .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+    .step p { font-size: 14px; line-height: 1.7; color: var(--text-body); }
+
+    /* ===== CONTACT ===== */
+    .contact {
+      background: var(--black);
+      padding: 120px 0;
+      position: relative; overflow: hidden;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .contact-text .overline { color: var(--copper); }
+    /* Task 13: Überschrift Abstand konsistent */
+    .contact-text .section-title {
+      color: var(--cream);
+      margin-bottom: 20px;
+    }
+    .contact-text .lead {
+      font-size: 17px; line-height: 1.75;
+      color: var(--text-light); margin-bottom: 32px;
+    }
+    .contact-info { margin-bottom: 36px; }
+    .contact-row {
+      display: flex; gap: 16px; align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--surface-3);
+    }
+    .contact-row .lbl {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--copper); min-width: 72px;
+    }
+    .contact-row .val { font-size: 15px; color: var(--text-light); }
+    .contact-row a { color: var(--cream); transition: color 0.3s; }
+    .contact-row a:hover { color: var(--copper); }
+
+    /* Contact Portrait */
+    .contact-portrait-col {
+      display: flex; justify-content: center; align-items: flex-start;
+    }
+    .contact-portrait {
+      display: flex; justify-content: center; align-items: flex-end;
+      position: relative;
+      max-height: 560px;
+      overflow: hidden;
+      border-radius: 6px;
+    }
+    .contact-portrait img {
+      max-height: 560px; width: auto;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .contact-portrait::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(transparent, var(--black));
+    }
+
+    /* Contact Form (full width below grid) */
+    .contact-form-full {
+      margin-top: 64px;
+      padding-top: 48px;
+      border-top: 1px solid var(--surface-3);
+    }
+    .contact-form-full .overline { margin-bottom: 24px; }
+    .form-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .form-row { margin-bottom: 0; }
+    .form-row input,
+    .form-row textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--surface-4);
+      color: var(--cream);
+      font-family: var(--font);
+      font-size: 15px;
+      padding: 14px 0;
+      border-radius: 0;
+      transition: border-color 0.3s;
+      outline: none;
+    }
+    .form-row input::placeholder,
+    .form-row textarea::placeholder {
+      color: var(--text-light-muted);
+    }
+    .form-row input:focus,
+    .form-row textarea:focus {
+      border-color: var(--copper);
+    }
+    .form-row textarea { resize: vertical; min-height: 80px; }
+    .form-msg-row {
+      margin-top: 16px;
+      margin-bottom: 24px;
+    }
+    .contact-form-full .btn {
+      display: flex; justify-content: center;
+      width: 100%; max-width: 280px;
+      margin: 0 auto;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--surface-3);
+      padding: 48px 0 28px;
+    }
+    .footer-cols {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px; margin-bottom: 40px;
+    }
+    .footer-brand .logo img { height: 24px; opacity: 0.5; margin-bottom: 14px; }
+    .footer-brand p { font-size: 14px; color: rgba(248,246,243,0.4); line-height: 1.7; }
+    .fcol-title {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--copper); margin-bottom: 14px;
+    }
+    .fcol p, .fcol a {
+      font-size: 14px; color: rgba(248,246,243,0.4);
+      display: block; margin-bottom: 4px; transition: color 0.3s;
+    }
+    .fcol a:hover { color: var(--copper); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--surface-3);
+      font-size: 12px; color: rgba(248,246,243,0.25);
+    }
+    .footer-bottom a { color: rgba(248,246,243,0.25); margin-left: 24px; transition: color 0.3s; }
+    .footer-bottom a:hover { color: var(--copper); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-portrait { display: none; }
+      .hero { min-height: 70vh; padding: 160px 0 80px; align-items: center; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .stats-row { grid-template-columns: repeat(3, 1fr); }
+      .philosophy-grid { grid-template-columns: 1fr; }
+      .philosophy-portrait { order: -1; }
+      .philosophy-portrait img { max-height: 380px; }
+      .philosophy-features { grid-template-columns: 1fr 1fr 1fr; }
+      .services-top { flex-direction: column; align-items: flex-start; }
+      .services-top p { text-align: left; }
+      .cards-row { grid-template-columns: 1fr; }
+      .feature { grid-template-columns: 1fr; }
+      .feature-img img { min-height: 240px; }
+      .steps { grid-template-columns: 1fr; gap: 16px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-portrait-col { order: -1; }
+      .footer-cols { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .header-cta { display: none; }
+      .burger { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(10,11,14,0.97);
+        backdrop-filter: blur(20px);
+        padding: 24px; gap: 16px;
+      }
+      .philosophy-features { grid-template-columns: 1fr; gap: 24px; }
+      .feature-body { padding: 32px 24px; }
+      .form-top { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(26,27,30,0.1); }
+      .stat-item:last-child { border-bottom: none; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-name { font-size: 44px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER (Task 1: Logo größer, Task 2: CTA → Kontakt) ===== -->
+  <header id="header">
+    <div class="container">
+      <a href="#" class="logo">
+        <img src="gh-assets/hammon-architektur-Logo-white.png" alt="Hammon Architektur">
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about">Über mich</a></li>
+          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#prozess">Prozess</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+      <a href="#kontakt" class="header-cta">Erstgespräch</a>
+      <button class="burger" aria-label="Menü" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== HERO (Tasks 3, 4, 5) ===== -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="hero-label reveal">Freischaffende Architektin</div>
+          <h1 class="hero-name reveal d1">Katrin<br>Hammon</h1>
+          <p class="hero-sub reveal d2">Persönlich, strukturiert, kreativ. Mit über 20 Jahren Erfahrung begleite ich Ihr Bauvorhaben von der ersten Idee bis zur Genehmigung.</p>
+          <div class="reveal d3">
+            <a href="#kontakt" class="btn btn-copper">
+              Erstgespräch vereinbaren
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="hero-portrait reveal d2">
+          <img src="gh-assets/1.png" alt="Katrin Hammon, freischaffende Architektin" loading="eager">
+        </div>
+      </div>
+    </div>
+    <div class="hero-line"></div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="overline reveal">Über mich</div>
+      <h2 class="section-title reveal d1">Ein Projekt.<br>Eine Architektin.</h2>
+      <div class="about-grid">
+        <div class="about-intro reveal d2">
+          <p>Über 21 Jahre habe ich in der Architektur gearbeitet, zuletzt als Projektleiterin bei einem der größten Planungsbüros in Flensburg. Heute betreue ich Projekte so, wie ich es für richtig halte. Persönlich, strukturiert und mit vollem Einsatz.</p>
+          <p>Wenn Sie mit mir arbeiten, arbeiten Sie mit mir. Nicht mit einem wechselnden Team, nicht mit einer Vertretung. Vom ersten Telefonat bis zur Genehmigung.</p>
+        </div>
+        <div class="about-benefits">
+          <div class="about-benefit reveal d2">
+            <div class="about-benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <div>
+              <h3>Kostenlose Erstberatung</h3>
+              <p>Ob Grundstücksbesuch oder Telefongespräch. Das Kennenlernen ist unverbindlich und klärt die ersten Schritte.</p>
+            </div>
+          </div>
+          <div class="about-benefit reveal d3">
+            <div class="about-benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <div>
+              <h3>Alle Leistungsphasen aus einer Hand</h3>
+              <p>Von der Bauvoranfrage bis zur Genehmigung. Ich passe den Umfang an Ihr Projekt an.</p>
+            </div>
+          </div>
+          <div class="about-benefit reveal d4">
+            <div class="about-benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <h3>Eine feste Ansprechpartnerin</h3>
+              <p>Kein wechselndes Team, keine Vertretung. Ich begleite Ihr Vorhaben durchgehend persönlich.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS (Task 9: 3 Stats, zentriert) ===== -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-row">
+        <div class="stat-item reveal">
+          <div class="stat-num" data-count="21">0</div>
+          <div class="stat-desc">Jahre Erfahrung in<br>Architektur und Planung</div>
+        </div>
+        <div class="stat-item reveal d1">
+          <div class="stat-num" data-count="500">0<span class="plus">+</span></div>
+          <div class="stat-desc">Projekte erfolgreich<br>realisiert</div>
+        </div>
+        <div class="stat-item reveal d2">
+          <div class="stat-num" data-count="1">0</div>
+          <div class="stat-desc">Ansprechpartnerin für<br>Ihr gesamtes Projekt</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PHILOSOPHIE / CTA-BANNER (Screenshot-Referenz) ===== -->
+  <section class="philosophy">
+    <div class="container">
+      <div class="philosophy-grid">
+        <div class="philosophy-text">
+          <div class="overline reveal">Philosophie</div>
+          <h2 class="section-title reveal d1">„Es wird, was Du<br>daraus machst."</h2>
+          <p class="reveal d2">Gute Architektur entsteht nicht am Reißbrett allein. Sie entsteht im Gespräch, im Verstehen dessen, was Sie wirklich brauchen. Ich nehme mir die Zeit für Ihr Projekt, die es verdient.</p>
+          <p class="reveal d2">Persönlich, strukturiert und mit vollem Einsatz. Bei mir gibt es keine Weiterreichung an Mitarbeiter. Ich begleite Ihr Vorhaben selbst.</p>
+          <a href="#kontakt" class="btn btn-outline reveal d3">
+            Projekt besprechen
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <div class="philosophy-features reveal d3">
+            <div class="phi-feature">
+              <div class="phi-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <h4>Persönliche Betreuung</h4>
+              <p>Eine Ansprechpartnerin für Ihr gesamtes Projekt, keine Weiterreichung.</p>
+            </div>
+            <div class="phi-feature">
+              <div class="phi-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+              </div>
+              <h4>Strukturierte Planung</h4>
+              <p>Klare Abläufe von der Entwurfsskizze bis zur Baugenehmigung.</p>
+            </div>
+            <div class="phi-feature">
+              <div class="phi-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              </div>
+              <h4>Regionale Kompetenz</h4>
+              <p>Ich kenne die Behörden, Handwerker und Gegebenheiten vor Ort.</p>
+            </div>
+          </div>
+        </div>
+        <div class="philosophy-portrait reveal d2">
+          <img src="gh-assets/2.png" alt="Katrin Hammon">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES (Tasks 10, 11, 12) ===== -->
+  <section class="services" id="leistungen">
+    <div class="container">
+      <div class="services-top">
+        <div>
+          <div class="overline reveal">Leistungen</div>
+          <h2 class="section-title reveal d1">Von der Idee bis<br>zur Genehmigung</h2>
+        </div>
+        <p class="reveal d2">Ob Neubau, Umbau oder Beratung. Jedes Projekt bekommt die volle Aufmerksamkeit, die es verdient.</p>
+      </div>
+
+      <div class="cards-row">
+        <div class="card reveal">
+          <div class="card-img">
+            <img src="gh-assets/images/skizze-neubau.png" alt="Architekturskizze Neubau">
+          </div>
+          <div class="card-body">
+            <h3>Neubau und Entwurf</h3>
+            <p>Sie planen einen Neubau? Ich begleite Sie vom ersten Entwurf bis zur Genehmigung. Ob Einfamilienhaus, Tiny House oder Gewerbegebäude. Jedes Projekt beginnt mit einem offenen Gespräch über Ihre Wünsche, Ihr Grundstück und Ihr Budget.</p>
+          </div>
+        </div>
+        <div class="card reveal d1">
+          <div class="card-img">
+            <img src="gh-assets/images/skizze-bestand.png" alt="Architekturskizze Bestand und Umbau">
+          </div>
+          <div class="card-body">
+            <h3>Bestand und Umbau</h3>
+            <p>Bestandsgebäude haben ihren eigenen Charakter. Ob Sanierung, Umbau, Anbau oder Nutzungsänderung. Ich erarbeite Lösungen, die das Vorhandene respektieren und Ihre neuen Anforderungen erfüllen. Auch bei denkmalgeschützten Gebäuden.</p>
+          </div>
+        </div>
+        <div class="card reveal d2">
+          <div class="card-img">
+            <img src="gh-assets/images/skizze-grundriss.png" alt="Architekturskizze Grundriss">
+          </div>
+          <div class="card-body">
+            <h3>Beratung und Verfahren</h3>
+            <p>Nicht jedes Anliegen braucht eine vollständige Planung. Manchmal reicht eine Bauvoranfrage, eine Bestandsaufnahme oder eine Machbarkeitsstudie. Ich berate Sie ehrlich, was Ihr Vorhaben wirklich braucht.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- §35 Feature -->
+      <div class="feature reveal d1">
+        <div class="feature-img">
+          <img src="gh-assets/images/landschaft-sh.png" alt="Modernes Haus in schleswig-holsteinischer Landschaft">
+        </div>
+        <div class="feature-body">
+          <div class="overline">Spezialgebiet</div>
+          <h3>Bauen im Außenbereich<br>nach § 35 BauGB</h3>
+          <p>Ihr Grundstück liegt außerhalb der Ortslage? Dann gelten besondere Regeln. Ob Umnutzung eines landwirtschaftlichen Gebäudes, Ersatzbau oder Neubau als privilegiertes Vorhaben. Ich kenne die Anforderungen der Genehmigungsbehörden in der Region und bringe Ihr Projekt auf den Weg.</p>
+          <div>
+            <a href="#kontakt" class="btn btn-copper">
+              Projekt besprechen
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section class="process" id="prozess">
+    <div class="container">
+      <div class="process-head">
+        <div class="overline reveal">So arbeite ich</div>
+        <h2 class="section-title reveal d1">Drei Schritte zu<br>Ihrem Projekt</h2>
+        <p class="reveal d2">Vom Kennenlernen bis zur Genehmigung. Ein klarer Ablauf, damit Sie immer wissen, wo Ihr Projekt steht.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h3>Kennenlernen</h3>
+          <p>Ein unverbindliches Erstgespräch bei Ihnen vor Ort oder in meinem Büro. Wir besprechen Ihre Wünsche, schauen uns das Grundstück an und klären gemeinsam, was Ihr Projekt braucht.</p>
+        </div>
+        <div class="step reveal d1">
+          <div class="step-num">02</div>
+          <h3>Planung und Entwurf</h3>
+          <p>Ich entwickle den Entwurf und bereite alle Unterlagen für die Genehmigung vor. Sie werden in jedem Schritt einbezogen und über den Fortschritt informiert.</p>
+        </div>
+        <div class="step reveal d2">
+          <div class="step-num">03</div>
+          <h3>Genehmigung</h3>
+          <p>Ich reiche die Bauvorlage bei der zuständigen Behörde ein und begleite den Genehmigungsprozess. Bei Bedarf übernehme ich auch die weiteren Leistungsphasen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact" id="kontakt">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-text">
+          <div class="overline reveal">Kontakt</div>
+          <h2 class="section-title reveal d1">Lassen Sie uns sprechen</h2>
+          <p class="lead reveal d2">Das Erstgespräch ist kostenlos und unverbindlich. Erzählen Sie mir von Ihrem Vorhaben, Ihrem Grundstück, Ihren Ideen.</p>
+          <div class="contact-info reveal d3">
+            <div class="contact-row">
+              <span class="lbl">Adresse</span>
+              <span class="val">Grönholm 7b, 24991 Freienwill</span>
+            </div>
+            <div class="contact-row">
+              <span class="lbl">Telefon</span>
+              <span class="val"><a href="tel:+4916094182990">0160 94182990</a></span>
+            </div>
+            <div class="contact-row">
+              <span class="lbl">E-Mail</span>
+              <span class="val"><a href="mailto:katrin@hammon-architektur.de">katrin@hammon-architektur.de</a></span>
+            </div>
+            <div class="contact-row">
+              <span class="lbl">Zeiten</span>
+              <span class="val">Mo bis Fr, 9 bis 17 Uhr</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-portrait-col">
+          <div class="contact-portrait reveal d2">
+            <img src="gh-assets/3.png" alt="Katrin Hammon">
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-full reveal d3">
+        <div class="overline">Nachricht senden</div>
+        <form onsubmit="return false;">
+          <div class="form-top">
+            <div class="form-row">
+              <input type="text" placeholder="Ihr Name" required>
+            </div>
+            <div class="form-row">
+              <input type="email" placeholder="Ihre E-Mail" required>
+            </div>
+            <div class="form-row">
+              <input type="text" placeholder="Betreff">
+            </div>
+          </div>
+          <div class="form-msg-row">
+            <div class="form-row">
+              <textarea placeholder="Ihre Nachricht" rows="3"></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-copper">
+            Nachricht senden
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-cols">
+        <div class="footer-brand fcol">
+          <div class="logo">
+            <img src="gh-assets/hammon-architektur-Logo-white.png" alt="Hammon Architektur">
+          </div>
+          <p>Freischaffende Architektin in Flensburg und Umgebung. Persönliche Betreuung für Ihr Bauvorhaben.</p>
+        </div>
+        <div class="fcol">
+          <div class="fcol-title">Kontakt</div>
+          <a href="tel:+4916094182990">0160 94182990</a>
+          <a href="mailto:katrin@hammon-architektur.de">katrin@hammon-architektur.de</a>
+          <p>Grönholm 7b, 24991 Freienwill</p>
+        </div>
+        <div class="fcol">
+          <div class="fcol-title">Qualifikation</div>
+          <p>Architektenkammer Schleswig-Holstein</p>
+          <p>Listennr. 6031</p>
+          <p>Bauvorlageberechtigung § 65 LBO SH</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Katrin Hammon</span>
+        <div>
+          <a href="/impressum">Impressum</a>
+          <a href="/datenschutz">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll
+    const hdr = document.getElementById('header');
+    window.addEventListener('scroll', () => hdr.classList.toggle('scrolled', window.scrollY > 60));
+
+    // Intersection Observer
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          // CountUp for stats
+          const nums = e.target.querySelectorAll('.stat-num[data-count]');
+          if (nums.length) nums.forEach(n => !n.dataset.done && countUp(n));
+          if (e.target.classList.contains('stat-item')) {
+            const n = e.target.querySelector('.stat-num[data-count]');
+            if (n && !n.dataset.done) countUp(n);
+          }
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .stat-item').forEach(el => io.observe(el));
+
+    function countUp(el) {
+      el.dataset.done = '1';
+      const target = parseInt(el.dataset.count);
+      const plus = el.querySelector('.plus');
+      const plusHTML = plus ? plus.outerHTML : '';
+      const dur = 1400;
+      const start = performance.now();
+      (function tick(now) {
+        const p = Math.min((now - start) / dur, 1);
+        const ease = 1 - Math.pow(2, -10 * p);
+        el.innerHTML = Math.round(ease * target) + plusHTML;
+        if (p < 1) requestAnimationFrame(tick);
+      })(start);
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) {
+          document.querySelector('.nav-links')?.classList.remove('open');
+          t.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
