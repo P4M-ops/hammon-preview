@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visitenkarte – Hammon Architektur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0e0e0e;
+  --surface-1: #141414;
+  --surface-2: #1e1e1e;
+  --surface-3: #2a2a2a;
+  --surface-4: #3d3d3d;
+  --copper: #c08040;
+  --copper-light: #d4974f;
+  --copper-06: rgba(192,128,64,.06);
+  --copper-12: rgba(192,128,64,.12);
+  --cream: #faf8f5;
+  --warm: #f2efea;
+  --warm-2: #e8e4de;
+  --text-dark: #1a1b1e;
+  --text-body: #4a4843;
+  --text-muted: #7a756d;
+  --gray-600: #606060;
+  --gray-500: #808080;
+  --gray-400: #999;
+  --gray-200: #ccc;
+  --border: rgba(255,255,255,.05);
+  --font: 'Inter', system-ui, sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--black);
+  color: var(--gray-400);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 48px 120px;
+}
+
+/* ── Header ── */
+.hdr {
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 72px;
+  animation: up .7s var(--ease) both;
+}
+.hdr__ov {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 20px;
+}
+.hdr__title {
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 600;
+  line-height: .92;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+.hdr__sub {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gray-600);
+}
+
+/* ── Cards Layout ── */
+.cards {
+  display: flex;
+  gap: 56px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+}
+.card-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  animation: up .7s var(--ease) both;
+}
+.card-col:nth-child(2) { animation-delay: .12s; }
+.card-col__label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray-600);
+}
+
+/* ── Business Card (85×55mm proportional) ── */
+.card {
+  width: 488px;
+  height: 316px;
+  position: relative;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.2),
+    0 12px 40px rgba(0,0,0,.4),
+    0 40px 80px rgba(0,0,0,.3);
+  transition: transform .5s var(--ease), box-shadow .5s ease;
+}
+.card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.2),
+    0 20px 60px rgba(0,0,0,.5),
+    0 60px 120px rgba(0,0,0,.35);
+}
+
+/* ── Front: Nur Logo, klassisch, clean ── */
+.card--front {
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,.025);
+}
+.card--front__logo {
+  width: 340px;
+  height: auto;
+  display: block;
+}
+
+/* ── Back: Kontaktdaten, gut gefüllt ── */
+.card--back {
+  background: var(--cream);
+  padding: 32px 32px 24px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0,0,0,.03);
+}
+.card--back__name {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  line-height: 1;
+  margin-bottom: 5px;
+}
+.card--back__title {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 18px;
+}
+.card--back__line {
+  width: 36px;
+  height: 1px;
+  background: var(--copper);
+  margin-bottom: 18px;
+}
+.card--back__group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.card--back__group + .card--back__group {
+  margin-top: 10px;
+}
+.card--back__group span {
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+.card--back__footer {
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: .5px solid rgba(0,0,0,.06);
+}
+
+/* ── Specs ── */
+.specs {
+  background: var(--surface-1);
+  border-left: 2px solid var(--copper);
+  padding: 28px 32px;
+  animation: up .7s var(--ease) .24s both;
+}
+.specs__title {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  margin-bottom: 20px;
+}
+.specs__grid {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 10px 24px;
+}
+.specs__label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gray-500);
+}
+.specs__value {
+  font-size: 12px;
+  color: var(--gray-400);
+}
+
+/* ── Page Footer ── */
+.ftr {
+  margin-top: 72px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--gray-600);
+}
+
+/* ── Animations ── */
+@keyframes up {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Print ── */
+@media print {
+  body { background: white; color: #333; }
+  .page { padding: 15mm; max-width: none; }
+  .hdr { border-bottom-color: #ddd; animation: none; }
+  .hdr__ov { color: var(--copper); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .hdr__title { color: #111; }
+  .hdr__sub { color: #888; }
+  .card-col { animation: none; }
+  .card {
+    width: 85mm;
+    height: 55mm;
+    box-shadow: 0 0 0 .5px #ccc;
+    transform: none !important;
+  }
+  .card--front {
+    background: #0e0e0e !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .card--front__logo { width: 58mm; }
+  .card--back {
+    background: var(--cream) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    padding: 6mm 6mm 4.5mm;
+  }
+  .card--back__name { font-size: 10.5pt; letter-spacing: 1pt; margin-bottom: 1mm; }
+  .card--back__title { font-size: 6.5pt; letter-spacing: 1pt; margin-bottom: 3mm; }
+  .card--back__line { width: 8mm; height: .25mm; margin-bottom: 3mm; }
+  .card--back__group span { font-size: 7.5pt; }
+  .card--back__group + .card--back__group { margin-top: 1.5mm; }
+  .card--back__footer { font-size: 5.5pt; padding-top: 1.5mm; }
+  .specs {
+    background: #f5f5f5 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .ftr { border-top-color: #ddd; color: #999; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 1080px) {
+  .cards { flex-direction: column; align-items: center; }
+}
+@media (max-width: 560px) {
+  .page { padding: 40px 20px 80px; }
+  .card {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    aspect-ratio: 85 / 55;
+  }
+  .card--front__logo { width: 65%; }
+  .card--back { padding: 8% 7% 6%; }
+  .card--back__name { font-size: 15px; }
+  .card--back__title { font-size: 8.5px; }
+  .card--back__group span { font-size: 11px; }
+  .specs__grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hdr">
+    <div class="hdr__ov">Print Design</div>
+    <h1 class="hdr__title">Visitenkarte</h1>
+    <div class="hdr__sub">Hammon Architektur &middot; 85 &times; 55 mm</div>
+  </header>
+
+  <section class="cards">
+
+    <div class="card-col">
+      <div class="card card--front">
+        <img class="card--front__logo" src="gh-assets/hammon-architektur-Logo-white.png" alt="Hammon Architektur">
+      </div>
+      <span class="card-col__label">Vorderseite</span>
+    </div>
+
+    <div class="card-col">
+      <div class="card card--back">
+        <div class="card--back__name">Katrin Hammon</div>
+        <div class="card--back__title">Dipl.-Ing. Architektin</div>
+        <div class="card--back__line"></div>
+        <div class="card--back__group">
+          <span>Gr&ouml;nholm 7b</span>
+          <span>24991 Freienwill</span>
+        </div>
+        <div class="card--back__group">
+          <span>0160 94182990</span>
+          <span>katrin@hammon-architektur.de</span>
+          <span>hammon-architektur.de</span>
+        </div>
+        <div class="card--back__footer">Freischaffende Architektin &middot; AIK SH 6031</div>
+      </div>
+      <span class="card-col__label">R&uuml;ckseite</span>
+    </div>
+
+  </section>
+
+  <div class="specs">
+    <div class="specs__title">Spezifikationen</div>
+    <div class="specs__grid">
+      <span class="specs__label">Format</span>
+      <span class="specs__value">85 &times; 55 mm (Standard)</span>
+      <span class="specs__label">Papier</span>
+      <span class="specs__value">350 g/m&sup2; (Empfehlung: Gmund Cotton Linen Cream)</span>
+      <span class="specs__label">Vorderseite</span>
+      <span class="specs__value">Schwarz durchgef&auml;rbt, Logo wei&szlig;</span>
+      <span class="specs__label">R&uuml;ckseite</span>
+      <span class="specs__value">Naturwei&szlig; / Creme (#faf8f5)</span>
+      <span class="specs__label">Veredelung</span>
+      <span class="specs__value">Kupfer-Hei&szlig;folienpr&auml;gung f&uuml;r Akzentlinien (optional)</span>
+      <span class="specs__label">Beschnitt</span>
+      <span class="specs__value">3 mm umlaufend</span>
+    </div>
+  </div>
+
+  <footer class="ftr">
+    <span>Hammon Architektur &middot; Corporate Design</span>
+    <span>Pro4Media Digitalagentur</span>
+  </footer>
+
+</div>
+</body>
+</html>

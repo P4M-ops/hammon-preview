@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutzerklärung | Katrin Hammon – Architektin in Flensburg</title>
+  <meta name="description" content="Datenschutzerklärung von Katrin Hammon, freischaffende Architektin. Informationen zur Verarbeitung personenbezogener Daten nach DSGVO.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0e0e0e;
+      --surface-1: #141414;
+      --surface-2: #1e1e1e;
+      --surface-3: #2a2a2a;
+      --surface-4: #3d3d3d;
+      --copper: #c08040;
+      --copper-light: #d4974f;
+      --copper-glow: rgba(192, 128, 64, 0.12);
+      --warm: #f2efea;
+      --cream: #faf8f5;
+      --text-light: rgba(248, 246, 243, 0.75);
+      --text-light-muted: rgba(248, 246, 243, 0.5);
+      --font: 'Inter', system-ui, sans-serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --max-w: 820px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text-light);
+      background: var(--black);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    a { color: var(--copper); text-decoration: none; transition: color 0.3s; }
+    a:hover { color: var(--copper-light); }
+
+    /* ===== BACK LINK ===== */
+    .back-bar {
+      padding: 24px 32px;
+      border-bottom: 1px solid var(--surface-3);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: rgba(248, 246, 243, 0.5);
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--copper); }
+    .back-link svg { width: 16px; height: 16px; }
+
+    /* ===== MAIN CONTENT ===== */
+    .legal-content {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 80px 32px 120px;
+    }
+
+    /* ===== HEADER SECTION ===== */
+    .legal-header {
+      margin-bottom: 64px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--surface-3);
+    }
+    .legal-overline {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .legal-overline::before {
+      content: '';
+      width: 24px;
+      height: 1.5px;
+      background: var(--copper);
+    }
+    .legal-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+    .legal-subtitle {
+      font-size: 15px;
+      color: var(--text-light-muted);
+    }
+
+    /* ===== TABLE OF CONTENTS ===== */
+    .toc {
+      background: var(--surface-2);
+      border-radius: 6px;
+      padding: 28px 32px;
+      margin-bottom: 64px;
+    }
+    .toc-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 16px;
+    }
+    .toc ol {
+      list-style: none;
+      counter-reset: toc-counter;
+    }
+    .toc li {
+      counter-increment: toc-counter;
+      margin-bottom: 6px;
+    }
+    .toc li a {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-light-muted);
+      transition: color 0.3s;
+    }
+    .toc li a:hover { color: var(--copper); }
+    .toc li a::before {
+      content: counter(toc-counter, decimal-leading-zero);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--copper);
+      opacity: 0.5;
+      min-width: 20px;
+    }
+
+    /* ===== SECTIONS ===== */
+    .legal-section {
+      margin-bottom: 48px;
+    }
+    .legal-section:last-child {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 16px;
+      letter-spacing: -0.2px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(248, 246, 243, 0.9);
+      margin-bottom: 8px;
+      margin-top: 24px;
+    }
+
+    p {
+      margin-bottom: 12px;
+      color: var(--text-light);
+      line-height: 1.75;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+    ul li {
+      margin-bottom: 6px;
+      color: var(--text-light);
+      line-height: 1.65;
+    }
+    ul li::marker {
+      color: var(--copper);
+    }
+
+    /* ===== INFO BLOCK ===== */
+    .info-block {
+      background: var(--surface-2);
+      border-left: 3px solid var(--copper);
+      border-radius: 0 6px 6px 0;
+      padding: 28px 32px;
+      margin: 24px 0;
+    }
+    .info-block p {
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+    .info-block p:last-child { margin-bottom: 0; }
+    .info-block .label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* ===== DIVIDER ===== */
+    .section-divider {
+      height: 1px;
+      background: var(--surface-3);
+      margin: 48px 0;
+    }
+
+    /* ===== RECHTSGRUNDLAGE BADGE ===== */
+    .legal-basis {
+      display: inline-block;
+      background: var(--copper-glow);
+      border: 1px solid rgba(192, 128, 64, 0.2);
+      border-radius: 4px;
+      padding: 4px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--copper);
+      margin: 8px 0 12px;
+    }
+
+    /* ===== FOOTER ===== */
+    .legal-footer {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 32px 48px;
+    }
+    .legal-footer-inner {
+      padding-top: 32px;
+      border-top: 1px solid var(--surface-3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: rgba(248, 246, 243, 0.25);
+    }
+    .legal-footer-inner a {
+      color: rgba(248, 246, 243, 0.25);
+      margin-left: 24px;
+    }
+    .legal-footer-inner a:hover { color: var(--copper); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .legal-content { padding: 48px 20px 80px; }
+      .back-bar { padding: 20px; }
+      .info-block { padding: 20px 24px; }
+      .toc { padding: 20px 24px; }
+      .legal-footer { padding: 0 20px 32px; }
+      .legal-footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+      .legal-footer-inner a { margin-left: 0; margin: 0 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BACK LINK -->
+  <div class="back-bar">
+    <a href="index.html" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Zurück zur Startseite
+    </a>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="legal-content">
+
+    <!-- HEADER -->
+    <div class="legal-header">
+      <div class="legal-overline">Rechtliches</div>
+      <h1 class="legal-title">Datenschutz&shy;erklärung</h1>
+      <p class="legal-subtitle">Stand: Februar 2026</p>
+    </div>
+
+    <!-- INHALTSVERZEICHNIS -->
+    <nav class="toc">
+      <div class="toc-title">Inhaltsverzeichnis</div>
+      <ol>
+        <li><a href="#verantwortlicher">Verantwortlicher</a></li>
+        <li><a href="#ueberblick">Allgemeine Hinweise zur Datenverarbeitung</a></li>
+        <li><a href="#hosting">Hosting und Server-Logfiles</a></li>
+        <li><a href="#ssl">SSL- bzw. TLS-Verschlüsselung</a></li>
+        <li><a href="#kontaktformular">Kontaktformular</a></li>
+        <li><a href="#email">Kontaktaufnahme per E-Mail</a></li>
+        <li><a href="#telefon">Kontaktaufnahme per Telefon</a></li>
+        <li><a href="#cookies">Cookies</a></li>
+        <li><a href="#fonts">Schriftarten</a></li>
+        <li><a href="#rechte">Ihre Rechte als betroffene Person</a></li>
+        <li><a href="#aufsicht">Beschwerderecht bei einer Aufsichtsbehörde</a></li>
+        <li><a href="#aenderungen">Aktualität und Änderung dieser Datenschutzerklärung</a></li>
+      </ol>
+    </nav>
+
+    <!-- 1. VERANTWORTLICHER -->
+    <div class="legal-section" id="verantwortlicher">
+      <h2>1. Verantwortlicher</h2>
+      <p>Verantwortliche im Sinne der Datenschutz-Grundverordnung (DSGVO) und anderer nationaler Datenschutzgesetze sowie sonstiger datenschutzrechtlicher Bestimmungen ist:</p>
+
+      <div class="info-block">
+        <span class="label">Verantwortliche</span>
+        <p><strong style="color: var(--cream);">Dipl.-Ing. Architektin Katrin Hammon</strong></p>
+        <p>Grönholm 7b</p>
+        <p>24991 Freienwill</p>
+        <p style="margin-top: 8px;">Telefon: <a href="tel:+4916094182990">0160 94182990</a></p>
+        <p>E-Mail: <a href="mailto:katrin@hammon-architektur.de">katrin@hammon-architektur.de</a></p>
+        <p>Website: <a href="https://hammon-architektur.de">hammon-architektur.de</a></p>
+      </div>
+
+      <p>Die Benennung eines Datenschutzbeauftragten ist gesetzlich nicht vorgeschrieben. Sie erreichen mich bei Datenschutzfragen unter den oben genannten Kontaktdaten.</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- 2. ALLGEMEINE HINWEISE -->
+    <div class="legal-section" id="ueberblick">
+      <h2>2. Allgemeine Hinweise zur Datenverarbeitung</h2>
+      <p>Ich nehme den Schutz Ihrer persönlichen Daten ernst. Ich behandle Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+      <p>Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können. Diese Datenschutzerklärung erläutert, welche Daten ich erhebe und wofür ich sie nutze. Sie erläutert auch, wie und zu welchem Zweck das geschieht.</p>
+      <p>Ich weise darauf hin, dass die Datenübertragung im Internet (zum Beispiel bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- 3. HOSTING -->
+    <div class="legal-section" id="hosting">
+      <h2>3. Hosting und Server-Logfiles</h2>
+      <p>Diese Website wird bei einem externen Dienstleister gehostet (Hoster). Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Hierbei kann es sich insbesondere um IP-Adressen, Kontaktanfragen, Meta- und Kommunikationsdaten, Vertragsdaten, Kontaktdaten, Namen, Websitezugriffe und sonstige Daten, die über eine Website generiert werden, handeln.</p>
+
+      <div class="info-block">
+        <span class="label">Hoster</span>
+        <p><strong style="color: var(--cream);">webgo GmbH</strong></p>
+        <p>Wandsbeker Zollstraße 95</p>
+        <p>22041 Hamburg</p>
+      </div>
+
+      <p>Der Einsatz des Hosters erfolgt im Interesse einer sicheren, schnellen und effizienten Bereitstellung meines Online-Angebots durch einen professionellen Anbieter.</p>
+      <span class="legal-basis">Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO</span>
+
+      <h3>Server-Logfiles</h3>
+      <p>Der Hoster erhebt und speichert automatisch Informationen in sogenannten Server-Logfiles, die Ihr Browser automatisch übermittelt. Dies sind:</p>
+      <ul>
+        <li>Browsertyp und Browserversion</li>
+        <li>verwendetes Betriebssystem</li>
+        <li>Referrer-URL (die zuvor besuchte Seite)</li>
+        <li>Hostname des zugreifenden Rechners</li>
+        <li>IP-Adresse des zugreifenden Rechners</li>
+        <li>Uhrzeit der Serveranfrage</li>
+      </ul>
+      <p>Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Ich habe ein berechtigtes Interesse an der technisch fehlerfreien Darstellung und der Optimierung meiner Website. Hierzu müssen die Server-Logfiles erfasst werden.</p>
+
+      <h3>Speicherdauer</h3>
+      <p>Die Server-Logfiles werden nach spätestens 7 Tagen automatisch gelöscht, sofern sie nicht zur Aufklärung eines Sicherheitsvorfalls benötigt werden.</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- 4. SSL/TLS -->
+    <div class="legal-section" id="ssl">
+      <h2>4. SSL- bzw. TLS-Verschlüsselung</h2>
+      <p>Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Anfragen, die Sie an mich als Seitenbetreiberin senden, eine SSL- beziehungsweise TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://" auf „https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.</p>
+      <p>Wenn die SSL- beziehungsweise TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an mich übermitteln, nicht von Dritten mitgelesen werden.</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- 5. KONTAKTFORMULAR -->
+    <div class="legal-section" id="kontaktformular">
+      <h2>5. Kontaktformular</h2>
+      <p>Wenn Sie mir über das Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular einschließlich der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei mir gespeichert.</p>
+
+      <h3>Erhobene Daten</h3>
+      <ul>
+        <li>Ihr Name</li>
+        <li>Ihre E-Mail-Adresse</li>
+        <li>Betreff Ihrer Anfrage</li>
+        <li>Ihre Nachricht (Freitextfeld)</li>
+      </ul>
+
+      <p>Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf meinem berechtigten Interesse an der effektiven Bearbeitung der an mich gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO).</p>
+      <span class="legal-basis">Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO / Art. 6 Abs. 1 lit. f DSGVO</span>
+
+      <h3>Speicherdauer</h3>
+      <p>Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei mir, bis Sie mich zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (zum Beispiel nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen, insbesondere Aufbewahrungsfristen, bleiben unberührt.</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- 6. E-MAIL -->
+    <div class="legal-section" id="email">
+      <h2>6. Kontaktaufnahme per E-Mail</h2>
+      <p>Wenn Sie mich per E-Mail kontaktieren, wird Ihre Anfrage einschließlich aller daraus hervorgehenden personenbezogenen Daten (Name, E-Mail-Adresse, Inhalt der Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei mir gespeichert und verarbeitet.</p>
+      <p>Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) beziehungsweise auf meinem berechtigten Interesse (Art. 6 Abs. 1 lit. f DSGVO).</p>
+      <p>Die von Ihnen an mich per E-Mail gesandten Daten verbleiben bei mir, bis Sie mich zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt. Zwingende gesetzliche Bestimmungen, insbesondere steuer- und handelsrechtliche Aufbewahrungsfristen, bleiben unberührt.</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- 7. TELEFON -->
+    <div class="legal-section" id="telefon">
+      <h2>7. Kontaktaufnahme per Telefon</h2>
+      <p>Wenn Sie mich per Telefon kontaktieren, wird Ihre Telefonnummer zur Bearbeitung Ihrer Anfrage bei mir gespeichert. Gesprächsinhalte und gegebenenfalls Ihre Kontaktdaten können in meinem Kundenverwaltungssystem gespeichert werden, sofern dies zur Bearbeitung Ihres Anliegens erforderlich ist.</p>
+      <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen, Vertragserfüllung) beziehungsweise Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der effizienten Bearbeitung von Anfragen).</p>
+      <p>Die Daten werden gelöscht, sobald sie für die Erreichung des Zwecks ihrer Erhebung nicht mehr erforderlich sind. Zwingende gesetzliche Aufbewahrungsfristen bleiben unberührt.</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- 8. COOKIES -->
+    <div class="legal-section" id="cookies">
+      <h2>8. Cookies</h2>
+      <p>Diese Website verwendet ausschließlich technisch notwendige Cookies, die für den ordnungsgemäßen Betrieb der Website erforderlich sind. Es werden keine Cookies zu Analyse-, Tracking- oder Werbezwecken eingesetzt.</p>
+      <p>Technisch notwendige Cookies werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert. Ich habe ein berechtigtes Interesse an der Speicherung dieser Cookies zur technisch fehlerfreien und optimierten Bereitstellung meiner Website.</p>
+      <p>Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, die Annahme von Cookies für bestimmte Fälle oder generell ausschließen sowie das automatische Löschen der Cookies beim Schließen des Browsers aktivieren. Bei der Deaktivierung von Cookies kann die Funktionalität dieser Website eingeschränkt sein.</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- 9. SCHRIFTARTEN -->
+    <div class="legal-section" id="fonts">
+      <h2>9. Schriftarten</h2>
+      <p>Diese Website nutzt zur einheitlichen Darstellung von Schriftarten die Schriftart „Inter". Die Schriftdateien werden lokal auf dem eigenen Server bereitgestellt. Beim Aufruf dieser Website werden keine Verbindungen zu externen Servern (wie Google Fonts) hergestellt und keine Daten an Dritte übermittelt.</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- 10. BETROFFENENRECHTE -->
+    <div class="legal-section" id="rechte">
+      <h2>10. Ihre Rechte als betroffene Person</h2>
+      <p>Ihnen stehen unter den Voraussetzungen der DSGVO folgende Rechte zu:</p>
+
+      <h3>Recht auf Auskunft (Art. 15 DSGVO)</h3>
+      <p>Sie haben das Recht, eine Bestätigung darüber zu verlangen, ob personenbezogene Daten, die Sie betreffen, verarbeitet werden. Ist dies der Fall, haben Sie ein Recht auf Auskunft über diese personenbezogenen Daten und auf die in Art. 15 DSGVO im Einzelnen aufgeführten Informationen.</p>
+
+      <h3>Recht auf Berichtigung (Art. 16 DSGVO)</h3>
+      <p>Sie haben das Recht, unverzüglich die Berichtigung Sie betreffender unrichtiger personenbezogener Daten und gegebenenfalls die Vervollständigung unvollständiger Daten zu verlangen.</p>
+
+      <h3>Recht auf Löschung (Art. 17 DSGVO)</h3>
+      <p>Sie haben das Recht, zu verlangen, dass Sie betreffende personenbezogene Daten unverzüglich gelöscht werden, sofern einer der in Art. 17 DSGVO genannten Gründe zutrifft, etwa wenn die Daten für die verfolgten Zwecke nicht mehr benötigt werden.</p>
+
+      <h3>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</h3>
+      <p>Sie haben das Recht, die Einschränkung der Verarbeitung zu verlangen, wenn eine der in Art. 18 DSGVO genannten Voraussetzungen gegeben ist, etwa wenn Sie die Richtigkeit der Daten bestreiten.</p>
+
+      <h3>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</h3>
+      <p>Sie haben das Recht, die Sie betreffenden personenbezogenen Daten, die Sie mir bereitgestellt haben, in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten. Sie haben außerdem das Recht, diese Daten einem anderen Verantwortlichen ohne Behinderung zu übermitteln.</p>
+
+      <h3>Widerspruchsrecht (Art. 21 DSGVO)</h3>
+      <p>Sofern die Verarbeitung Ihrer personenbezogenen Daten auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse) erfolgt, haben Sie das Recht, jederzeit gegen die Verarbeitung Widerspruch einzulegen. Ich verarbeite die personenbezogenen Daten dann nicht mehr, es sei denn, ich kann zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, die Ihre Interessen, Rechte und Freiheiten überwiegen.</p>
+
+      <h3>Recht auf Widerruf der Einwilligung (Art. 7 Abs. 3 DSGVO)</h3>
+      <p>Sofern die Datenverarbeitung auf Ihrer Einwilligung beruht, können Sie diese jederzeit für die Zukunft widerrufen. Die Rechtmäßigkeit der aufgrund der Einwilligung bis zum Widerruf erfolgten Verarbeitung wird dadurch nicht berührt.</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- 11. AUFSICHTSBEHÖRDE -->
+    <div class="legal-section" id="aufsicht">
+      <h2>11. Beschwerderecht bei einer Aufsichtsbehörde</h2>
+      <p>Unbeschadet eines anderweitigen verwaltungsrechtlichen oder gerichtlichen Rechtsbehelfs steht Ihnen das Recht auf Beschwerde bei einer Aufsichtsbehörde zu, wenn Sie der Ansicht sind, dass die Verarbeitung der Sie betreffenden personenbezogenen Daten gegen die DSGVO verstößt.</p>
+
+      <div class="info-block">
+        <span class="label">Zuständige Aufsichtsbehörde</span>
+        <p><strong style="color: var(--cream);">Unabhängiges Landeszentrum für Datenschutz Schleswig-Holstein (ULD)</strong></p>
+        <p>Holstenstraße 98</p>
+        <p>24103 Kiel</p>
+        <p>Telefon: 0431 988-1200</p>
+        <p>E-Mail: <a href="mailto:mail@datenschutzzentrum.de">mail@datenschutzzentrum.de</a></p>
+        <p><a href="https://www.datenschutzzentrum.de" target="_blank" rel="noopener noreferrer">www.datenschutzzentrum.de</a></p>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- 12. AKTUALITÄT -->
+    <div class="legal-section" id="aenderungen">
+      <h2>12. Aktualität und Änderung dieser Datenschutzerklärung</h2>
+      <p>Diese Datenschutzerklärung ist aktuell gültig und hat den Stand Februar 2026.</p>
+      <p>Durch die Weiterentwicklung meiner Website oder aufgrund geänderter gesetzlicher beziehungsweise behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern. Die jeweils aktuelle Datenschutzerklärung kann jederzeit auf dieser Website abgerufen und ausgedruckt werden.</p>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <div class="legal-footer">
+    <div class="legal-footer-inner">
+      <span>© 2026 Katrin Hammon</span>
+      <div>
+        <a href="impressum.html">Impressum</a>
+        <a href="index.html">Startseite</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -27,16 +27,16 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --black: #0a0b0e;
-      --surface-1: #111214;
-      --surface-2: #1a1b1e;
-      --surface-3: #242528;
-      --surface-4: #3a3b3e;
+      --black: #0e0e0e;
+      --surface-1: #141414;
+      --surface-2: #1e1e1e;
+      --surface-3: #2a2a2a;
+      --surface-4: #3d3d3d;
       --copper: #c08040;
       --copper-light: #d4974f;
       --copper-glow: rgba(192, 128, 64, 0.12);
-      --warm: #f5f2ed;
-      --warm-2: #edeae4;
+      --warm: #f2efea;
+      --warm-2: #e8e4de;
       --cream: #faf8f5;
       --text-dark: #1a1b1e;
       --text-body: #4a4843;
@@ -67,6 +67,48 @@
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; } .d4 { transition-delay: 0.4s; }
+
+    /* Kupferlinie Animation */
+    @keyframes kupferline {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+    .overline::before {
+      transform-origin: left;
+      transform: scaleX(0);
+    }
+    .reveal.visible .overline::before,
+    .overline.reveal.visible::before,
+    .reveal.visible.overline::before {
+      animation: kupferline 0.8s var(--ease) 0.3s forwards;
+    }
+
+    /* Hero-Line Animation */
+    @keyframes herolineReveal {
+      from { transform: scaleX(0); opacity: 0; }
+      to { transform: scaleX(1); opacity: 0.25; }
+    }
+    .hero-line {
+      transform: scaleX(0);
+      opacity: 0;
+      animation: herolineReveal 1.2s var(--ease) 0.8s forwards;
+    }
+
+    /* Stats CountUp Glow */
+    @keyframes statGlow {
+      0% { text-shadow: none; }
+      50% { text-shadow: 0 0 30px rgba(192, 128, 64, 0.3); }
+      100% { text-shadow: none; }
+    }
+    .stat-num.counted {
+      animation: statGlow 1.5s var(--ease);
+    }
+
+    /* Credential border reveal */
+    @keyframes borderReveal {
+      from { height: 0; }
+      to { height: 100%; }
+    }
 
     /* ===== COMMON: OVERLINE ===== */
     .overline {
@@ -115,13 +157,13 @@
     header .container { display: flex; justify-content: space-between; align-items: center; }
     /* Task 1: Logo viel größer, schrumpft beim Scroll */
     .logo img {
-      height: 60px; width: auto;
+      height: 68px; width: auto;
       transition: height 0.5s var(--ease);
     }
-    header.scrolled .logo img { height: 28px; }
+    header.scrolled .logo img { height: 42px; }
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
-      font-size: 13px; font-weight: 500; letter-spacing: 0.3px;
+      font-size: 13px; font-weight: 400; letter-spacing: 0.5px;
       color: rgba(255,255,255,0.6); transition: color 0.3s;
     }
     .nav-links a:hover { color: #fff; }
@@ -156,21 +198,27 @@
     }
     .hero-inner {
       display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
-      align-items: center;
-      width: 100%;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
       position: relative; z-index: 2;
     }
     .hero-text {
-      padding-bottom: 40px;
+      padding-bottom: 80px;
       padding-right: 48px;
+      align-self: center;
     }
     .hero-label {
       font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase;
       color: var(--copper); margin-bottom: 28px;
       display: flex; align-items: center; gap: 12px;
     }
-    .hero-label::before { content: ''; width: 24px; height: 1.5px; background: var(--copper); }
+    .hero-label::before {
+      content: ''; width: 24px; height: 1.5px; background: var(--copper);
+      transform-origin: left; transform: scaleX(0);
+    }
+    .hero-label.reveal.visible::before {
+      animation: kupferline 0.8s var(--ease) 0.2s forwards;
+    }
     /* Task 4: Titel schlanker, mehr Letter-Spacing */
     .hero-name {
       font-size: clamp(54px, 7vw, 88px);
@@ -183,14 +231,14 @@
     }
     /* Task 5: Subtext besser lesbar */
     .hero-sub {
-      font-size: 17px; font-weight: 400; line-height: 1.75;
+      font-size: 20px; font-weight: 300; line-height: 1.5;
       color: rgba(248, 246, 243, 0.7);
       max-width: 420px;
       margin-bottom: 40px;
     }
     /* Task 3: Portrait-Unterkante elegant (Gradient am unteren Rand) */
     .hero-portrait {
-      display: flex; justify-content: flex-end; align-items: flex-end;
+      display: flex; justify-content: center; align-items: flex-end;
       position: relative;
       align-self: end;
     }
@@ -226,44 +274,41 @@
       grid-template-columns: 1fr 1fr;
       gap: 72px;
       align-items: start;
+      margin-top: 8px;
     }
     .about-intro {
-      font-size: clamp(19px, 2vw, 22px);
+      font-size: 18px;
       font-weight: 400;
       line-height: 1.65;
       color: var(--text-dark);
     }
     .about-intro p { margin-bottom: 20px; }
-    .about-benefits {
+    .about-credentials {
+      background: var(--cream);
+      border-radius: 6px;
+      padding: 32px 36px;
+      border-left: 3px solid var(--copper);
+    }
+    .about-credentials .overline { margin-bottom: 20px; }
+    .credential-item {
       display: flex;
-      flex-direction: column;
-      gap: 0;
+      align-items: baseline;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(26,27,30,0.08);
     }
-    .about-benefit {
-      display: grid;
-      grid-template-columns: 40px 1fr;
-      gap: 16px;
-      align-items: start;
-      padding: 24px 0;
-      border-bottom: 1px solid rgba(26,27,30,0.1);
-    }
-    .about-benefit:first-child { padding-top: 0; }
-    .about-benefit:last-child { border-bottom: none; }
-    .about-benefit-icon {
-      width: 40px; height: 40px;
-      display: flex; align-items: center; justify-content: center;
+    .credential-item:last-child { border-bottom: none; }
+    .credential-item .cred-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
       color: var(--copper);
+      min-width: 100px;
       flex-shrink: 0;
-      margin-top: 2px;
     }
-    .about-benefit-icon svg { width: 22px; height: 22px; }
-    .about-benefit h3 {
-      font-size: 15px; font-weight: 700;
-      margin-bottom: 4px; color: var(--text-dark);
-    }
-    .about-benefit p {
-      font-size: 15px; line-height: 1.65;
-      color: var(--text-muted); margin: 0;
+    .credential-item .cred-value {
+      font-size: 15px; font-weight: 500;
+      color: var(--text-dark);
+      line-height: 1.5;
     }
 
     /* ===== STATS ===== */
@@ -294,7 +339,7 @@
     }
     .stat-num .plus { color: var(--copper); }
     .stat-desc {
-      font-size: 13px; font-weight: 500;
+      font-size: 15px; font-weight: 500;
       color: var(--text-muted);
       line-height: 1.5;
     }
@@ -320,7 +365,7 @@
       margin-bottom: 28px;
     }
     .philosophy-text p {
-      font-size: 17px; line-height: 1.85; font-weight: 400;
+      font-size: 18px; line-height: 1.85; font-weight: 400;
       color: var(--text-light);
       margin-bottom: 16px;
     }
@@ -342,12 +387,12 @@
       color: var(--copper);
     }
     .phi-feature h4 {
-      font-size: 14px; font-weight: 600;
+      font-size: 16px; font-weight: 600;
       color: var(--cream);
       margin-bottom: 6px;
     }
     .phi-feature p {
-      font-size: 13px; line-height: 1.6;
+      font-size: 14px; line-height: 1.5;
       color: var(--text-light-muted);
       margin-bottom: 0;
     }
@@ -420,12 +465,12 @@
     .card:hover .card-img img { transform: scale(1.03); }
     .card-body { padding: 28px 28px 32px; }
     .card-body h3 {
-      font-size: 15px; font-weight: 700;
+      font-size: 16px; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.5px;
       margin-bottom: 12px; color: var(--text-dark);
     }
     .card-body p {
-      font-size: 14px; line-height: 1.75;
+      font-size: 15px; line-height: 1.75;
       color: var(--text-body);
     }
 
@@ -489,7 +534,7 @@
       letter-spacing: -2px;
     }
     .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
-    .step p { font-size: 14px; line-height: 1.7; color: var(--text-body); }
+    .step p { font-size: 15px; line-height: 1.7; color: var(--text-body); }
 
     /* ===== CONTACT ===== */
     .contact {
@@ -510,7 +555,7 @@
       margin-bottom: 20px;
     }
     .contact-text .lead {
-      font-size: 17px; line-height: 1.75;
+      font-size: 18px; line-height: 1.75;
       color: var(--text-light); margin-bottom: 32px;
     }
     .contact-info { margin-bottom: 36px; }
@@ -594,24 +639,44 @@
       margin-bottom: 24px;
     }
     .contact-form-full .btn {
-      display: flex; justify-content: center;
-      width: 100%; max-width: 280px;
-      margin: 0 auto;
+      display: inline-flex;
+      max-width: 280px;
     }
 
     /* ===== FOOTER ===== */
     footer {
       background: var(--black);
       border-top: 1px solid var(--surface-3);
-      padding: 48px 0 28px;
+      padding: 64px 0 28px;
     }
     .footer-cols {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 40px; margin-bottom: 40px;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 40px; margin-bottom: 48px;
     }
-    .footer-brand .logo img { height: 24px; opacity: 0.5; margin-bottom: 14px; }
-    .footer-brand p { font-size: 14px; color: rgba(248,246,243,0.4); line-height: 1.7; }
+    .footer-brand .logo img { height: 40px; opacity: 0.6; margin-bottom: 16px; }
+    .footer-brand p { font-size: 14px; color: rgba(248,246,243,0.45); line-height: 1.7; }
+    .footer-aik {
+      display: flex; align-items: center; gap: 10px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--surface-3);
+    }
+    .footer-aik-badge {
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--copper);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--copper);
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+    .footer-aik span {
+      font-size: 12px;
+      color: rgba(248,246,243,0.35);
+      line-height: 1.4;
+    }
     .fcol-title {
       font-size: 11px; font-weight: 600;
       letter-spacing: 3px; text-transform: uppercase;
@@ -619,7 +684,7 @@
     }
     .fcol p, .fcol a {
       font-size: 14px; color: rgba(248,246,243,0.4);
-      display: block; margin-bottom: 4px; transition: color 0.3s;
+      display: block; margin-bottom: 6px; transition: color 0.3s;
     }
     .fcol a:hover { color: var(--copper); }
     .footer-bottom {
@@ -650,6 +715,10 @@
       .steps { grid-template-columns: 1fr; gap: 16px; }
       .contact-grid { grid-template-columns: 1fr; }
       .contact-portrait-col { order: -1; }
+      .footer-cols { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 560px) {
       .footer-cols { grid-template-columns: 1fr; }
     }
 
@@ -729,36 +798,30 @@
       <h2 class="section-title reveal d1">Ein Projekt.<br>Eine Architektin.</h2>
       <div class="about-grid">
         <div class="about-intro reveal d2">
-          <p>Über 21 Jahre habe ich in der Architektur gearbeitet, zuletzt als Projektleiterin bei einem der größten Planungsbüros in Flensburg. Heute betreue ich Projekte so, wie ich es für richtig halte. Persönlich, strukturiert und mit vollem Einsatz.</p>
-          <p>Wenn Sie mit mir arbeiten, arbeiten Sie mit mir. Nicht mit einem wechselnden Team, nicht mit einer Vertretung. Vom ersten Telefonat bis zur Genehmigung.</p>
+          <p>Wohnungsbau, Gewerbeprojekte, öffentliche Gebäude, Sanierungen und Bauen im Außenbereich. Als Projektleiterin in einem der führenden Planungsbüros in Flensburg habe ich über zwei Jahrzehnte Bauvorhaben aller Art begleitet. Von der Entwurfsskizze bis zur Genehmigung, von der kleinen Bauvoranfrage bis zum komplexen Bauantrag.</p>
+          <p>Seit 2025 bringe ich diese Erfahrung als freischaffende Architektin in jedes einzelne Projekt ein. Für Bauherren in Flensburg und der Region, die eine erfahrene Partnerin für ihr Vorhaben suchen.</p>
         </div>
-        <div class="about-benefits">
-          <div class="about-benefit reveal d2">
-            <div class="about-benefit-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6L9 17l-5-5"/></svg>
-            </div>
-            <div>
-              <h3>Kostenlose Erstberatung</h3>
-              <p>Ob Grundstücksbesuch oder Telefongespräch. Das Kennenlernen ist unverbindlich und klärt die ersten Schritte.</p>
-            </div>
+        <div class="about-credentials reveal d2">
+          <div class="overline">Qualifikation</div>
+          <div class="credential-item">
+            <span class="cred-label">Titel</span>
+            <span class="cred-value">Dipl.-Ing. Architektin</span>
           </div>
-          <div class="about-benefit reveal d3">
-            <div class="about-benefit-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            </div>
-            <div>
-              <h3>Alle Leistungsphasen aus einer Hand</h3>
-              <p>Von der Bauvoranfrage bis zur Genehmigung. Ich passe den Umfang an Ihr Projekt an.</p>
-            </div>
+          <div class="credential-item">
+            <span class="cred-label">Kammer</span>
+            <span class="cred-value">Architektenkammer SH, Nr. 6031</span>
           </div>
-          <div class="about-benefit reveal d4">
-            <div class="about-benefit-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <div>
-              <h3>Eine feste Ansprechpartnerin</h3>
-              <p>Kein wechselndes Team, keine Vertretung. Ich begleite Ihr Vorhaben durchgehend persönlich.</p>
-            </div>
+          <div class="credential-item">
+            <span class="cred-label">Befugnis</span>
+            <span class="cred-value">Bauvorlageberechtigung § 65 LBO SH</span>
+          </div>
+          <div class="credential-item">
+            <span class="cred-label">Region</span>
+            <span class="cred-value">Flensburg, Schleswig-Flensburg, Nordfriesland, Rendsburg-Eckernförde</span>
+          </div>
+          <div class="credential-item">
+            <span class="cred-label">Schwerpunkt</span>
+            <span class="cred-value">LPH 1 bis 4, Bauen im Außenbereich § 35</span>
           </div>
         </div>
       </div>
@@ -901,18 +964,18 @@
       <div class="steps">
         <div class="step reveal">
           <div class="step-num">01</div>
-          <h3>Kennenlernen</h3>
-          <p>Ein unverbindliches Erstgespräch bei Ihnen vor Ort oder in meinem Büro. Wir besprechen Ihre Wünsche, schauen uns das Grundstück an und klären gemeinsam, was Ihr Projekt braucht.</p>
+          <h3>Grundstück und Erstgespräch</h3>
+          <p>Wir treffen uns bei Ihnen vor Ort. Ich schaue mir das Grundstück an, höre Ihre Vorstellungen und prüfe, was baurechtlich möglich ist. Kostenlos und unverbindlich.</p>
         </div>
         <div class="step reveal d1">
           <div class="step-num">02</div>
-          <h3>Planung und Entwurf</h3>
-          <p>Ich entwickle den Entwurf und bereite alle Unterlagen für die Genehmigung vor. Sie werden in jedem Schritt einbezogen und über den Fortschritt informiert.</p>
+          <h3>Entwurf und Genehmigungsplanung</h3>
+          <p>Auf Basis unserer Abstimmung entwickle ich den Entwurf mit Grundrissen, Ansichten und Bauvoranfrage. Sie sehen jeden Zwischenstand und entscheiden mit.</p>
         </div>
         <div class="step reveal d2">
           <div class="step-num">03</div>
-          <h3>Genehmigung</h3>
-          <p>Ich reiche die Bauvorlage bei der zuständigen Behörde ein und begleite den Genehmigungsprozess. Bei Bedarf übernehme ich auch die weiteren Leistungsphasen.</p>
+          <h3>Bauantrag und Genehmigung</h3>
+          <p>Ich stelle alle Unterlagen zusammen und reiche den Bauantrag bei der zuständigen Behörde ein. Rückfragen kläre ich direkt. Sie erhalten Ihre Baugenehmigung.</p>
         </div>
       </div>
     </div>
@@ -987,26 +1050,38 @@
           <div class="logo">
             <img src="gh-assets/hammon-architektur-Logo-white.png" alt="Hammon Architektur">
           </div>
-          <p>Freischaffende Architektin in Flensburg und Umgebung. Persönliche Betreuung für Ihr Bauvorhaben.</p>
+          <p>Freischaffende Architektin für private Bauherren, Unternehmen und Gemeinden in Schleswig-Holstein.</p>
+          <div class="footer-aik">
+            <div class="footer-aik-badge">AIK</div>
+            <span>Architektenkammer SH<br>Listennr. 6031</span>
+          </div>
         </div>
         <div class="fcol">
           <div class="fcol-title">Kontakt</div>
           <a href="tel:+4916094182990">0160 94182990</a>
           <a href="mailto:katrin@hammon-architektur.de">katrin@hammon-architektur.de</a>
-          <p>Grönholm 7b, 24991 Freienwill</p>
+          <p>Grönholm 7b<br>24991 Freienwill</p>
         </div>
         <div class="fcol">
-          <div class="fcol-title">Qualifikation</div>
-          <p>Architektenkammer Schleswig-Holstein</p>
-          <p>Listennr. 6031</p>
-          <p>Bauvorlageberechtigung § 65 LBO SH</p>
+          <div class="fcol-title">Einzugsgebiet</div>
+          <p>Flensburg</p>
+          <p>Schleswig-Flensburg</p>
+          <p>Nordfriesland</p>
+          <p>Rendsburg-Eckernförde</p>
+        </div>
+        <div class="fcol">
+          <div class="fcol-title">Leistungen</div>
+          <a href="#leistungen">Neubau und Entwurf</a>
+          <a href="#leistungen">Bestand und Umbau</a>
+          <a href="#leistungen">Beratung und Verfahren</a>
+          <a href="#leistungen">Bauen im Außenbereich § 35</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>© 2026 Katrin Hammon</span>
         <div>
-          <a href="/impressum">Impressum</a>
-          <a href="/datenschutz">Datenschutz</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
         </div>
       </div>
     </div>
@@ -1037,6 +1112,7 @@
 
     function countUp(el) {
       el.dataset.done = '1';
+      el.classList.add('counted');
       const target = parseInt(el.dataset.count);
       const plus = el.querySelector('.plus');
       const plusHTML = plus ? plus.outerHTML : '';
