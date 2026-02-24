@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Mail-Signatur – Hammon Architektur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0e0e0e;
+  --surface-1: #141414;
+  --surface-2: #1e1e1e;
+  --copper: #c08040;
+  --copper-light: #d4974f;
+  --cream: #faf8f5;
+  --warm: #f2efea;
+  --gray-600: #606060;
+  --gray-500: #808080;
+  --gray-400: #999;
+  --border: rgba(255,255,255,.05);
+  --font: 'Inter', system-ui, sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--black);
+  color: var(--gray-400);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 48px 120px;
+}
+
+/* ── Header ── */
+.hdr {
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 72px;
+  animation: up .7s var(--ease) both;
+}
+.hdr__ov {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 20px;
+}
+.hdr__title {
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 600;
+  line-height: .92;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+.hdr__sub {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gray-600);
+}
+
+/* ── Legal Notice ── */
+.legal-note {
+  background: rgba(192,128,64,.06);
+  border-left: 2px solid var(--copper);
+  padding: 20px 24px;
+  margin-bottom: 48px;
+  animation: up .7s var(--ease) .06s both;
+}
+.legal-note__title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 10px;
+}
+.legal-note__text {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--gray-500);
+}
+.legal-note__text strong {
+  color: var(--cream);
+  font-weight: 500;
+}
+.legal-note__list {
+  margin-top: 8px;
+  padding-left: 16px;
+}
+.legal-note__list li {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--gray-500);
+}
+.legal-note__list li strong {
+  color: var(--cream);
+  font-weight: 500;
+}
+
+/* ── Signature Preview Sections ── */
+.preview-section {
+  margin-bottom: 64px;
+  animation: up .7s var(--ease) .12s both;
+}
+.preview-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  margin-bottom: 24px;
+}
+
+/* Light background preview */
+.sig-preview {
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 40px 48px;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.15),
+    0 16px 48px rgba(0,0,0,.4);
+  transition: transform .5s var(--ease), box-shadow .5s ease;
+}
+.sig-preview:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.15),
+    0 24px 64px rgba(0,0,0,.5);
+}
+
+/* Simulated email body above signature */
+.email-body {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.65;
+  padding-bottom: 28px;
+  margin-bottom: 0;
+}
+
+/* Dark background preview */
+.sig-preview--dark {
+  background: #1a1a1a;
+}
+.sig-preview--dark .email-body {
+  color: #ccc;
+}
+
+/* ── Variants ── */
+.variants {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 64px;
+  animation: up .7s var(--ease) .18s both;
+}
+.variant-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Code Block ── */
+.code-section {
+  margin-bottom: 64px;
+  animation: up .7s var(--ease) .24s both;
+}
+.code-wrap {
+  background: var(--surface-1);
+  border-left: 2px solid var(--copper);
+  border-radius: 0 4px 4px 0;
+  position: relative;
+}
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.code-header span {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-600);
+}
+.btn-copy {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--copper);
+  background: none;
+  border: 1px solid rgba(192,128,64,.3);
+  padding: 6px 16px;
+  cursor: pointer;
+  transition: all .3s;
+}
+.btn-copy:hover {
+  background: var(--copper);
+  color: #fff;
+  border-color: var(--copper);
+}
+.btn-copy.copied {
+  background: #2a5a2a;
+  color: #8f8;
+  border-color: #4a8a4a;
+}
+.code-block {
+  padding: 20px 24px;
+  overflow-x: auto;
+  max-height: 400px;
+  overflow-y: auto;
+}
+.code-block pre {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--gray-400);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* ── Specs ── */
+.specs {
+  background: var(--surface-1);
+  border-left: 2px solid var(--copper);
+  padding: 28px 32px;
+  animation: up .7s var(--ease) .3s both;
+}
+.specs__title {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  margin-bottom: 20px;
+}
+.specs__grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 10px 24px;
+}
+.specs__label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gray-500);
+}
+.specs__value {
+  font-size: 12px;
+  color: var(--gray-400);
+}
+
+/* ── Setup Guide ── */
+.guide {
+  margin-top: 64px;
+  animation: up .7s var(--ease) .36s both;
+}
+.guide__title {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  margin-bottom: 24px;
+}
+.guide-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.guide-card {
+  background: var(--surface-1);
+  border-radius: 4px;
+  padding: 24px;
+  border-top: 2px solid var(--copper);
+}
+.guide-card__num {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--copper);
+  opacity: .2;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.guide-card h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.guide-card p {
+  font-size: 12px;
+  color: var(--gray-500);
+  line-height: 1.6;
+}
+.guide-card code {
+  font-family: 'Consolas', monospace;
+  font-size: 11px;
+  background: rgba(192,128,64,.1);
+  color: var(--copper);
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+.ftr {
+  margin-top: 72px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--gray-600);
+}
+
+@keyframes up {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 860px) {
+  .variants { grid-template-columns: 1fr; }
+  .guide-cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .page { padding: 40px 20px 80px; }
+  .sig-preview { padding: 24px 20px; }
+  .specs__grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hdr">
+    <div class="hdr__ov">Corporate Design</div>
+    <h1 class="hdr__title">E-Mail-Signatur</h1>
+    <div class="hdr__sub">Hammon Architektur &middot; Rechtssicher nach DDG &amp; ArchIngKG SH</div>
+  </header>
+
+  <!-- ═══════════════════════════════════
+       RECHTLICHE GRUNDLAGE
+       ═══════════════════════════════════ -->
+  <div class="legal-note">
+    <div class="legal-note__title">Rechtliche Pflichtangaben</div>
+    <p class="legal-note__text">
+      Als freischaffende Architektin mit Kammermitgliedschaft enth&auml;lt diese Signatur alle empfohlenen Angaben nach <strong>&sect; 5 DDG</strong> (Digitale-Dienste-Gesetz) und <strong>ArchIngKG SH</strong>:
+    </p>
+    <ul class="legal-note__list">
+      <li><strong>Vollst&auml;ndiger Name</strong> mit akademischem Grad (Dipl.-Ing.)</li>
+      <li><strong>Gesch&uuml;tzte Berufsbezeichnung</strong> &bdquo;Freischaffende Architektin&ldquo;</li>
+      <li><strong>Zustaendige Kammer</strong>: Architekten- und Ingenieurkammer Schleswig-Holstein</li>
+      <li><strong>Listennummer</strong> der Architektenliste (Nr. 6031)</li>
+      <li><strong>Vollst&auml;ndige Anschrift</strong>, Telefon, E-Mail, Website</li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       PREVIEW: Heller Hintergrund
+       ═══════════════════════════════════ -->
+  <div class="preview-section">
+    <div class="preview-label">Vorschau &mdash; Heller E-Mail-Hintergrund</div>
+    <div class="sig-preview">
+      <div class="email-body">
+        ...vielen Dank f&uuml;r das Gespr&auml;ch. Den Entwurf sende ich Ihnen bis Ende der Woche zu.<br><br>
+        Mit freundlichen Gr&uuml;&szlig;en
+      </div>
+
+      <!-- ══ SIGNATUR START ══ -->
+      <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Inter', Arial, Helvetica, sans-serif; font-size: 13px; line-height: 1.5; color: #1a1b1e; border-collapse: collapse; max-width: 520px;">
+        <tr><td colspan="2" style="padding-bottom: 16px;">
+          <img src="../design/Logo/hammon-architektur-Logo.png" alt="Hammon Architektur" width="160" style="display: block; width: 160px; height: auto;">
+        </td></tr>
+        <tr><td colspan="2" style="padding-bottom: 14px;">
+          <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
+            <td style="width: 40px; height: 1px; background-color: #c08040; font-size: 0; line-height: 0;">&nbsp;</td>
+            <td></td>
+          </tr></table>
+        </td></tr>
+        <tr><td colspan="2" style="padding-bottom: 4px;">
+          <span style="font-size: 15px; font-weight: 600; color: #1a1b1e; letter-spacing: -0.2px;">Dipl.-Ing. Katrin Hammon</span>
+        </td></tr>
+        <tr><td colspan="2" style="padding-bottom: 14px;">
+          <span style="font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #c08040;">Freischaffende Architektin</span>
+        </td></tr>
+        <tr><td colspan="2" style="padding-bottom: 14px; border-bottom: 1px solid #e8e4de;">
+          <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Inter', Arial, Helvetica, sans-serif; font-size: 12px; color: #4a4843; line-height: 1.7;">
+            <tr>
+              <td style="padding-right: 12px; white-space: nowrap; vertical-align: top; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #c08040; padding-bottom: 2px; width: 22px;">T</td>
+              <td style="padding-bottom: 2px;"><a href="tel:+4916094182990" style="color: #4a4843; text-decoration: none;">0160 94182990</a></td>
+            </tr>
+            <tr>
+              <td style="padding-right: 12px; white-space: nowrap; vertical-align: top; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #c08040; padding-bottom: 2px;">E</td>
+              <td style="padding-bottom: 2px;"><a href="mailto:katrin@hammon-architektur.de" style="color: #4a4843; text-decoration: none;">katrin@hammon-architektur.de</a></td>
+            </tr>
+            <tr>
+              <td style="padding-right: 12px; white-space: nowrap; vertical-align: top; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #c08040; padding-bottom: 2px;">W</td>
+              <td style="padding-bottom: 2px;"><a href="https://hammon-architektur.de" style="color: #4a4843; text-decoration: none;">www.hammon-architektur.de</a></td>
+            </tr>
+          </table>
+        </td></tr>
+        <tr><td colspan="2" style="padding-top: 12px; padding-bottom: 2px;">
+          <span style="font-size: 11px; color: #706b63; line-height: 1.6;">
+            Gr&ouml;nholm 7b &middot; 24991 Freienwill
+          </span>
+        </td></tr>
+        <tr><td colspan="2" style="padding-bottom: 0;">
+          <span style="font-size: 10px; color: #999; line-height: 1.6;">
+            Architekten- und Ingenieurkammer Schleswig-Holstein &middot; Nr. 6031
+          </span>
+        </td></tr>
+      </table>
+      <!-- ══ SIGNATUR ENDE ══ -->
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       VARIANTEN: Hell + Dunkel
+       ═══════════════════════════════════ -->
+  <div class="variants">
+    <div class="variant-col">
+      <div class="preview-label">Variante &mdash; Minimal (ohne Logo, f&uuml;r Antworten)</div>
+      <div class="sig-preview">
+        <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Inter', Arial, Helvetica, sans-serif; font-size: 13px; line-height: 1.5; color: #1a1b1e; border-collapse: collapse; max-width: 520px;">
+          <tr><td style="padding-bottom: 2px;">
+            <span style="font-size: 15px; font-weight: 600; color: #1a1b1e; letter-spacing: -0.2px;">Dipl.-Ing. Katrin Hammon</span>
+          </td></tr>
+          <tr><td style="padding-bottom: 12px;">
+            <span style="font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #c08040;">Freischaffende Architektin</span>
+          </td></tr>
+          <tr><td style="padding-bottom: 10px;">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
+              <td style="width: 32px; height: 1px; background-color: #c08040; font-size: 0; line-height: 0;">&nbsp;</td>
+              <td></td>
+            </tr></table>
+          </td></tr>
+          <tr><td>
+            <span style="font-size: 12px; color: #4a4843; line-height: 1.8;">
+              T <a href="tel:+4916094182990" style="color: #4a4843; text-decoration: none;">0160 94182990</a><br>
+              E <a href="mailto:katrin@hammon-architektur.de" style="color: #4a4843; text-decoration: none;">katrin@hammon-architektur.de</a><br>
+              W <a href="https://hammon-architektur.de" style="color: #4a4843; text-decoration: none;">www.hammon-architektur.de</a>
+            </span>
+          </td></tr>
+          <tr><td style="padding-top: 10px; border-top: 1px solid #e8e4de;">
+            <span style="font-size: 10px; color: #999; line-height: 1.6;">
+              Gr&ouml;nholm 7b &middot; 24991 Freienwill &middot; AIK SH Nr. 6031
+            </span>
+          </td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="variant-col">
+      <div class="preview-label">Vorschau &mdash; Dark Mode E-Mail-Client</div>
+      <div class="sig-preview sig-preview--dark">
+        <div class="email-body">
+          ...den Bauantrag reiche ich n&auml;chste Woche ein.<br><br>
+          Beste Gr&uuml;&szlig;e
+        </div>
+        <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Inter', Arial, Helvetica, sans-serif; font-size: 13px; line-height: 1.5; color: #1a1b1e; border-collapse: collapse; max-width: 520px;">
+          <tr><td colspan="2" style="padding-bottom: 16px;">
+            <img src="../design/Logo/hammon-architektur-Logo.png" alt="Hammon Architektur" width="160" style="display: block; width: 160px; height: auto;">
+          </td></tr>
+          <tr><td colspan="2" style="padding-bottom: 14px;">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
+              <td style="width: 40px; height: 1px; background-color: #c08040; font-size: 0; line-height: 0;">&nbsp;</td>
+              <td></td>
+            </tr></table>
+          </td></tr>
+          <tr><td colspan="2" style="padding-bottom: 4px;">
+            <span style="font-size: 15px; font-weight: 600; color: #1a1b1e; letter-spacing: -0.2px;">Dipl.-Ing. Katrin Hammon</span>
+          </td></tr>
+          <tr><td colspan="2" style="padding-bottom: 14px;">
+            <span style="font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #c08040;">Freischaffende Architektin</span>
+          </td></tr>
+          <tr><td colspan="2" style="padding-bottom: 14px; border-bottom: 1px solid #e8e4de;">
+            <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Inter', Arial, Helvetica, sans-serif; font-size: 12px; color: #4a4843; line-height: 1.7;">
+              <tr>
+                <td style="padding-right: 12px; white-space: nowrap; vertical-align: top; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #c08040; padding-bottom: 2px; width: 22px;">T</td>
+                <td style="padding-bottom: 2px;"><a href="tel:+4916094182990" style="color: #4a4843; text-decoration: none;">0160 94182990</a></td>
+              </tr>
+              <tr>
+                <td style="padding-right: 12px; white-space: nowrap; vertical-align: top; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #c08040; padding-bottom: 2px;">E</td>
+                <td style="padding-bottom: 2px;"><a href="mailto:katrin@hammon-architektur.de" style="color: #4a4843; text-decoration: none;">katrin@hammon-architektur.de</a></td>
+              </tr>
+              <tr>
+                <td style="padding-right: 12px; white-space: nowrap; vertical-align: top; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #c08040; padding-bottom: 2px;">W</td>
+                <td style="padding-bottom: 2px;"><a href="https://hammon-architektur.de" style="color: #4a4843; text-decoration: none;">www.hammon-architektur.de</a></td>
+              </tr>
+            </table>
+          </td></tr>
+          <tr><td colspan="2" style="padding-top: 12px; padding-bottom: 2px;">
+            <span style="font-size: 11px; color: #706b63; line-height: 1.6;">
+              Gr&ouml;nholm 7b &middot; 24991 Freienwill
+            </span>
+          </td></tr>
+          <tr><td colspan="2" style="padding-bottom: 0;">
+            <span style="font-size: 10px; color: #999; line-height: 1.6;">
+              Architekten- und Ingenieurkammer Schleswig-Holstein &middot; Nr. 6031
+            </span>
+          </td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       HTML-CODE ZUM KOPIEREN
+       ═══════════════════════════════════ -->
+  <div class="code-section">
+    <div class="preview-label">HTML-Code zum Einf&uuml;gen</div>
+    <div class="code-wrap">
+      <div class="code-header">
+        <span>Signatur-HTML (mit Logo)</span>
+        <button class="btn-copy" onclick="copySignature(this)">Kopieren</button>
+      </div>
+      <div class="code-block">
+<pre id="sig-code">&lt;table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Inter', Arial, Helvetica, sans-serif; font-size: 13px; line-height: 1.5; color: #1a1b1e; border-collapse: collapse; max-width: 520px;"&gt;
+  &lt;tr&gt;&lt;td colspan="2" style="padding-bottom: 16px;"&gt;
+    &lt;img src="LOGO-URL-HIER-EINSETZEN" alt="Hammon Architektur" width="160" style="display: block; width: 160px; height: auto;"&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td colspan="2" style="padding-bottom: 14px;"&gt;
+    &lt;table cellpadding="0" cellspacing="0" border="0" width="100%"&gt;&lt;tr&gt;
+      &lt;td style="width: 40px; height: 1px; background-color: #c08040; font-size: 0; line-height: 0;"&gt;&amp;nbsp;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;&lt;/table&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td colspan="2" style="padding-bottom: 4px;"&gt;
+    &lt;span style="font-size: 15px; font-weight: 600; color: #1a1b1e; letter-spacing: -0.2px;"&gt;Dipl.-Ing. Katrin Hammon&lt;/span&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td colspan="2" style="padding-bottom: 14px;"&gt;
+    &lt;span style="font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #c08040;"&gt;Freischaffende Architektin&lt;/span&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td colspan="2" style="padding-bottom: 14px; border-bottom: 1px solid #e8e4de;"&gt;
+    &lt;table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Inter', Arial, Helvetica, sans-serif; font-size: 12px; color: #4a4843; line-height: 1.7;"&gt;
+      &lt;tr&gt;
+        &lt;td style="padding-right: 12px; vertical-align: top; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #c08040; padding-bottom: 2px; width: 22px;"&gt;T&lt;/td&gt;
+        &lt;td style="padding-bottom: 2px;"&gt;&lt;a href="tel:+4916094182990" style="color: #4a4843; text-decoration: none;"&gt;0160 94182990&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style="padding-right: 12px; vertical-align: top; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #c08040; padding-bottom: 2px;"&gt;E&lt;/td&gt;
+        &lt;td style="padding-bottom: 2px;"&gt;&lt;a href="mailto:katrin@hammon-architektur.de" style="color: #4a4843; text-decoration: none;"&gt;katrin@hammon-architektur.de&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style="padding-right: 12px; vertical-align: top; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #c08040; padding-bottom: 2px;"&gt;W&lt;/td&gt;
+        &lt;td style="padding-bottom: 2px;"&gt;&lt;a href="https://hammon-architektur.de" style="color: #4a4843; text-decoration: none;"&gt;www.hammon-architektur.de&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td colspan="2" style="padding-top: 12px; padding-bottom: 2px;"&gt;
+    &lt;span style="font-size: 11px; color: #706b63; line-height: 1.6;"&gt;
+      Gr&amp;ouml;nholm 7b &amp;middot; 24991 Freienwill
+    &lt;/span&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td colspan="2" style="padding-bottom: 0;"&gt;
+    &lt;span style="font-size: 10px; color: #999; line-height: 1.6;"&gt;
+      Architekten- und Ingenieurkammer Schleswig-Holstein &amp;middot; Nr. 6031
+    &lt;/span&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SPEZIFIKATIONEN
+       ═══════════════════════════════════ -->
+  <div class="specs">
+    <div class="specs__title">Spezifikationen</div>
+    <div class="specs__grid">
+      <span class="specs__label">Format</span>
+      <span class="specs__value">HTML-Tabelle mit Inline-CSS (E-Mail-Client-kompatibel)</span>
+      <span class="specs__label">Schrift</span>
+      <span class="specs__value">Inter, Fallback: Arial, Helvetica, sans-serif</span>
+      <span class="specs__label">Akzentfarbe</span>
+      <span class="specs__value">Kupfer #c08040 (Trennlinie + Titel + Labels)</span>
+      <span class="specs__label">Logo</span>
+      <span class="specs__value">hammon-architektur-Logo.png, 160px breit, extern gehostet</span>
+      <span class="specs__label">Maximale Breite</span>
+      <span class="specs__value">520px (passt in alle g&auml;ngigen E-Mail-Clients)</span>
+      <span class="specs__label">Kompatibilit&auml;t</span>
+      <span class="specs__value">Outlook 2016+, Gmail, Apple Mail, Thunderbird, iOS Mail</span>
+      <span class="specs__label">Rechtliche Angaben</span>
+      <span class="specs__value">Dipl.-Ing. (Grad), Berufsbezeichnung, Anschrift, AIK SH + Nr.</span>
+      <span class="specs__label">Varianten</span>
+      <span class="specs__value">Mit Logo (Standard) + Minimal ohne Logo (Antwort-Mails)</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       EINRICHTUNGSANLEITUNG
+       ═══════════════════════════════════ -->
+  <div class="guide">
+    <div class="guide__title">Einrichtung in Outlook</div>
+    <div class="guide-cards">
+      <div class="guide-card">
+        <div class="guide-card__num">01</div>
+        <h4>Logo hochladen</h4>
+        <p>Das Logo <code>hammon-architektur-Logo.png</code> auf deinen Webspace hochladen. Die URL im HTML-Code bei <code>LOGO-URL-HIER-EINSETZEN</code> eintragen.</p>
+      </div>
+      <div class="guide-card">
+        <div class="guide-card__num">02</div>
+        <h4>Signatur in Outlook einf&uuml;gen</h4>
+        <p>Outlook &ouml;ffnen &rarr; Datei &rarr; Optionen &rarr; E-Mail &rarr; Signaturen. Neue Signatur erstellen, auf &bdquo;Bearbeiten&ldquo; klicken und den HTML-Code einf&uuml;gen.</p>
+      </div>
+      <div class="guide-card">
+        <div class="guide-card__num">03</div>
+        <h4>Testen</h4>
+        <p>Test-Mail an dich selbst und an eine Gmail-Adresse senden. Logo, Links und Darstellung pr&uuml;fen. Die Minimal-Variante f&uuml;r Antworten einstellen.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="ftr">
+    <span>Hammon Architektur &middot; Corporate Design</span>
+    <span>Pro4Media Digitalagentur</span>
+  </footer>
+
+</div>
+
+<script>
+function copySignature(btn) {
+  const code = document.getElementById('sig-code');
+  const text = code.textContent
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"');
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Kopiert!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Kopieren';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>
