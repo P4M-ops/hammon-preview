@@ -250,7 +250,7 @@ body {
 .a4__txt p:last-child { margin-bottom: 0; }
 
 .a4__txt--intro {
-  font-size: 10px; line-height: 1.6; margin-bottom: 12px;
+  font-size: 11px; line-height: 1.7; margin-bottom: 12px;
 }
 
 /* ── Grußformel ── */
@@ -269,7 +269,7 @@ body {
 .a4__tbl { width: 100%; border-collapse: collapse; margin: 10px 0 12px; }
 
 .a4__tbl thead th {
-  font-size: 7.5px; font-weight: 700; color: var(--ink);
+  font-size: 8.5px; font-weight: 700; color: var(--ink);
   letter-spacing: .8px; text-transform: uppercase; text-align: left;
   padding: 0 0 5px; border-bottom: 1px solid var(--copper-line);
 }
@@ -279,14 +279,14 @@ body {
 .a4__tbl .col-amt { width: 74px; }
 
 .a4__tbl tbody td {
-  font-size: 9px; font-weight: 400; color: var(--ink-body);
-  padding: 7px 0 6px; vertical-align: top; line-height: 1.45;
+  font-size: 10px; font-weight: 400; color: var(--ink-body);
+  padding: 7px 0 6px; vertical-align: top; line-height: 1.5;
   border-bottom: .5px solid #eee;
 }
 .a4__tbl tbody tr:last-child td { border-bottom: none; }
-.a4__tbl .td-pos { color: var(--ink-muted); font-size: 8px; }
-.a4__tbl .td-desc small { display: block; font-size: 7.5px; color: #555; margin-top: 1px; line-height: 1.35; }
-.a4__tbl .td-unit { color: #555; font-size: 8px; }
+.a4__tbl .td-pos { color: var(--ink-muted); font-size: 9px; }
+.a4__tbl .td-desc small { display: block; font-size: 9px; color: #555; margin-top: 1px; line-height: 1.4; }
+.a4__tbl .td-unit { color: #555; font-size: 9px; }
 .a4__tbl .td-amt { text-align: right; font-weight: 500; white-space: nowrap; color: var(--ink-body); }
 
 /* ══════════════════════════════════════════
@@ -295,19 +295,19 @@ body {
 .a4__sums { display: flex; justify-content: flex-end; margin-bottom: 10px; }
 .a4__sums table { border-collapse: collapse; }
 .a4__sums td {
-  padding: 3px 0; font-size: 9px; color: var(--ink-body);
+  padding: 3px 0; font-size: 10px; color: var(--ink-body);
 }
-.a4__sums td:first-child { padding-right: 24px; color: var(--ink-muted); font-size: 8.5px; text-align: left; }
+.a4__sums td:first-child { padding-right: 24px; color: var(--ink-muted); font-size: 9.5px; text-align: left; }
 .a4__sums td:last-child { text-align: right; min-width: 78px; font-weight: 500; }
 .a4__sums .s-line td { border-top: .5px solid var(--line-warm); padding-top: 6px; }
 .a4__sums .s-total td {
   border-top: 1.5px solid var(--copper); padding-top: 7px;
-  font-weight: 700; color: var(--ink); font-size: 10.5px;
+  font-weight: 700; color: var(--ink); font-size: 11.5px;
 }
 
 /* ── Bedingungen ── */
-.a4__cond { font-size: 7.5px; color: #444; line-height: 1.55; }
-.a4__cond dt { font-weight: 700; color: var(--ink); font-size: 8px; margin-top: 5px; margin-bottom: 1px; }
+.a4__cond { font-size: 9.5px; color: #444; line-height: 1.6; }
+.a4__cond dt { font-weight: 700; color: var(--ink); font-size: 10px; margin-top: 6px; margin-bottom: 2px; }
 .a4__cond dt:first-child { margin-top: 0; }
 .a4__cond dd { margin: 0; }
 
@@ -591,11 +591,13 @@ body {
        ═══════════════════════════════════════ -->
   <section class="doc-section" id="angebot">
     <div class="doc-bar">
-      <span class="doc-bar__label">Angebot &middot; Leistungstabelle + Summenblock</span>
+      <span class="doc-bar__label">Angebot &middot; Erstseite + Folgeseite</span>
     </div>
     <div class="a4-grid">
+
+      <!-- ── Erstseite ── -->
       <div class="a4-col">
-        <div class="a4-tag">Angebot</div>
+        <div class="a4-tag">Erstseite</div>
         <div class="a4">
           <div class="a4__bar-t"></div>
           <div class="a4__bar-b"></div>
@@ -672,7 +674,51 @@ body {
                 <tr class="s-total"><td>Gesamtbetrag</td><td>15.470,00 €</td></tr>
               </table>
             </div>
+          </div>
 
+          <div class="a4__foot">
+            <div class="a4__foot-line"></div>
+            <div class="a4__foot-grid">
+              <div class="a4__foot-col">
+                <span class="fl">Kontakt</span>
+                <span>Katrin Hammon</span>
+                <span>Grönholm 7b</span>
+                <span>24991 Freienwill</span>
+              </div>
+              <div class="a4__foot-col">
+                <span class="fl">Kommunikation</span>
+                <span>T 0160 94182990</span>
+                <span>katrin@hammon-architektur.de</span>
+                <span>www.hammon-architektur.de</span>
+              </div>
+              <div class="a4__foot-col">
+                <span class="fl">Freischaffende Architektin</span>
+                <span>AIK Schleswig-Holstein Nr. 6031</span>
+                <span>Steuernr. 15/093/15182</span>
+                <span>USt-IdNr. [wird erg&auml;nzt]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Folgeseite ── -->
+      <div class="a4-col">
+        <div class="a4-tag">Folgeseite</div>
+        <div class="a4 a4--p2">
+          <div class="a4__bar-t"></div>
+          <div class="a4__bar-b"></div>
+          <div class="a4__fm a4__fm--1"></div>
+          <div class="a4__fm a4__fm--p"></div>
+          <div class="a4__fm a4__fm--2"></div>
+
+          <div class="a4__head">
+            <img class="a4__logo" src="assets/hammon-logo.png" alt="Hammon Architektur">
+            <div class="a4__pnr">Seite 2</div>
+          </div>
+          <div class="a4__hline"></div>
+
+          <div class="a4__content a4__content--folge">
             <dl class="a4__cond">
               <dt>Zahlungsbedingungen</dt>
               <dd>Fällig innerhalb von 14 Tagen nach Rechnungsstellung, ohne Abzug. Teilrechnungen gemäß Leistungsfortschritt vorbehalten.</dd>
@@ -681,6 +727,11 @@ body {
               <dt>Vertragsgrundlage</dt>
               <dd>Es gelten die HOAI 2021 sowie die Bestimmungen des Architektenvertragsrechts nach BGB (§§ 650p ff.).</dd>
             </dl>
+
+            <div class="a4__txt" style="margin-top: 16px;">
+              <p>Die Leistungen werden in enger Abstimmung mit Ihnen erbracht. Änderungen im Leistungsumfang oder zusätzliche Leistungen werden vorab besprochen und gesondert vereinbart.</p>
+              <p>Die angegebenen Honorarsätze verstehen sich nach HOAI 2021, Honorarzone III, Mindestsatz, bezogen auf anrechenbare Kosten von ca. 380.000 €.</p>
+            </div>
 
             <div class="a4__close">
               Mit freundlichen Grüßen
@@ -713,6 +764,7 @@ body {
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -721,11 +773,13 @@ body {
        ═══════════════════════════════════════ -->
   <section class="doc-section" id="rechnung">
     <div class="doc-bar">
-      <span class="doc-bar__label">Rechnung &middot; Umsatzsteuer + Bankverbindung</span>
+      <span class="doc-bar__label">Rechnung &middot; Erstseite + Folgeseite</span>
     </div>
     <div class="a4-grid">
+
+      <!-- ── Erstseite ── -->
       <div class="a4-col">
-        <div class="a4-tag">Rechnung</div>
+        <div class="a4-tag">Erstseite</div>
         <div class="a4">
           <div class="a4__bar-t"></div>
           <div class="a4__bar-b"></div>
@@ -802,16 +856,6 @@ body {
                 <tr class="s-total"><td>Gesamtbetrag</td><td>15.470,00 €</td></tr>
               </table>
             </div>
-
-            <dl class="a4__cond">
-              <dt>Zahlungsziel</dt>
-              <dd>Bitte überweisen Sie den Gesamtbetrag innerhalb von 14 Tagen ohne Abzug auf das unten genannte Konto. Bitte geben Sie als Verwendungszweck die Rechnungsnummer 2026-R-001 an.</dd>
-            </dl>
-
-            <div class="a4__close">
-              Mit freundlichen Grüßen
-              <span class="a4__close-name">Katrin Hammon</span>
-            </div>
           </div>
 
           <!-- Fußzeile MIT Bankverbindung -->
@@ -845,6 +889,72 @@ body {
           </div>
         </div>
       </div>
+
+      <!-- ── Folgeseite ── -->
+      <div class="a4-col">
+        <div class="a4-tag">Folgeseite</div>
+        <div class="a4 a4--p2">
+          <div class="a4__bar-t"></div>
+          <div class="a4__bar-b"></div>
+          <div class="a4__fm a4__fm--1"></div>
+          <div class="a4__fm a4__fm--p"></div>
+          <div class="a4__fm a4__fm--2"></div>
+
+          <div class="a4__head">
+            <img class="a4__logo" src="assets/hammon-logo.png" alt="Hammon Architektur">
+            <div class="a4__pnr">Seite 2</div>
+          </div>
+          <div class="a4__hline"></div>
+
+          <div class="a4__content a4__content--folge">
+            <dl class="a4__cond">
+              <dt>Zahlungsziel</dt>
+              <dd>Bitte überweisen Sie den Gesamtbetrag innerhalb von 14 Tagen ohne Abzug auf das unten genannte Konto. Bitte geben Sie als Verwendungszweck die Rechnungsnummer 2026-R-001 an.</dd>
+              <dt>Leistungsnachweis</dt>
+              <dd>Die abgerechneten Leistungen wurden im Zeitraum Januar bis Februar 2026 erbracht. Die Ergebnisse der Leistungsphasen 1 bis 4 wurden Ihnen in dokumentierter Form übergeben.</dd>
+            </dl>
+
+            <div class="a4__txt" style="margin-top: 16px;">
+              <p>Sollten Sie Fragen zu dieser Rechnung haben, stehe ich Ihnen gerne zur Verfügung. Bitte beachten Sie, dass bei Überschreitung des Zahlungsziels Verzugszinsen gemäß § 288 BGB berechnet werden können.</p>
+            </div>
+
+            <div class="a4__close">
+              Mit freundlichen Grüßen
+              <span class="a4__close-name">Katrin Hammon</span>
+            </div>
+          </div>
+
+          <div class="a4__foot">
+            <div class="a4__foot-line"></div>
+            <div class="a4__foot-grid">
+              <div class="a4__foot-col">
+                <span class="fl">Kontakt</span>
+                <span>Katrin Hammon</span>
+                <span>Grönholm 7b</span>
+                <span>24991 Freienwill</span>
+              </div>
+              <div class="a4__foot-col">
+                <span class="fl">Kommunikation</span>
+                <span>T 0160 94182990</span>
+                <span>katrin@hammon-architektur.de</span>
+                <span>www.hammon-architektur.de</span>
+              </div>
+              <div class="a4__foot-col">
+                <span class="fl">Freischaffende Architektin</span>
+                <span>AIK Schleswig-Holstein Nr. 6031</span>
+                <span>Steuernr. 15/093/15182</span>
+                <span>USt-IdNr. [wird erg&auml;nzt]</span>
+              </div>
+            </div>
+            <div class="a4__foot-bank">
+              <div><span class="fl">Bankverbindung</span><span>[Kreditinstitut eintragen]</span></div>
+              <div><span class="fl">IBAN</span><span>DE00 0000 0000 0000 0000 00</span></div>
+              <div><span class="fl">BIC</span><span>XXXXXXXX</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
