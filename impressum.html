@@ -42,6 +42,7 @@
       background: var(--black);
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
+      padding-top: 42px;
     }
 
     a { color: var(--copper); text-decoration: none; transition: color 0.3s; }
@@ -198,9 +199,15 @@
 </head>
 <body>
 
+<nav style="position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;justify-content:space-between;align-items:center;padding:10px 24px;background:rgba(14,14,14,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(192,128,64,.15);font-family:'Inter',sans-serif;">
+  <a href="index.html" style="font-size:12px;font-weight:500;color:#c08040;text-decoration:none;display:flex;align-items:center;gap:6px;">&#8592; &Uuml;bersicht</a>
+  <span style="font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(248,246,243,.4);">Impressum</span>
+  <span style="font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#606060;">Pro4Media</span>
+</nav>
+
   <!-- BACK LINK -->
   <div class="back-bar">
-    <a href="index.html" class="back-link">
+    <a href="homepage.html" class="back-link">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
       Zurück zur Startseite
     </a>
@@ -318,7 +325,7 @@
       <span>© 2026 Katrin Hammon</span>
       <div>
         <a href="datenschutz.html">Datenschutz</a>
-        <a href="index.html">Startseite</a>
+        <a href="homepage.html">Startseite</a>
       </div>
     </div>
   </div>

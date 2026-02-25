@@ -58,6 +58,7 @@
       background: var(--cream);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      padding-top: 42px;
     }
     img { max-width: 100%; height: auto; display: block; }
     a { color: inherit; text-decoration: none; }
@@ -145,7 +146,7 @@
 
     /* ===== HEADER ===== */
     header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      position: fixed; top: 42px; left: 0; right: 0; z-index: 100;
       padding: 24px 0;
       transition: all 0.5s var(--ease);
     }
@@ -743,15 +744,23 @@
     @media (max-width: 480px) {
       .hero-name { font-size: 44px; }
     }
+
+
   </style>
 </head>
 <body>
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;justify-content:space-between;align-items:center;padding:10px 24px;background:rgba(14,14,14,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(192,128,64,.15);font-family:'Inter',sans-serif;">
+  <a href="index.html" style="font-size:12px;font-weight:500;color:#c08040;text-decoration:none;display:flex;align-items:center;gap:6px;transition:opacity .3s;">&#8592; &Uuml;bersicht</a>
+  <span style="font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(248,246,243,.4);">Website Prototyp</span>
+  <span style="font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#606060;">Pro4Media</span>
+</nav>
 
   <!-- ===== HEADER (Task 1: Logo größer, Task 2: CTA → Kontakt) ===== -->
   <header id="header">
     <div class="container">
       <a href="#" class="logo">
-        <img src="gh-assets/hammon-architektur-Logo-white.png" alt="Hammon Architektur">
+        <img src="assets/hammon-logo-white.png" alt="Hammon Architektur">
       </a>
       <nav>
         <ul class="nav-links">
@@ -784,7 +793,7 @@
           </div>
         </div>
         <div class="hero-portrait reveal d2">
-          <img src="gh-assets/1.png" alt="Katrin Hammon, freischaffende Architektin" loading="eager">
+          <img src="assets/portrait-1.png" alt="Katrin Hammon, freischaffende Architektin" loading="eager">
         </div>
       </div>
     </div>
@@ -886,7 +895,7 @@
           </div>
         </div>
         <div class="philosophy-portrait reveal d2">
-          <img src="gh-assets/2.png" alt="Katrin Hammon">
+          <img src="assets/portrait-2.png" alt="Katrin Hammon">
         </div>
       </div>
     </div>
@@ -906,7 +915,7 @@
       <div class="cards-row">
         <div class="card reveal">
           <div class="card-img">
-            <img src="gh-assets/images/skizze-neubau.png" alt="Architekturskizze Neubau">
+            <img src="assets/skizze-neubau.png" alt="Architekturskizze Neubau">
           </div>
           <div class="card-body">
             <h3>Neubau und Entwurf</h3>
@@ -915,7 +924,7 @@
         </div>
         <div class="card reveal d1">
           <div class="card-img">
-            <img src="gh-assets/images/skizze-bestand.png" alt="Architekturskizze Bestand und Umbau">
+            <img src="assets/skizze-bestand.png" alt="Architekturskizze Bestand und Umbau">
           </div>
           <div class="card-body">
             <h3>Bestand und Umbau</h3>
@@ -924,7 +933,7 @@
         </div>
         <div class="card reveal d2">
           <div class="card-img">
-            <img src="gh-assets/images/skizze-grundriss.png" alt="Architekturskizze Grundriss">
+            <img src="assets/skizze-grundriss.png" alt="Architekturskizze Grundriss">
           </div>
           <div class="card-body">
             <h3>Beratung und Verfahren</h3>
@@ -936,7 +945,7 @@
       <!-- §35 Feature -->
       <div class="feature reveal d1">
         <div class="feature-img">
-          <img src="gh-assets/images/landschaft-sh.png" alt="Modernes Haus in schleswig-holsteinischer Landschaft">
+          <img src="assets/landschaft-sh.png" alt="Modernes Haus in schleswig-holsteinischer Landschaft">
         </div>
         <div class="feature-body">
           <div class="overline">Spezialgebiet</div>
@@ -1010,7 +1019,7 @@
         </div>
         <div class="contact-portrait-col">
           <div class="contact-portrait reveal d2">
-            <img src="gh-assets/3.png" alt="Katrin Hammon">
+            <img src="assets/portrait-3.png" alt="Katrin Hammon">
           </div>
         </div>
       </div>
@@ -1048,7 +1057,7 @@
       <div class="footer-cols">
         <div class="footer-brand fcol">
           <div class="logo">
-            <img src="gh-assets/hammon-architektur-Logo-white.png" alt="Hammon Architektur">
+            <img src="assets/hammon-logo-white.png" alt="Hammon Architektur">
           </div>
           <p>Freischaffende Architektin für private Bauherren, Unternehmen und Gemeinden in Schleswig-Holstein.</p>
           <div class="footer-aik">

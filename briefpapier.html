@@ -37,8 +37,26 @@ body {
 .page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 122px 48px 120px;
+  padding: 80px 48px 120px;
 }
+
+/* ── Back Link (matching Visitenkarte) ── */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  text-decoration: none;
+  padding: 20px 0;
+  transition: color .3s ease;
+  animation: up .7s var(--ease) both;
+}
+.back-link:hover { color: var(--copper); }
+.back-link svg { width: 16px; height: 16px; }
 
 /* ── Header ── */
 .hdr {
@@ -72,252 +90,16 @@ body {
   color: var(--gray-600);
 }
 
-/* ── Pages Container ── */
-.pages {
-  display: flex;
-  gap: 48px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 80px;
-}
-.page-col {
-  animation: up .7s var(--ease) both;
-}
-.page-col:nth-child(2) { animation-delay: .15s; }
-.page-label {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gray-600);
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-/* ── A4 Preview ── */
-.a4 {
-  width: 580px;
-  height: 820px;
-  background: #fdfcfa;
-  position: relative;
-  box-shadow:
-    0 2px 4px rgba(0,0,0,.15),
-    0 16px 48px rgba(0,0,0,.4),
-    0 48px 100px rgba(0,0,0,.3);
-  overflow: hidden;
-  transition: transform .5s var(--ease), box-shadow .5s ease;
-}
-.a4:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 2px 4px rgba(0,0,0,.15),
-    0 24px 64px rgba(0,0,0,.5),
-    0 64px 130px rgba(0,0,0,.35);
-}
-
-/* ── Kupfer-Akzentleisten ── */
-.a4__accent-top {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: var(--copper);
-}
-.a4__accent-bottom {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--copper);
-}
-
-/* ── Faltmarken (DIN 5008) – kupferfarbig ── */
-.a4__mark {
-  position: absolute;
-  left: 0;
-  width: 8px;
-  height: 0;
-  border-top: .5px solid #c9a06a;
-  z-index: 2;
-}
-.a4__mark--fold1 { top: calc(820px * 105 / 297); }
-.a4__mark--punch { top: calc(820px * 148.5 / 297); }
-.a4__mark--fold2 { top: calc(820px * 210 / 297); }
-
-/* ── Briefkopf: Logo + Profession ── */
-.a4__header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 44px 55px 0 69px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-.a4__logo {
-  width: 140px;
-  height: auto;
-  display: block;
-}
-.a4__profession {
-  text-align: right;
-  padding-top: 4px;
-}
-.a4__profession-title {
-  font-size: 7.5px;
-  font-weight: 500;
-  color: #666;
-  letter-spacing: .8px;
-  text-transform: uppercase;
-  line-height: 1.4;
-}
-.a4__profession-nr {
-  font-size: 6.5px;
-  font-weight: 400;
-  color: #999;
-  letter-spacing: .5px;
-  margin-top: 2px;
-}
-
-/* ── Kupfer-Trennlinie unter Header ── */
-.a4__header-line {
-  position: absolute;
-  top: calc(820px * 30 / 297);
-  left: 69px;
-  right: 55px;
-  height: 0;
-  border-top: .5px solid #c9a06a;
-}
-
-/* ── Absenderzeile ── */
-.a4__sender {
-  position: absolute;
-  top: calc(820px * 45 / 297);
-  left: 69px;
-  font-size: 6.5px;
-  font-weight: 400;
-  color: #aaa;
-  letter-spacing: .3px;
-  padding-bottom: 3px;
-  border-bottom: .5px solid #ddd;
-}
-
-/* ── Empfaenger ── */
-.a4__recipient {
-  position: absolute;
-  top: calc(820px * 51 / 297);
-  left: 69px;
-  font-size: 10.5px;
-  font-weight: 400;
-  color: #222;
-  line-height: 1.55;
-}
-
-/* ── Datum ── */
-.a4__date {
-  position: absolute;
-  top: calc(820px * 95 / 297);
-  right: 55px;
-  font-size: 10.5px;
-  font-weight: 400;
-  color: #444;
-}
-
-/* ── Betreff ── */
-.a4__subject {
-  position: absolute;
-  top: calc(820px * 112 / 297);
-  left: 69px;
-  right: 55px;
-  font-size: 10.5px;
-  font-weight: 600;
-  color: #1a1b1e;
-  letter-spacing: .1px;
-}
-
-/* ── Brieftext ── */
-.a4__body {
-  position: absolute;
-  top: calc(820px * 125 / 297);
-  left: 69px;
-  right: 55px;
-  font-size: 10.5px;
-  font-weight: 400;
-  color: #333;
-  line-height: 1.75;
-}
-.a4__body p { margin-bottom: 11px; }
-
-/* ── Grussformel ── */
-.a4__closing {
-  position: absolute;
-  top: calc(820px * 200 / 297);
-  left: 69px;
-  font-size: 10.5px;
-  color: #333;
-  line-height: 1.65;
-}
-.a4__closing-name {
-  display: block;
-  margin-top: 52px;
-  font-weight: 500;
-  color: #1a1b1e;
-}
-
-/* ── Fusszeile – Drei-Spalten-Grid ── */
-.a4__footer {
-  position: absolute;
-  bottom: 3px;
-  left: 69px;
-  right: 55px;
-  padding: 0 0 18px 0;
-}
-.a4__footer-line {
-  border-top: .5px solid #c9a06a;
-  margin-bottom: 8px;
-}
-.a4__footer-grid {
+/* ── Cards Grid ── */
+.cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 0 16px;
-}
-.a4__footer-col {
-  font-size: 6px;
-  font-weight: 400;
-  color: #888;
-  line-height: 1.7;
-  letter-spacing: .1px;
-}
-.a4__footer-col:not(:first-child) {
-  border-left: .5px solid #e0dcd6;
-  padding-left: 16px;
-}
-.a4__footer-col span {
-  display: block;
-}
-.a4__footer-col .fc-label {
-  font-size: 5px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #b0a898;
-  margin-bottom: 2px;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 72px;
+  animation: up .7s var(--ease) .1s both;
 }
 
-/* ══════════════════════════
-   Folgeseite
-   ══════════════════════════ */
-.a4--page2 .a4__body {
-  top: calc(820px * 45 / 297);
-}
-
-/* ── Specs ── */
-.specs {
-  background: var(--surface-1);
-  border-left: 2px solid var(--copper);
-  padding: 28px 32px;
-  animation: up .7s var(--ease) .3s both;
-}
-.specs__title {
+.card-label {
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 3px;
@@ -325,77 +107,311 @@ body {
   color: var(--gray-600);
   margin-bottom: 20px;
 }
-.specs__grid {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 10px 24px;
+
+.card-frame {
+  background: var(--surface-1);
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  transition: transform .5s var(--ease), box-shadow .5s ease;
+  overflow: hidden;
 }
-.specs__label {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--gray-500);
-}
-.specs__value {
-  font-size: 12px;
-  color: var(--gray-400);
+.card-frame:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.3);
 }
 
-/* ── Design-Merkmale ── */
-.features {
-  margin-top: 48px;
-  animation: up .7s var(--ease) .4s both;
+/* Kupfer-Glow hinter dem Papier */
+.card-frame::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 60%;
+  background: radial-gradient(ellipse, rgba(192,128,64,.06) 0%, transparent 70%);
+  pointer-events: none;
 }
-.features__title {
+
+/* ══════════════════════════════════════════
+   A4 PREVIEW
+   Skalierter A4-Briefbogen innerhalb der Card
+   ══════════════════════════════════════════ */
+.a4-scale {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 210 / 297;
+  position: relative;
+}
+
+.a4 {
+  width: 100%;
+  height: 100%;
+  background: #fdfcfa;
+  position: relative;
+  border-radius: 2px;
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.08),
+    0 4px 12px rgba(0,0,0,.12),
+    0 12px 36px rgba(0,0,0,.18);
+  overflow: hidden;
+}
+
+/* Subtile Papier-Textur */
+.a4::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  pointer-events: none;
+  z-index: 10;
+  mix-blend-mode: multiply;
+}
+
+/* ── Kupfer-Akzentleisten ── */
+.a4__accent-top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 0.5%;
+  background: var(--copper);
+  z-index: 2;
+}
+.a4__accent-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 0.37%;
+  background: var(--copper);
+  z-index: 2;
+}
+
+/* ── Faltmarken (DIN 5008) ── */
+.a4__mark {
+  position: absolute;
+  left: 0;
+  width: 1.4%;
+  height: 0;
+  border-top: .5px solid #c9a06a;
+  z-index: 3;
+}
+.a4__mark--fold1 { top: 35.35%; }  /* 105/297 */
+.a4__mark--punch { top: 50%; }      /* 148.5/297 */
+.a4__mark--fold2 { top: 70.71%; }  /* 210/297 */
+
+/* ── Briefkopf ── */
+.a4__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 5.4% 6.7% 0 11.9%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 1;
+}
+.a4__logo {
+  width: 24%;
+  height: auto;
+  display: block;
+}
+.a4__profession {
+  text-align: right;
+  padding-top: 0.5%;
+}
+.a4__profession-title {
+  font-size: clamp(4px, 1.3vw, 7.5px);
+  font-weight: 500;
+  color: #666;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.a4__profession-nr {
+  font-size: clamp(3.5px, 1.1vw, 6.5px);
+  font-weight: 400;
+  color: #999;
+  letter-spacing: .3px;
+  margin-top: 1px;
+}
+
+/* ── Kupfer-Trennlinie ── */
+.a4__header-line {
+  position: absolute;
+  top: 10.1%;
+  left: 11.9%;
+  right: 9.5%;
+  height: 0;
+  border-top: .5px solid #c9a06a;
+  z-index: 1;
+}
+
+/* ── Absenderzeile ── */
+.a4__sender {
+  position: absolute;
+  top: 15.15%;
+  left: 11.9%;
+  font-size: clamp(3.5px, 1.1vw, 6.5px);
+  font-weight: 400;
+  color: #aaa;
+  letter-spacing: .2px;
+  padding-bottom: 2px;
+  border-bottom: .5px solid #ddd;
+  z-index: 1;
+}
+
+/* ── Empfaenger ── */
+.a4__recipient {
+  position: absolute;
+  top: 17.17%;
+  left: 11.9%;
+  font-size: clamp(5px, 1.8vw, 10.5px);
+  font-weight: 400;
+  color: #222;
+  line-height: 1.55;
+  z-index: 1;
+}
+
+/* ── Datum ── */
+.a4__date {
+  position: absolute;
+  top: 31.99%;
+  right: 9.5%;
+  font-size: clamp(5px, 1.8vw, 10.5px);
+  font-weight: 400;
+  color: #444;
+  z-index: 1;
+}
+
+/* ── Betreff ── */
+.a4__subject {
+  position: absolute;
+  top: 37.71%;
+  left: 11.9%;
+  right: 9.5%;
+  font-size: clamp(5px, 1.8vw, 10.5px);
+  font-weight: 600;
+  color: #1a1b1e;
+  letter-spacing: .05px;
+  z-index: 1;
+}
+
+/* ── Brieftext ── */
+.a4__body {
+  position: absolute;
+  top: 42.09%;
+  left: 11.9%;
+  right: 9.5%;
+  font-size: clamp(4.5px, 1.7vw, 10.5px);
+  font-weight: 400;
+  color: #333;
+  line-height: 1.7;
+  z-index: 1;
+}
+.a4__body p { margin-bottom: 1.3%; }
+
+/* ── Grussformel ── */
+.a4__closing {
+  position: absolute;
+  top: 67.34%;
+  left: 11.9%;
+  font-size: clamp(4.5px, 1.7vw, 10.5px);
+  color: #333;
+  line-height: 1.6;
+  z-index: 1;
+}
+.a4__closing-name {
+  display: block;
+  margin-top: 6.3%;
+  font-weight: 500;
+  color: #1a1b1e;
+}
+
+/* ── Fusszeile ── */
+.a4__footer {
+  position: absolute;
+  bottom: 0.5%;
+  left: 11.9%;
+  right: 9.5%;
+  padding: 0 0 2.2% 0;
+  z-index: 1;
+}
+.a4__footer-line {
+  border-top: .5px solid #c9a06a;
+  margin-bottom: 1%;
+}
+.a4__footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0 3%;
+}
+.a4__footer-col {
+  font-size: clamp(3px, 1vw, 6px);
+  font-weight: 400;
+  color: #888;
+  line-height: 1.65;
+  letter-spacing: .05px;
+}
+.a4__footer-col:not(:first-child) {
+  border-left: .5px solid #e0dcd6;
+  padding-left: 3%;
+}
+.a4__footer-col span {
+  display: block;
+}
+.a4__footer-col .fc-label {
+  font-size: clamp(2.5px, .85vw, 5px);
+  font-weight: 600;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: #b0a898;
+  margin-bottom: 1px;
+}
+
+/* ══════════════════════════
+   Folgeseite
+   ══════════════════════════ */
+.a4--page2 .a4__body {
+  top: 15.15%;
+}
+
+/* ── Spec Cards (matching Visitenkarte) ── */
+.specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  animation: up .7s var(--ease) .2s both;
+}
+.spec-card {
+  background: var(--surface-1);
+  border-radius: 8px;
+  padding: 28px;
+  border: 1px solid var(--border);
+}
+.spec-card__label {
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--gray-600);
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
-.features__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
-}
-.feature {
-  background: var(--surface-1);
-  padding: 20px 22px;
-  border-radius: 4px;
-  border: 1px solid rgba(255,255,255,.03);
-}
-.feature__icon {
-  width: 20px;
-  height: 3px;
-  background: var(--copper);
-  margin-bottom: 14px;
-  border-radius: 1px;
-}
-.feature__name {
-  font-size: 12px;
-  font-weight: 600;
+.spec-card__value {
+  font-size: 14px;
+  font-weight: 400;
   color: var(--cream);
-  margin-bottom: 6px;
-  letter-spacing: .2px;
+  line-height: 1.6;
 }
-.feature__desc {
-  font-size: 11px;
-  color: var(--gray-500);
-  line-height: 1.55;
-}
-
-.ftr {
-  margin-top: 72px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  font-size: 10px;
-  color: var(--gray-600);
+.spec-card__value span {
+  color: var(--copper);
 }
 
 @keyframes up {
-  from { opacity: 0; transform: translateY(28px); }
+  from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -403,20 +419,29 @@ body {
 @media print {
   body { background: white; }
   .page { padding: 0; max-width: none; }
-  nav, .hdr, .specs, .features, .ftr, .page-label { display: none; }
-  .pages { margin: 0; gap: 0; }
-  .page-col:nth-child(2) { display: none; }
-  .a4 {
-    width: 210mm; height: 297mm;
-    box-shadow: none; transform: none !important;
+  .back-link, .hdr, .specs, .card-label { display: none; }
+  .cards { display: block; margin: 0; }
+  .cards > div:nth-child(2) { display: none; }
+  .card-frame {
+    background: none; padding: 0; border-radius: 0;
+    box-shadow: none !important; transform: none !important;
   }
-  .a4__accent-top { height: 1.5mm; -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #c08040 !important; }
-  .a4__accent-bottom { height: 1mm; -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #c08040 !important; }
-  .a4__header { padding: 16mm 20mm 0 25mm; position: absolute; top: 0; left: 0; right: 0; }
-  .a4__logo { width: 50mm; }
+  .card-frame::before { display: none; }
+  .a4-scale { max-width: none; width: 210mm; aspect-ratio: auto; height: 297mm; }
+  .a4 { border-radius: 0; box-shadow: none; }
+  .a4::after { display: none; }
+  .a4__accent-top, .a4__accent-bottom {
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    background: #c08040 !important;
+  }
+  .a4__mark { border-top-color: #c08040 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .a4__header-line { border-top-color: #c08040 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .a4__footer-line { border-top-color: #c08040 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .a4__header { padding: 16mm 20mm 0 25mm; }
+  .a4__logo { width: 52mm; }
   .a4__profession-title { font-size: 7pt; }
   .a4__profession-nr { font-size: 6pt; }
-  .a4__header-line { top: 30mm; left: 25mm; right: 20mm; border-top-color: #c08040; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .a4__header-line { top: 30mm; left: 25mm; right: 20mm; }
   .a4__sender { top: 45mm; left: 25mm; font-size: 7pt; }
   .a4__recipient { top: 51mm; left: 25mm; font-size: 10pt; color: #111; }
   .a4__date { top: 95mm; right: 20mm; font-size: 10pt; color: #222; }
@@ -426,256 +451,201 @@ body {
   .a4__closing { top: 200mm; left: 25mm; font-size: 10.5pt; color: #222; }
   .a4__closing-name { color: #111; margin-top: 20mm; }
   .a4__footer { left: 25mm; right: 20mm; padding: 0 0 6mm 0; bottom: 1mm; }
-  .a4__footer-line { border-top-color: #c08040; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .a4__footer-col { font-size: 6pt; color: #555; }
   .a4__footer-col .fc-label { font-size: 5pt; color: #999; }
-  .a4__mark { border-top-color: #c08040 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 
 @media (max-width: 900px) {
-  .pages { flex-direction: column; align-items: center; }
+  .cards { grid-template-columns: 1fr; gap: 48px; }
+  .a4-scale { max-width: 460px; }
 }
 
 @media (max-width: 640px) {
-  .page { padding: 100px 20px 80px; }
-  .a4 {
-    width: 100%; max-width: 420px;
-    height: auto; aspect-ratio: 210/297;
-  }
-  .a4__accent-top { height: 3px; }
-  .a4__accent-bottom { height: 2px; }
-  .a4__header { padding: 5.4% 6.7% 0 8.4%; }
-  .a4__logo { width: 24%; }
-  .a4__profession { padding-top: 1%; }
-  .a4__profession-title { font-size: 5px; }
-  .a4__profession-nr { font-size: 4px; }
-  .a4__header-line { top: 10.1%; left: 8.4%; right: 6.7%; }
-  .a4__sender { top: 15.2%; left: 8.4%; font-size: 5px; }
-  .a4__recipient { top: 17.2%; left: 8.4%; font-size: 7.5px; }
-  .a4__date { top: 32%; right: 6.7%; font-size: 7.5px; }
-  .a4__subject { top: 37.7%; left: 8.4%; right: 6.7%; font-size: 8px; }
-  .a4__body { top: 42.1%; left: 8.4%; right: 6.7%; font-size: 7px; }
-  .a4__closing { top: 67.3%; left: 8.4%; font-size: 7px; }
-  .a4__footer { left: 8.4%; right: 6.7%; padding: 0 0 2.5% 0; }
-  .a4__footer-line { margin-bottom: 4px; }
-  .a4__footer-col { font-size: 4px; }
-  .a4__footer-col .fc-label { font-size: 3.5px; }
-  .a4__footer-col:not(:first-child) { padding-left: 8px; }
-  .specs__grid, .features__grid { grid-template-columns: 1fr; }
+  .page { padding: 48px 24px 80px; }
+  .specs { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
-<nav style="position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;justify-content:space-between;align-items:center;padding:10px 24px;background:rgba(14,14,14,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(192,128,64,.15);font-family:'Inter',sans-serif;">
-  <a href="index.html" style="font-size:12px;font-weight:500;color:#c08040;text-decoration:none;display:flex;align-items:center;gap:6px;">&#8592; &Uuml;bersicht</a>
-  <span style="font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(248,246,243,.4);">Briefpapier</span>
-  <span style="font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#606060;">Pro4Media</span>
-</nav>
 <div class="page">
+  <a href="index.html" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Zur&uuml;ck zur &Uuml;bersicht
+  </a>
 
-  <header class="hdr">
+  <div class="hdr">
     <div class="hdr__ov">Print Design</div>
-    <h1 class="hdr__title">Briefpapier</h1>
-    <div class="hdr__sub">Hammon Architektur &middot; DIN A4 &middot; Erstseite + Folgeseite</div>
-  </header>
+    <div class="hdr__title">Briefpapier</div>
+    <div class="hdr__sub">DIN A4 &middot; DIN 5008 &middot; Erstseite + Folgeseite</div>
+  </div>
 
-  <section class="pages">
+  <div class="cards">
 
     <!-- ═══ Erstseite ═══ -->
-    <div class="page-col">
-      <div class="page-label">Erstseite</div>
-      <div class="a4">
+    <div>
+      <div class="card-label">Erstseite</div>
+      <div class="card-frame">
+        <div class="a4-scale">
+          <div class="a4">
 
-        <div class="a4__accent-top"></div>
-        <div class="a4__accent-bottom"></div>
+            <div class="a4__accent-top"></div>
+            <div class="a4__accent-bottom"></div>
+            <div class="a4__mark a4__mark--fold1"></div>
+            <div class="a4__mark a4__mark--punch"></div>
+            <div class="a4__mark a4__mark--fold2"></div>
 
-        <div class="a4__mark a4__mark--fold1"></div>
-        <div class="a4__mark a4__mark--punch"></div>
-        <div class="a4__mark a4__mark--fold2"></div>
+            <div class="a4__header">
+              <img class="a4__logo" src="assets/hammon-logo.png" alt="Hammon Architektur">
+              <div class="a4__profession">
+                <div class="a4__profession-title">Dipl.-Ing. Architektin</div>
+                <div class="a4__profession-nr">AIK Schleswig-Holstein &middot; Nr. 6031</div>
+              </div>
+            </div>
 
-        <!-- Briefkopf: Logo + Profession -->
-        <div class="a4__header">
-          <img class="a4__logo" src="gh-assets/hammon-logo.png" alt="Hammon Architektur">
-          <div class="a4__profession">
-            <div class="a4__profession-title">Dipl.-Ing. Architektin</div>
-            <div class="a4__profession-nr">AIK Schleswig-Holstein &middot; Nr. 6031</div>
+            <div class="a4__header-line"></div>
+
+            <div class="a4__sender">
+              Katrin Hammon &middot; Gr&ouml;nholm 7b &middot; 24991 Freienwill
+            </div>
+
+            <div class="a4__recipient">
+              Frau<br>
+              Maria Petersen<br>
+              Husumer Stra&szlig;e 42<br>
+              24939 Flensburg
+            </div>
+
+            <div class="a4__date">Freienwill, 24. Februar 2026</div>
+
+            <div class="a4__subject">
+              Honorarangebot Entwurfsplanung Wohnhaus Petersen
+            </div>
+
+            <div class="a4__body">
+              <p>Sehr geehrte Frau Petersen,</p>
+              <p>vielen Dank f&uuml;r das angenehme Gespr&auml;ch und die Besichtigung Ihres Grundst&uuml;cks in Handewitt. Gerne &uuml;bersende ich Ihnen mein Honorarangebot f&uuml;r die Entwurfs- und Genehmigungsplanung Ihres Einfamilienhauses.</p>
+              <p>Die Leistungen umfassen die Leistungsphasen 1 bis 4 nach HOAI. In der Anlage finden Sie eine detaillierte Aufstellung der einzelnen Positionen sowie den voraussichtlichen Zeitrahmen.</p>
+              <p>F&uuml;r R&uuml;ckfragen stehe ich Ihnen selbstverst&auml;ndlich gerne zur Verf&uuml;gung.</p>
+            </div>
+
+            <div class="a4__closing">
+              Mit freundlichen Gr&uuml;&szlig;en
+              <span class="a4__closing-name">Katrin Hammon</span>
+            </div>
+
+            <div class="a4__footer">
+              <div class="a4__footer-line"></div>
+              <div class="a4__footer-grid">
+                <div class="a4__footer-col">
+                  <span class="fc-label">Kontakt</span>
+                  <span>Katrin Hammon</span>
+                  <span>Gr&ouml;nholm 7b</span>
+                  <span>24991 Freienwill</span>
+                </div>
+                <div class="a4__footer-col">
+                  <span class="fc-label">Kommunikation</span>
+                  <span>T 0160 94182990</span>
+                  <span>katrin@hammon-architektur.de</span>
+                  <span>www.hammon-architektur.de</span>
+                </div>
+                <div class="a4__footer-col">
+                  <span class="fc-label">Freischaffende Architektin</span>
+                  <span>AIK Schleswig-Holstein Nr. 6031</span>
+                  <span>Steuernr. 15/093/15182</span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
-
-        <!-- Kupferlinie unter Header -->
-        <div class="a4__header-line"></div>
-
-        <!-- Absenderzeile -->
-        <div class="a4__sender">
-          Katrin Hammon &middot; Gr&ouml;nholm 7b &middot; 24991 Freienwill
-        </div>
-
-        <!-- Empfaenger -->
-        <div class="a4__recipient">
-          Frau<br>
-          Maria Petersen<br>
-          Husumer Stra&szlig;e 42<br>
-          24939 Flensburg
-        </div>
-
-        <!-- Datum -->
-        <div class="a4__date">Freienwill, 24. Februar 2026</div>
-
-        <!-- Betreff -->
-        <div class="a4__subject">
-          Honorarangebot Entwurfsplanung Wohnhaus Petersen
-        </div>
-
-        <!-- Brieftext -->
-        <div class="a4__body">
-          <p>Sehr geehrte Frau Petersen,</p>
-          <p>vielen Dank f&uuml;r das angenehme Gespr&auml;ch und die Besichtigung Ihres Grundst&uuml;cks in Handewitt. Gerne &uuml;bersende ich Ihnen mein Honorarangebot f&uuml;r die Entwurfs- und Genehmigungsplanung Ihres Einfamilienhauses.</p>
-          <p>Die Leistungen umfassen die Leistungsphasen 1 bis 4 nach HOAI. In der Anlage finden Sie eine detaillierte Aufstellung der einzelnen Positionen sowie den voraussichtlichen Zeitrahmen.</p>
-          <p>F&uuml;r R&uuml;ckfragen stehe ich Ihnen selbstverst&auml;ndlich gerne zur Verf&uuml;gung.</p>
-        </div>
-
-        <!-- Grussformel -->
-        <div class="a4__closing">
-          Mit freundlichen Gr&uuml;&szlig;en
-          <span class="a4__closing-name">Katrin Hammon</span>
-        </div>
-
-        <!-- Fusszeile: Drei-Spalten-Grid -->
-        <div class="a4__footer">
-          <div class="a4__footer-line"></div>
-          <div class="a4__footer-grid">
-            <div class="a4__footer-col">
-              <span class="fc-label">Kontakt</span>
-              <span>Katrin Hammon</span>
-              <span>Gr&ouml;nholm 7b</span>
-              <span>24991 Freienwill</span>
-            </div>
-            <div class="a4__footer-col">
-              <span class="fc-label">Kommunikation</span>
-              <span>T 0160 94182990</span>
-              <span>katrin@hammon-architektur.de</span>
-              <span>www.hammon-architektur.de</span>
-            </div>
-            <div class="a4__footer-col">
-              <span class="fc-label">Freischaffende Architektin</span>
-              <span>AIK Schleswig-Holstein Nr. 6031</span>
-              <span>Steuernr. 15/093/15182</span>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
 
     <!-- ═══ Folgeseite ═══ -->
-    <div class="page-col">
-      <div class="page-label">Folgeseite</div>
-      <div class="a4 a4--page2">
+    <div>
+      <div class="card-label">Folgeseite</div>
+      <div class="card-frame">
+        <div class="a4-scale">
+          <div class="a4 a4--page2">
 
-        <div class="a4__accent-top"></div>
-        <div class="a4__accent-bottom"></div>
+            <div class="a4__accent-top"></div>
+            <div class="a4__accent-bottom"></div>
+            <div class="a4__mark a4__mark--fold1"></div>
+            <div class="a4__mark a4__mark--punch"></div>
+            <div class="a4__mark a4__mark--fold2"></div>
 
-        <div class="a4__mark a4__mark--fold1"></div>
-        <div class="a4__mark a4__mark--punch"></div>
-        <div class="a4__mark a4__mark--fold2"></div>
-
-        <!-- Minimaler Header: nur Logo + Seitenzahl -->
-        <div class="a4__header">
-          <img class="a4__logo" src="gh-assets/hammon-logo.png" alt="Hammon Architektur" style="width:100px;opacity:.6">
-          <div style="font-size:7px;color:#aaa;letter-spacing:.3px;padding-top:6px">Seite 2</div>
-        </div>
-
-        <!-- Kupferlinie -->
-        <div class="a4__header-line"></div>
-
-        <!-- Fliesstext Folgeseite -->
-        <div class="a4__body">
-          <p>Das Grundst&uuml;ck an der Husumer Stra&szlig;e bietet ideale Voraussetzungen f&uuml;r einen zweigeschossigen Neubau mit Satteldach. Die vorhandene Bauleitplanung l&auml;sst eine Grundfl&auml;che von ca. 120 m&sup2; zu.</p>
-          <p>Im Rahmen der Vorplanung (LPH 2) entwickle ich gemeinsam mit Ihnen zwei bis drei Entwurfsvarianten, die wir hinsichtlich Raumaufteilung, Baukosten und energetischer Standards bewerten.</p>
-          <p>Die Entwurfsplanung (LPH 3) detailliert den gew&auml;hlten Entwurf soweit, dass alle wesentlichen Abmessungen, Materialien und konstruktiven Prinzipien festgelegt sind. Auf dieser Grundlage erstelle ich die Genehmigungsplanung (LPH 4) einschlie&szlig;lich aller erforderlichen Bauantragsunterlagen.</p>
-          <p>Mein Honorar berechnet sich nach der HOAI 2021, Honorarzone III, Mindestsatz. Bei den veranschlagten Baukosten von ca. 380.000 &euro; ergibt sich ein Gesamthonorar gem&auml;&szlig; beiliegender Aufstellung.</p>
-          <p>Die voraussichtliche Bearbeitungsdauer betr&auml;gt f&uuml;r die Leistungsphasen 1 bis 4 insgesamt etwa 12 bis 16 Wochen ab Auftragserteilung.</p>
-          <p>Ich freue mich darauf, gemeinsam mit Ihnen ein Zuhause zu gestalten, das Ihren Vorstellungen entspricht und sich harmonisch in die Umgebung einf&uuml;gt.</p>
-        </div>
-
-        <!-- Gleiche Fusszeile -->
-        <div class="a4__footer">
-          <div class="a4__footer-line"></div>
-          <div class="a4__footer-grid">
-            <div class="a4__footer-col">
-              <span class="fc-label">Kontakt</span>
-              <span>Katrin Hammon</span>
-              <span>Gr&ouml;nholm 7b</span>
-              <span>24991 Freienwill</span>
+            <div class="a4__header">
+              <img class="a4__logo" src="assets/hammon-logo.png" alt="Hammon Architektur" style="width:16%;opacity:.55">
+              <div style="font-size:clamp(3.5px,1.1vw,7px);color:#aaa;letter-spacing:.2px;padding-top:.5%">Seite 2</div>
             </div>
-            <div class="a4__footer-col">
-              <span class="fc-label">Kommunikation</span>
-              <span>T 0160 94182990</span>
-              <span>katrin@hammon-architektur.de</span>
-              <span>www.hammon-architektur.de</span>
+
+            <div class="a4__header-line"></div>
+
+            <div class="a4__body">
+              <p>Das Grundst&uuml;ck an der Husumer Stra&szlig;e bietet ideale Voraussetzungen f&uuml;r einen zweigeschossigen Neubau mit Satteldach. Die vorhandene Bauleitplanung l&auml;sst eine Grundfl&auml;che von ca. 120 m&sup2; zu.</p>
+              <p>Im Rahmen der Vorplanung (LPH 2) entwickle ich gemeinsam mit Ihnen zwei bis drei Entwurfsvarianten, die wir hinsichtlich Raumaufteilung, Baukosten und energetischer Standards bewerten.</p>
+              <p>Die Entwurfsplanung (LPH 3) detailliert den gew&auml;hlten Entwurf soweit, dass alle wesentlichen Abmessungen, Materialien und konstruktiven Prinzipien festgelegt sind. Auf dieser Grundlage erstelle ich die Genehmigungsplanung (LPH 4) einschlie&szlig;lich aller erforderlichen Bauantragsunterlagen.</p>
+              <p>Mein Honorar berechnet sich nach der HOAI 2021, Honorarzone III, Mindestsatz. Bei den veranschlagten Baukosten von ca. 380.000 &euro; ergibt sich ein Gesamthonorar gem&auml;&szlig; beiliegender Aufstellung.</p>
+              <p>Die voraussichtliche Bearbeitungsdauer betr&auml;gt f&uuml;r die Leistungsphasen 1 bis 4 insgesamt etwa 12 bis 16 Wochen ab Auftragserteilung.</p>
+              <p>Ich freue mich darauf, gemeinsam mit Ihnen ein Zuhause zu gestalten, das Ihren Vorstellungen entspricht und sich harmonisch in die Umgebung einf&uuml;gt.</p>
             </div>
-            <div class="a4__footer-col">
-              <span class="fc-label">Freischaffende Architektin</span>
-              <span>AIK Schleswig-Holstein Nr. 6031</span>
-              <span>Steuernr. 15/093/15182</span>
+
+            <div class="a4__footer">
+              <div class="a4__footer-line"></div>
+              <div class="a4__footer-grid">
+                <div class="a4__footer-col">
+                  <span class="fc-label">Kontakt</span>
+                  <span>Katrin Hammon</span>
+                  <span>Gr&ouml;nholm 7b</span>
+                  <span>24991 Freienwill</span>
+                </div>
+                <div class="a4__footer-col">
+                  <span class="fc-label">Kommunikation</span>
+                  <span>T 0160 94182990</span>
+                  <span>katrin@hammon-architektur.de</span>
+                  <span>www.hammon-architektur.de</span>
+                </div>
+                <div class="a4__footer-col">
+                  <span class="fc-label">Freischaffende Architektin</span>
+                  <span>AIK Schleswig-Holstein Nr. 6031</span>
+                  <span>Steuernr. 15/093/15182</span>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
-
       </div>
     </div>
 
-  </section>
+  </div>
 
-  <!-- ── Spezifikationen ── -->
+  <!-- Spec Cards (matching Visitenkarte) -->
   <div class="specs">
-    <div class="specs__title">Spezifikationen</div>
-    <div class="specs__grid">
-      <span class="specs__label">Format</span>
-      <span class="specs__value">DIN A4 (210 &times; 297 mm)</span>
-      <span class="specs__label">Papier</span>
-      <span class="specs__value">120 g/m&sup2;, Empfehlung: Gmund Cotton Linen Cream</span>
-      <span class="specs__label">Druck</span>
-      <span class="specs__value">Farbig, einseitig (Briefkopf, Kupferakzente, Fu&szlig;zeile)</span>
-      <span class="specs__label">Schrift</span>
-      <span class="specs__value">Inter, 10,5 pt Flie&szlig;text, 10 pt Betreff/Datum</span>
-      <span class="specs__label">Faltmarken</span>
-      <span class="specs__value">DIN 5008 Form B (105 mm, 210 mm) + Lochmarke (148,5 mm)</span>
-      <span class="specs__label">R&auml;nder</span>
-      <span class="specs__value">Links 25 mm, rechts 20 mm (DIN 5008)</span>
-      <span class="specs__label">Akzentfarbe</span>
-      <span class="specs__value">Kupfer #c08040 (Akzentleisten, Trennlinien, Faltmarken)</span>
-      <span class="specs__label">Seiten</span>
-      <span class="specs__value">Erstseite (voller Briefkopf) + Folgeseite (reduzierter Header)</span>
+    <div class="spec-card">
+      <div class="spec-card__label">Typografie</div>
+      <div class="spec-card__value">
+        Inter &middot; <span>Variable Font</span><br>
+        10,5 pt Flie&szlig;text, 10 pt Betreff
+      </div>
     </div>
-  </div>
-
-  <!-- ── Design-Merkmale ── -->
-  <div class="features">
-    <div class="features__title">Design-Merkmale</div>
-    <div class="features__grid">
-      <div class="feature">
-        <div class="feature__icon"></div>
-        <div class="feature__name">Kupferrahmen</div>
-        <div class="feature__desc">Akzentleisten oben und unten rahmen das Dokument und schaffen Wiedererkennung zum Corporate Design.</div>
+    <div class="spec-card">
+      <div class="spec-card__label">Farben</div>
+      <div class="spec-card__value">
+        <span>Kupfer #c08040</span> &middot; Akzente<br>
+        Warmwei&szlig; #fdfcfa &middot; Papier<br>
+        Anthrazit #1a1b1e &middot; Text
       </div>
-      <div class="feature">
-        <div class="feature__icon"></div>
-        <div class="feature__name">Drei-Spalten-Fu&szlig;zeile</div>
-        <div class="feature__desc">Strukturierte Informationsarchitektur statt einzeiliger Auflistung. Kontakt, Kommunikation und Berufsdaten klar getrennt.</div>
-      </div>
-      <div class="feature">
-        <div class="feature__icon"></div>
-        <div class="feature__name">Header-Komposition</div>
-        <div class="feature__desc">Logo links, Berufsbezeichnung und AIK-Nummer rechts. Kupfer-Haarlinie als architektonischer Trenner.</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-card__label">Format</div>
+      <div class="spec-card__value">
+        DIN A4 (210 &times; 297 mm)<br>
+        DIN 5008 &middot; Faltmarken<br>
+        <span>120 g/m&sup2;</span> empfohlen
       </div>
     </div>
   </div>
-
-  <footer class="ftr">
-    <span>Hammon Architektur &middot; Corporate Design</span>
-    <span>Pro4Media Digitalagentur</span>
-  </footer>
 
 </div>
 </body>
