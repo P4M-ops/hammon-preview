@@ -319,6 +319,10 @@ body {
   border-radius: 2px;
 }
 
+.back-link { display:inline-flex; align-items:center; gap:10px; font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gray-600); text-decoration:none; padding:0 0 24px; transition:color .3s ease; animation:up .7s var(--ease) both; }
+.back-link:hover { color:var(--copper); }
+.back-link svg { width:16px; height:16px; }
+
 .ftr {
   margin-top: 72px;
   padding-top: 20px;
@@ -347,6 +351,11 @@ body {
 </head>
 <body>
 <div class="page">
+
+  <a href="index.html" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Zur&uuml;ck zur &Uuml;bersicht
+  </a>
 
   <header class="hdr">
     <div class="hdr__ov">Corporate Design</div>
@@ -385,7 +394,7 @@ body {
       <!-- ══ SIGNATUR START ══ -->
       <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Inter', Arial, Helvetica, sans-serif; font-size: 13px; line-height: 1.5; color: #1a1b1e; border-collapse: collapse; max-width: 520px;">
         <tr><td colspan="2" style="padding-bottom: 16px;">
-          <img src="../design/Logo/hammon-architektur-Logo.png" alt="Hammon Architektur" width="160" style="display: block; width: 160px; height: auto;">
+          <img src="assets/hammon-logo.png" alt="Hammon Architektur" width="160" style="display: block; width: 160px; height: auto;">
         </td></tr>
         <tr><td colspan="2" style="padding-bottom: 14px;">
           <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
@@ -475,7 +484,7 @@ body {
         </div>
         <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Inter', Arial, Helvetica, sans-serif; font-size: 13px; line-height: 1.5; color: #1a1b1e; border-collapse: collapse; max-width: 520px;">
           <tr><td colspan="2" style="padding-bottom: 16px;">
-            <img src="../design/Logo/hammon-architektur-Logo.png" alt="Hammon Architektur" width="160" style="display: block; width: 160px; height: auto;">
+            <img src="assets/hammon-logo.png" alt="Hammon Architektur" width="160" style="display: block; width: 160px; height: auto;">
           </td></tr>
           <tr><td colspan="2" style="padding-bottom: 14px;">
             <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
@@ -611,18 +620,18 @@ body {
     <div class="guide-cards">
       <div class="guide-card">
         <div class="guide-card__num">01</div>
-        <h4>Logo hochladen</h4>
-        <p>Das Logo <code>hammon-architektur-Logo.png</code> auf deinen Webspace hochladen. Die URL im HTML-Code bei <code>LOGO-URL-HIER-EINSETZEN</code> eintragen.</p>
+        <h4>Outlook &ouml;ffnen</h4>
+        <p>Klicke oben auf <code>Datei</code> &rarr; <code>Optionen</code> &rarr; <code>E-Mail</code> &rarr; <code>Signaturen...</code> und dann auf <code>Neu</code>. Gib als Name z.B. &bdquo;Hammon Architektur&ldquo; ein.</p>
       </div>
       <div class="guide-card">
         <div class="guide-card__num">02</div>
-        <h4>Signatur in Outlook einf&uuml;gen</h4>
-        <p>Outlook &ouml;ffnen &rarr; Datei &rarr; Optionen &rarr; E-Mail &rarr; Signaturen. Neue Signatur erstellen, auf &bdquo;Bearbeiten&ldquo; klicken und den HTML-Code einf&uuml;gen.</p>
+        <h4>Signatur einf&uuml;gen</h4>
+        <p>Kopiere oben den HTML-Code &uuml;ber den &bdquo;Kopieren&ldquo;-Button. Wechsle in Outlook zum Signatur-Editor und f&uuml;ge ihn dort mit <code>Strg+V</code> ein. Das Logo richte ich f&uuml;r dich ein.</p>
       </div>
       <div class="guide-card">
         <div class="guide-card__num">03</div>
         <h4>Testen</h4>
-        <p>Test-Mail an dich selbst und an eine Gmail-Adresse senden. Logo, Links und Darstellung pr&uuml;fen. Die Minimal-Variante f&uuml;r Antworten einstellen.</p>
+        <p>Sende eine Test-Mail an dich selbst. Pr&uuml;fe, ob Name, Telefonnummer und Links stimmen. F&uuml;r Antwort-Mails kannst du die Minimal-Variante als zweite Signatur anlegen.</p>
       </div>
     </div>
   </div>

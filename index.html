@@ -489,30 +489,18 @@ a { color: inherit; text-decoration: none; }
 }
 .legal-mini {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 12px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
-.legal-mini__heading {
-  width: 50%;
-  height: 3px;
-  background: #faf8f5;
-  opacity: .2;
-  border-radius: 1px;
+.legal-mini__symbol {
+  font-size: 72px;
+  font-weight: 300;
+  color: var(--copper, #c08040);
+  opacity: .35;
+  line-height: 1;
+  text-shadow: 0 0 40px rgba(192,128,64,.2);
 }
-.legal-mini__block {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.legal-mini__line {
-  height: 1px;
-  background: #3d3d3d;
-  border-radius: .5px;
-}
-.legal-mini__line:nth-child(1) { width: 70%; }
-.legal-mini__line:nth-child(2) { width: 85%; }
-.legal-mini__line:nth-child(3) { width: 60%; }
 
 /* Card Body */
 .card__body {
@@ -825,7 +813,7 @@ a { color: inherit; text-decoration: none; }
           <h3 class="card__title">One-Pager Prototyp</h3>
           <p class="card__desc">Vollst&auml;ndiger Website-Entwurf mit 7 Sektionen, Animationen und responsivem Design.</p>
           <div class="card__footer">
-            <span class="badge badge--done">Erster Entwurf</span>
+            <span class="badge badge--wip">Entwurf</span>
             <span class="card__cta">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </div>
@@ -854,7 +842,7 @@ a { color: inherit; text-decoration: none; }
           <h3 class="card__title">Design System</h3>
           <p class="card__desc">Farben, Typografie und alle visuellen Regeln deines Corporate Designs.</p>
           <div class="card__footer">
-            <span class="badge badge--done">Fertig</span>
+            <span class="badge badge--wip">Entwurf</span>
             <span class="card__cta">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </div>
@@ -871,14 +859,14 @@ a { color: inherit; text-decoration: none; }
           <h3 class="card__title">Visitenkarte</h3>
           <p class="card__desc">Vorder- und R&uuml;ckseite im Corporate Design. 85 &times; 55 mm, druckfertig.</p>
           <div class="card__footer">
-            <span class="badge badge--done">Fertig</span>
+            <span class="badge badge--wip">Entwurf</span>
             <span class="card__cta">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </div>
       </a>
 
-      <!-- 4. Briefpapier -->
-      <a href="briefpapier.html" class="card anim anim-d3">
+      <!-- 4. Gesch&auml;ftspapier -->
+      <a href="geschaeftspapier.html" class="card anim anim-d3">
         <div class="card__preview card__preview--bp">
           <div class="bp-mini">
             <img class="bp-mini__logo" src="assets/hammon-logo.png" alt="">
@@ -907,10 +895,10 @@ a { color: inherit; text-decoration: none; }
         </div>
         <div class="card__body">
           <span class="card__cat">Print</span>
-          <h3 class="card__title">Briefpapier</h3>
-          <p class="card__desc">DIN A4 Gesch&auml;ftspapier mit Kupferrahmen, Drei-Spalten-Fu&szlig;zeile und Folgeseite.</p>
+          <h3 class="card__title">Gesch&auml;ftspapier</h3>
+          <p class="card__desc">Anschreiben, Angebot &amp; Rechnung &ndash; DIN 5008, Kupfer-Akzent, Drei-Spalten-Fu&szlig;zeile.</p>
           <div class="card__footer">
-            <span class="badge badge--done">Fertig</span>
+            <span class="badge badge--wip">Entwurf</span>
             <span class="card__cta">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </div>
@@ -941,7 +929,7 @@ a { color: inherit; text-decoration: none; }
           <h3 class="card__title">E-Mail-Signatur</h3>
           <p class="card__desc">HTML-Signatur mit Logo und allen Pflichtangaben. Inkl. Einrichtungsanleitung.</p>
           <div class="card__footer">
-            <span class="badge badge--done">Fertig</span>
+            <span class="badge badge--wip">Entwurf</span>
             <span class="card__cta">Anleitung <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </div>
@@ -951,17 +939,7 @@ a { color: inherit; text-decoration: none; }
       <a href="impressum.html" class="card anim anim-d5">
         <div class="card__preview card__preview--legal">
           <div class="legal-mini">
-            <div class="legal-mini__heading"></div>
-            <div class="legal-mini__block">
-              <div class="legal-mini__line"></div>
-              <div class="legal-mini__line"></div>
-              <div class="legal-mini__line"></div>
-            </div>
-            <div class="legal-mini__heading" style="width:35%; margin-top: 4px;"></div>
-            <div class="legal-mini__block">
-              <div class="legal-mini__line"></div>
-              <div class="legal-mini__line"></div>
-            </div>
+            <span class="legal-mini__symbol">&sect;</span>
           </div>
         </div>
         <div class="card__body">
@@ -969,7 +947,7 @@ a { color: inherit; text-decoration: none; }
           <h3 class="card__title">Impressum &amp; Datenschutz</h3>
           <p class="card__desc">Rechtstexte f&uuml;r deine Website. DDG-konform und DSGVO-sicher.</p>
           <div class="card__footer">
-            <span class="badge badge--done">Fertig</span>
+            <span class="badge badge--wip">Entwurf</span>
             <span class="card__cta">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </div>
@@ -997,8 +975,8 @@ a { color: inherit; text-decoration: none; }
       </div>
       <div class="step anim anim-d6">
         <div class="step__num">03</div>
-        <div class="step__title">WordPress-Umsetzung</div>
-        <p class="step__desc">Sobald du zufrieden bist, setze ich alles in WordPress um. Dann geht deine Website live.</p>
+        <div class="step__title">Umsetzung &amp; Einrichtung</div>
+        <p class="step__desc">Sobald du zufrieden bist, setze ich die Website in WordPress um und richte alles ein: deine E-Mail-Adresse in Outlook, Gesch&auml;ftspapier als Word-Vorlage und die E-Mail-Signatur.</p>
       </div>
     </div>
   </div>
@@ -1013,7 +991,7 @@ a { color: inherit; text-decoration: none; }
         <div class="feedback__title">Sag mir, was du denkst</div>
         <p class="feedback__text">Ich freue mich &uuml;ber jede R&uuml;ckmeldung. Was gef&auml;llt dir gut? Was soll anders? Schreib mir einfach eine E-Mail.</p>
       </div>
-      <a href="mailto:info@pro4media.de?subject=Feedback%20Hammon%20Architektur%20Website" class="feedback__btn">
+      <a href="mailto:alexander.glaubitz@pro4media.de?subject=Feedback%20Hammon%20Architektur%20Website" class="feedback__btn">
         Feedback senden
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
@@ -1028,7 +1006,7 @@ a { color: inherit; text-decoration: none; }
       <img class="footer__logo" src="assets/pro4media-logo.png" alt="Pro4Media">
       <span>&copy; 2026 Pro4Media Digitalagentur</span>
     </div>
-    <span class="footer__right">Erstellt f&uuml;r Katrin Hammon &middot; <a href="mailto:info@pro4media.de">info@pro4media.de</a></span>
+    <span class="footer__right">Erstellt f&uuml;r Katrin Hammon &middot; <a href="mailto:alexander.glaubitz@pro4media.de">alexander.glaubitz@pro4media.de</a></span>
   </div>
 </footer>
 
