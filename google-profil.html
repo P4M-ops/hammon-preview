@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Unternehmensprofil einrichten &ndash; Hammon Architektur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #ffffff;
+  --bg: #f7f7f8;
+  --bg-card: #ffffff;
+  --surface-subtle: #f0f0f2;
+  --border: rgba(0,0,0,.06);
+  --border-hover: rgba(0,0,0,.12);
+  --p4m-orange: #ff7f2a;
+  --p4m-orange-light: #ff9f5a;
+  --p4m-orange-glow: rgba(255,127,42,.08);
+  --text-primary: #1a1d24;
+  --text-secondary: #4a5060;
+  --text-muted: #8a8f9e;
+  --text-light: #b0b4c0;
+  --copper: #c08040;
+  --font: 'Inter', system-ui, sans-serif;
+  --font-brand: 'Orbitron', sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --max-w: 780px;
+  --green: #1a8a45;
+  --green-bg: rgba(34, 154, 72, .08);
+  --blue: #2563eb;
+  --blue-bg: rgba(37, 99, 235, .06);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ── Animations ── */
+@keyframes up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes checkPop {
+  0% { transform: scale(0); }
+  60% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+@keyframes confettiBurst {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-40px) scale(0); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes celebrate {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.anim { animation: up .7s var(--ease) both; }
+.anim-d1 { animation-delay: .08s; }
+.anim-d2 { animation-delay: .16s; }
+.anim-d3 { animation-delay: .24s; }
+.anim-d4 { animation-delay: .32s; }
+.anim-d5 { animation-delay: .4s; }
+
+/* ── Overline ── */
+.overline {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--p4m-orange);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.overline::before {
+  content: '//';
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: -1px;
+  color: var(--p4m-orange);
+}
+
+/* ═══════════════════════
+   BRAND BAR
+   ═══════════════════════ */
+.brand-bar {
+  background: var(--white);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  animation: fadeIn .4s ease both;
+}
+.brand-bar .container {
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand-bar__logo { height: 28px; width: auto; }
+.brand-bar__back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color .3s;
+}
+.brand-bar__back:hover { color: var(--p4m-orange); }
+.brand-bar__back svg { width: 14px; height: 14px; }
+
+/* ═══════════════════════
+   HERO
+   ═══════════════════════ */
+.hero {
+  padding: 64px 0 48px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+.hero__title {
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -.5px;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+}
+.hero__text {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 600px;
+}
+.hero__meta {
+  display: flex;
+  gap: 20px;
+  margin-top: 24px;
+}
+.hero__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.hero__meta-item svg {
+  width: 14px; height: 14px;
+  color: var(--p4m-orange);
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════
+   WHY BOX
+   ═══════════════════════ */
+.why { padding: 48px 0 0; }
+.why__box {
+  background: var(--blue-bg);
+  border: 1px solid rgba(37, 99, 235, .1);
+  border-radius: 12px;
+  padding: 28px 32px;
+}
+.why__title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--blue);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.why__title svg { width: 18px; height: 18px; }
+.why__list { list-style: none; display: grid; gap: 8px; }
+.why__list li {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding-left: 24px;
+  position: relative;
+}
+.why__list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 7px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, .1);
+}
+.why__list li::after {
+  content: '\2713';
+  position: absolute;
+  left: 2.5px; top: 5px;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+/* ═══════════════════════
+   FLOATING CHECKLIST
+   ═══════════════════════ */
+.tracker {
+  position: fixed;
+  top: 50%;
+  right: 28px;
+  transform: translateY(-50%);
+  z-index: 100;
+  animation: slideIn .6s var(--ease) .5s both;
+}
+.tracker__card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 20px 18px;
+  box-shadow: 0 12px 48px rgba(0,0,0,.1), 0 2px 8px rgba(0,0,0,.04);
+  width: 220px;
+}
+.tracker__title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--p4m-orange);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tracker__title svg { width: 12px; height: 12px; }
+
+.tracker__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  cursor: pointer;
+  transition: opacity .3s;
+}
+.tracker__item:hover { opacity: .7; }
+.tracker__dot {
+  flex-shrink: 0;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--border-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .4s var(--ease);
+  position: relative;
+}
+.tracker__dot svg {
+  width: 9px; height: 9px;
+  stroke: white;
+  stroke-width: 3;
+  fill: none;
+  opacity: 0;
+  transform: scale(0);
+  transition: all .3s var(--ease);
+}
+.tracker__item.done .tracker__dot {
+  background: var(--green);
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(26, 138, 69, .15);
+}
+.tracker__item.done .tracker__dot svg {
+  opacity: 1;
+  animation: checkPop .4s var(--ease) forwards;
+}
+.tracker__label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.35;
+  transition: all .3s;
+}
+.tracker__item.done .tracker__label {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+.tracker__item.active .tracker__dot {
+  border-color: var(--p4m-orange);
+  box-shadow: 0 0 0 3px var(--p4m-orange-glow);
+}
+.tracker__item.active .tracker__label {
+  color: var(--p4m-orange);
+  font-weight: 600;
+}
+
+/* Progress ring */
+.tracker__progress {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tracker__ring {
+  width: 36px; height: 36px;
+  flex-shrink: 0;
+}
+.tracker__ring-bg {
+  fill: none;
+  stroke: var(--surface-subtle);
+  stroke-width: 3;
+}
+.tracker__ring-fill {
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 88;
+  stroke-dashoffset: 88;
+  transition: stroke-dashoffset .8s var(--ease);
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+.tracker__pct {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+.tracker__pct span {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -.3px;
+}
+
+/* All done state */
+.tracker__card.all-done {
+  border-color: rgba(26, 138, 69, .25);
+  animation: celebrate .6s var(--ease);
+}
+.tracker__card.all-done .tracker__title {
+  color: var(--green);
+}
+
+/* Mobile: bottom bar */
+.tracker-mobile {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 24px rgba(0,0,0,.08);
+  padding: 12px 20px;
+}
+.tracker-mobile__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.tracker-mobile__bar {
+  flex: 1;
+  height: 6px;
+  background: var(--surface-subtle);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.tracker-mobile__fill {
+  height: 100%;
+  background: var(--green);
+  border-radius: 3px;
+  width: 0%;
+  transition: width .5s var(--ease);
+}
+.tracker-mobile__text {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.tracker-mobile__dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  justify-content: center;
+}
+.tracker-mobile__dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--border-hover);
+  transition: all .3s var(--ease);
+}
+.tracker-mobile__dot.done {
+  background: var(--green);
+  border-color: var(--green);
+}
+.tracker-mobile__dot.active {
+  border-color: var(--p4m-orange);
+  box-shadow: 0 0 0 2px var(--p4m-orange-glow);
+}
+
+/* ═══════════════════════
+   STEPS
+   ═══════════════════════ */
+.steps-section { padding: 48px 0 64px; }
+
+.step {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px 36px;
+  margin-bottom: 20px;
+  position: relative;
+  transition: box-shadow .4s var(--ease), border-color .4s;
+}
+.step:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,.06);
+  border-color: var(--border-hover);
+}
+.step.completed {
+  border-color: rgba(26, 138, 69, .2);
+}
+.step.completed .step__num {
+  background: var(--green-bg);
+  color: var(--green);
+}
+
+/* Step connector */
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 54px; bottom: -20px;
+  width: 2px; height: 20px;
+  background: linear-gradient(to bottom, var(--border-hover), transparent);
+}
+
+.step__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+.step__num {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: var(--p4m-orange-glow);
+  color: var(--p4m-orange);
+  font-family: var(--font-brand);
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .4s var(--ease);
+}
+.step__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -.2px;
+  line-height: 1.3;
+  padding-top: 8px;
+  flex: 1;
+}
+.step__body { padding-left: 60px; }
+.step__text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.step__text strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Done badge on step */
+.step__done-badge {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--green);
+  background: var(--green-bg);
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-top: 10px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all .3s var(--ease);
+  border: none;
+  font-family: var(--font);
+}
+.step__done-badge svg {
+  width: 12px; height: 12px;
+  stroke: var(--green);
+  fill: none;
+  stroke-width: 2.5;
+  transition: stroke .3s;
+}
+.step__done-badge:hover {
+  background: rgba(192,57,43,.08);
+  color: #c0392b;
+}
+.step__done-badge:hover svg { stroke: #c0392b; }
+.step__done-badge:hover .badge-done-text { display: none; }
+.step__done-badge:hover .badge-undo-text { display: inline; }
+.step__done-badge .badge-undo-text { display: none; }
+.step.completed .step__done-badge { display: inline-flex; }
+
+/* Data box */
+.step__data {
+  background: var(--surface-subtle);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+}
+.step__data-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--p4m-orange);
+  margin-bottom: 12px;
+}
+.step__data-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 4px 16px;
+  font-size: 13px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.step__data-row:last-child { border-bottom: none; padding-bottom: 0; }
+.step__data-label { font-weight: 600; color: var(--text-primary); }
+.step__data-value { color: var(--text-secondary); word-break: break-word; }
+.step__data-value--copy {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-family: 'SF Mono', 'Consolas', monospace;
+  font-size: 12px;
+  cursor: pointer;
+  transition: border-color .3s, background .3s;
+  position: relative;
+}
+.step__data-value--copy:hover {
+  border-color: var(--p4m-orange);
+  background: var(--p4m-orange-glow);
+}
+.step__data-value--copy::after {
+  content: 'Kopiert!';
+  position: absolute;
+  right: -56px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--green);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.step__data-value--copy.copied::after { opacity: 1; }
+
+/* Tip */
+.tip {
+  background: var(--p4m-orange-glow);
+  border-left: 3px solid var(--p4m-orange);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  margin-top: 16px;
+}
+.tip__label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--p4m-orange);
+  margin-bottom: 4px;
+}
+.tip__text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════
+   STEP ACTIONS (per card)
+   ═══════════════════════ */
+
+/* 1) Toggle Switch — Step 1 */
+.step-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 14px 18px;
+  background: var(--surface-subtle);
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: background .3s;
+}
+.step-toggle:hover { background: #e8e8ec; }
+.step-toggle__switch {
+  width: 44px; height: 24px;
+  background: var(--border-hover);
+  border-radius: 12px;
+  position: relative;
+  transition: background .3s var(--ease);
+  flex-shrink: 0;
+}
+.step-toggle__switch::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 18px; height: 18px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0,0,0,.15);
+  transition: transform .3s var(--ease);
+}
+.step-toggle.active .step-toggle__switch {
+  background: var(--green);
+}
+.step-toggle.active .step-toggle__switch::after {
+  transform: translateX(20px);
+}
+.step-toggle__text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* 2) CTA Button — Step 2, 3 */
+.step-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: var(--white);
+  border: 2px solid var(--border-hover);
+  border-radius: 10px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all .3s var(--ease);
+  user-select: none;
+}
+.step-cta:hover {
+  border-color: var(--p4m-orange);
+  color: var(--p4m-orange);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0,0,0,.06);
+}
+.step-cta svg {
+  width: 16px; height: 16px;
+  stroke-width: 2;
+  fill: none;
+}
+.step-cta.confirmed {
+  border-color: var(--green);
+  background: var(--green-bg);
+  color: var(--green);
+}
+.step-cta.confirmed:hover {
+  border-color: #c0392b;
+  color: #c0392b;
+  background: rgba(192,57,43,.06);
+}
+.step-cta.confirmed svg { stroke: var(--green); }
+.step-cta.confirmed:hover svg { stroke: #c0392b; }
+
+/* 3) Mini sub-checklist — Step 6 */
+.step-subs {
+  margin-top: 20px;
+  display: grid;
+  gap: 6px;
+}
+.step-sub {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--surface-subtle);
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: background .3s;
+}
+.step-sub:hover { background: #e8e8ec; }
+.step-sub__box {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  border: 2px solid var(--border-hover);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .3s var(--ease);
+}
+.step-sub__box svg {
+  width: 10px; height: 10px;
+  stroke: white;
+  stroke-width: 3;
+  fill: none;
+  opacity: 0;
+  transform: scale(0);
+}
+.step-sub.done .step-sub__box {
+  background: var(--green);
+  border-color: var(--green);
+}
+.step-sub.done .step-sub__box svg {
+  opacity: 1;
+  animation: checkPop .3s var(--ease) forwards;
+}
+.step-sub__text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all .3s;
+}
+.step-sub.done .step-sub__text {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+/* ═══════════════════════
+   HELP BOX
+   ═══════════════════════ */
+.help { padding: 0 0 64px; }
+.help__box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 36px 40px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+}
+.help__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  letter-spacing: -.2px;
+}
+.help__text {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+.help__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--p4m-orange);
+  border: none;
+  padding: 14px 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .4s var(--ease);
+  white-space: nowrap;
+}
+.help__btn:hover {
+  background: #e67020;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(255,127,42,.25);
+}
+.help__btn svg { width: 14px; height: 14px; }
+
+/* ═══════════════════════
+   FOOTER
+   ═══════════════════════ */
+.footer {
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+  background: var(--white);
+}
+.footer .container {
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.footer__logo { height: 18px; width: auto; opacity: .5; }
+.footer__right { font-size: 11px; color: var(--text-light); }
+.footer__right a { color: var(--p4m-orange); transition: opacity .3s; }
+.footer__right a:hover { opacity: .7; }
+
+/* ═══════════════════════
+   RESPONSIVE
+   ═══════════════════════ */
+@media (max-width: 1200px) {
+  .tracker { right: 16px; }
+  .tracker__card { width: 190px; padding: 18px 16px 14px; }
+  .tracker__label { font-size: 10px; }
+}
+@media (max-width: 1024px) {
+  .tracker { display: none; }
+  .tracker-mobile { display: block; }
+  body { padding-bottom: 80px; }
+}
+@media (max-width: 700px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 36px; }
+  .hero__meta { flex-direction: column; gap: 10px; }
+  .step { padding: 24px 20px; }
+  .step__header { gap: 14px; }
+  .step__body { padding-left: 0; }
+  .step__data-row { grid-template-columns: 1fr; }
+  .step__data-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); }
+  .step:not(:last-child)::after { left: 38px; }
+  .help__box { grid-template-columns: 1fr; text-align: center; }
+  .help__btn { justify-content: center; }
+  .why__box { padding: 20px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ BRAND BAR ═══ -->
+<div class="brand-bar">
+  <div class="container" style="max-width: 1100px;">
+    <img class="brand-bar__logo" src="assets/pro4media-logo.png" alt="Pro4Media">
+    <a href="index.html" class="brand-bar__back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Zur&uuml;ck zur &Uuml;bersicht
+    </a>
+  </div>
+</div>
+
+<!-- ═══ FLOATING TRACKER ═══ -->
+<aside class="tracker" id="tracker">
+  <div class="tracker__card" id="trackerCard">
+    <div class="tracker__title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Fortschritt
+    </div>
+    <div class="tracker__item active" data-step="1" onclick="scrollToStep(1)">
+      <div class="tracker__dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <span class="tracker__label">Google-Konto</span>
+    </div>
+    <div class="tracker__item" data-step="2" onclick="scrollToStep(2)">
+      <div class="tracker__dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <span class="tracker__label">Profil erstellen</span>
+    </div>
+    <div class="tracker__item" data-step="3" onclick="scrollToStep(3)">
+      <div class="tracker__dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <span class="tracker__label">Einzugsgebiet</span>
+    </div>
+    <div class="tracker__item" data-step="4" onclick="scrollToStep(4)">
+      <div class="tracker__dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <span class="tracker__label">Kontaktdaten</span>
+    </div>
+    <div class="tracker__item" data-step="5" onclick="scrollToStep(5)">
+      <div class="tracker__dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <span class="tracker__label">Verifizierung</span>
+    </div>
+    <div class="tracker__item" data-step="6" onclick="scrollToStep(6)">
+      <div class="tracker__dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <span class="tracker__label">Profil optimieren</span>
+    </div>
+    <div class="tracker__progress">
+      <svg class="tracker__ring" viewBox="0 0 36 36">
+        <circle class="tracker__ring-bg" cx="18" cy="18" r="14"/>
+        <circle class="tracker__ring-fill" id="ringFill" cx="18" cy="18" r="14"/>
+      </svg>
+      <div class="tracker__pct">
+        <span id="pctNum">0%</span>
+        erledigt
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ═══ MOBILE TRACKER ═══ -->
+<div class="tracker-mobile" id="trackerMobile">
+  <div class="tracker-mobile__row">
+    <div class="tracker-mobile__bar">
+      <div class="tracker-mobile__fill" id="mobileFill"></div>
+    </div>
+    <span class="tracker-mobile__text" id="mobileText">0/6</span>
+  </div>
+  <div class="tracker-mobile__dots">
+    <div class="tracker-mobile__dot active" data-step="1"></div>
+    <div class="tracker-mobile__dot" data-step="2"></div>
+    <div class="tracker-mobile__dot" data-step="3"></div>
+    <div class="tracker-mobile__dot" data-step="4"></div>
+    <div class="tracker-mobile__dot" data-step="5"></div>
+    <div class="tracker-mobile__dot" data-step="6"></div>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="container">
+    <div class="overline anim">Anleitung</div>
+    <h1 class="hero__title anim anim-d1">Google Unternehmensprofil<br>einrichten</h1>
+    <p class="hero__text anim anim-d2">In 6 einfachen Schritten richtest du dein Google Unternehmensprofil ein. Damit wirst du bei Google Maps und in der lokalen Suche gefunden &ndash; kostenlos und direkt von Google.</p>
+    <div class="hero__meta anim anim-d3">
+      <span class="hero__meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Ca. 15 Minuten
+      </span>
+      <span class="hero__meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        Kostenlos
+      </span>
+      <span class="hero__meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Keine Vorkenntnisse n&ouml;tig
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY ═══ -->
+<section class="why">
+  <div class="container">
+    <div class="why__box anim anim-d3">
+      <div class="why__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Warum ist das wichtig?
+      </div>
+      <ul class="why__list">
+        <li>Du erscheinst bei <strong>&bdquo;Architekt Flensburg&ldquo;</strong> direkt in Google Maps &ndash; noch vor den normalen Suchergebnissen</li>
+        <li>Potenzielle Kunden sehen sofort deine <strong>Adresse, Telefonnummer und &Ouml;ffnungszeiten</strong></li>
+        <li>Du kannst <strong>Fotos deiner Projekte</strong> zeigen und Bewertungen sammeln</li>
+        <li>Komplett <strong>kostenlos</strong> &ndash; Google stellt das Profil als Service zur Verf&uuml;gung</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STEPS ═══ -->
+<section class="steps-section">
+  <div class="container">
+    <div class="overline anim anim-d4">Schritt f&uuml;r Schritt</div>
+
+    <!-- Step 1 — Toggle: "Ich habe ein Google-Konto" -->
+    <div class="step anim anim-d4" data-step="1" id="step-1">
+      <div class="step__header">
+        <div class="step__num">1</div>
+        <div class="step__title">Google-Konto &uuml;berpr&uuml;fen</div>
+      </div>
+      <div class="step__body">
+        <p class="step__text">Du brauchst ein Google-Konto (Gmail-Adresse). Falls du bereits eins hast, kannst du das verwenden. Falls nicht, erstelle dir unter <strong>accounts.google.com</strong> ein kostenloses Konto.</p>
+        <div class="tip">
+          <div class="tip__label">Tipp</div>
+          <div class="tip__text">Du kannst auch deine bestehende E-Mail-Adresse (z.B. katrin@hammon-architektur.de) als Google-Konto verwenden &ndash; du brauchst nicht zwingend eine @gmail.com-Adresse.</div>
+        </div>
+        <div class="step-toggle" onclick="toggleStep1(this)">
+          <div class="step-toggle__switch"></div>
+          <span class="step-toggle__text">Ich habe ein Google-Konto</span>
+        </div>
+        <div class="step__done-badge" onclick="undoStep(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span class="badge-done-text">Erledigt</span><span class="badge-undo-text">R&uuml;ckg&auml;ngig?</span></div>
+      </div>
+    </div>
+
+    <!-- Step 2 — Button: "Profil angelegt" -->
+    <div class="step anim anim-d4" data-step="2" id="step-2">
+      <div class="step__header">
+        <div class="step__num">2</div>
+        <div class="step__title">Unternehmensprofil erstellen</div>
+      </div>
+      <div class="step__body">
+        <p class="step__text">Gehe auf <strong>business.google.com</strong> und klicke auf <strong>&bdquo;Jetzt verwalten&ldquo;</strong>. Google f&uuml;hrt dich durch einen Assistenten. Gib folgende Daten ein:</p>
+        <div class="step__data">
+          <div class="step__data-title">Deine Unternehmensdaten</div>
+          <div class="step__data-row">
+            <span class="step__data-label">Unternehmensname</span>
+            <span class="step__data-value step__data-value--copy" onclick="copyText(this, 'Hammon Architektur')">Hammon Architektur</span>
+          </div>
+          <div class="step__data-row">
+            <span class="step__data-label">Kategorie</span>
+            <span class="step__data-value step__data-value--copy" onclick="copyText(this, 'Architekt')">Architekt</span>
+          </div>
+          <div class="step__data-row">
+            <span class="step__data-label">Adresse</span>
+            <span class="step__data-value">Gr&ouml;nholm 7b, 24991 Freienwill</span>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip__label">Tipp</div>
+          <div class="tip__text">Bei der Kategorie-Suche &bdquo;Architekt&ldquo; eingeben. Google schl&auml;gt dir dann passende Kategorien vor &ndash; w&auml;hle <strong>&bdquo;Architekt&ldquo;</strong> (nicht &bdquo;Architekturbedarf&ldquo; oder &bdquo;Architekturb&uuml;ro&ldquo;).</div>
+        </div>
+        <button class="step-cta" onclick="confirmStep(this, 2)">
+          <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Profil angelegt &ndash; weiter!
+        </button>
+        <div class="step__done-badge" onclick="undoStep(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span class="badge-done-text">Erledigt</span><span class="badge-undo-text">R&uuml;ckg&auml;ngig?</span></div>
+      </div>
+    </div>
+
+    <!-- Step 3 — Button: "Gebiet eingetragen" -->
+    <div class="step anim anim-d5" data-step="3" id="step-3">
+      <div class="step__header">
+        <div class="step__num">3</div>
+        <div class="step__title">Einzugsgebiet festlegen</div>
+      </div>
+      <div class="step__body">
+        <p class="step__text">Google fragt, ob du Kunden auch au&szlig;erhalb deines Standorts bedienst. W&auml;hle <strong>&bdquo;Ja&ldquo;</strong> und gib dein Einzugsgebiet an:</p>
+        <div class="step__data">
+          <div class="step__data-title">Einzugsgebiet</div>
+          <div class="step__data-row">
+            <span class="step__data-label">Regionen</span>
+            <span class="step__data-value">Flensburg, Schleswig-Flensburg, Nordfriesland, Rendsburg-Eckernf&ouml;rde</span>
+          </div>
+        </div>
+        <p class="step__text" style="margin-top: 12px;">Du kannst die Regionen einzeln eingeben &ndash; Google macht Vorschl&auml;ge w&auml;hrend du tippst.</p>
+        <button class="step-cta" onclick="confirmStep(this, 3)">
+          <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+          Einzugsgebiet eingetragen
+        </button>
+        <div class="step__done-badge" onclick="undoStep(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span class="badge-done-text">Erledigt</span><span class="badge-undo-text">R&uuml;ckg&auml;ngig?</span></div>
+      </div>
+    </div>
+
+    <!-- Step 4 — Auto-complete when all fields copied -->
+    <div class="step anim anim-d5" data-step="4" id="step-4">
+      <div class="step__header">
+        <div class="step__num">4</div>
+        <div class="step__title">Kontaktdaten eingeben</div>
+      </div>
+      <div class="step__body">
+        <p class="step__text">Gib deine Kontaktdaten ein, damit Interessenten dich direkt erreichen k&ouml;nnen. Klicke auf die Felder, um sie in die Zwischenablage zu kopieren:</p>
+        <div class="step__data">
+          <div class="step__data-title">Kontaktinformationen</div>
+          <div class="step__data-row">
+            <span class="step__data-label">Telefon</span>
+            <span class="step__data-value step__data-value--copy" onclick="copyText(this, '0160 94182990')">0160 94182990</span>
+          </div>
+          <div class="step__data-row">
+            <span class="step__data-label">Website</span>
+            <span class="step__data-value step__data-value--copy" onclick="copyText(this, 'https://hammon-architektur.de')">https://hammon-architektur.de</span>
+          </div>
+          <div class="step__data-row">
+            <span class="step__data-label">E-Mail</span>
+            <span class="step__data-value step__data-value--copy" onclick="copyText(this, 'katrin@hammon-architektur.de')">katrin@hammon-architektur.de</span>
+          </div>
+        </div>
+        <button class="step-cta" onclick="confirmStep(this, 4)">
+          <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Kontaktdaten eingetragen
+        </button>
+        <div class="step__done-badge" onclick="undoStep(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span class="badge-done-text">Erledigt</span><span class="badge-undo-text">R&uuml;ckg&auml;ngig?</span></div>
+      </div>
+    </div>
+
+    <!-- Step 5 — Swipe to confirm -->
+    <div class="step anim anim-d5" data-step="5" id="step-5">
+      <div class="step__header">
+        <div class="step__num">5</div>
+        <div class="step__title">Verifizierung durchf&uuml;hren</div>
+      </div>
+      <div class="step__body">
+        <p class="step__text">Google muss best&auml;tigen, dass du wirklich die Inhaberin bist. Daf&uuml;r gibt es mehrere M&ouml;glichkeiten:</p>
+        <div class="step__data">
+          <div class="step__data-title">Verifizierungsmethoden</div>
+          <div class="step__data-row">
+            <span class="step__data-label">Postkarte</span>
+            <span class="step__data-value">Google schickt eine Postkarte mit Code an deine Adresse (ca. 5&ndash;14 Tage)</span>
+          </div>
+          <div class="step__data-row">
+            <span class="step__data-label">Telefon</span>
+            <span class="step__data-value">Anruf oder SMS mit Code (nicht immer verf&uuml;gbar)</span>
+          </div>
+          <div class="step__data-row">
+            <span class="step__data-label">E-Mail</span>
+            <span class="step__data-value">Code per E-Mail (nicht immer verf&uuml;gbar)</span>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip__label">Wichtig</div>
+          <div class="tip__text">Die Postkarten-Methode ist am h&auml;ufigsten. Wenn die Karte kommt, den 5-stelligen Code einfach auf <strong>business.google.com</strong> eingeben.</div>
+        </div>
+        <button class="step-cta" onclick="confirmStep(this, 5)">
+          <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Verifizierung gestartet
+        </button>
+        <div class="step__done-badge" onclick="undoStep(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span class="badge-done-text">Erledigt</span><span class="badge-undo-text">R&uuml;ckg&auml;ngig?</span></div>
+      </div>
+    </div>
+
+    <!-- Step 6 — Sub-checklist -->
+    <div class="step anim anim-d5" data-step="6" id="step-6">
+      <div class="step__header">
+        <div class="step__num">6</div>
+        <div class="step__title">Profil aufh&uuml;bschen</div>
+      </div>
+      <div class="step__body">
+        <p class="step__text">Nach der Verifizierung kannst du dein Profil optimieren. Hake ab, was du erledigt hast &ndash; der Schritt z&auml;hlt als fertig, wenn mindestens 3 Punkte abgehakt sind:</p>
+        <div class="step-subs" id="step6subs">
+          <div class="step-sub" onclick="toggleSub(this)">
+            <div class="step-sub__box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span class="step-sub__text">&Ouml;ffnungszeiten eingetragen</span>
+          </div>
+          <div class="step-sub" onclick="toggleSub(this)">
+            <div class="step-sub__box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span class="step-sub__text">Unternehmensbeschreibung hinzugef&uuml;gt</span>
+          </div>
+          <div class="step-sub" onclick="toggleSub(this)">
+            <div class="step-sub__box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span class="step-sub__text">Projektfotos hochgeladen</span>
+          </div>
+          <div class="step-sub" onclick="toggleSub(this)">
+            <div class="step-sub__box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span class="step-sub__text">Logo hochgeladen</span>
+          </div>
+          <div class="step-sub" onclick="toggleSub(this)">
+            <div class="step-sub__box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span class="step-sub__text">Leistungen eingetragen</span>
+          </div>
+        </div>
+        <div class="tip" style="margin-top: 16px;">
+          <div class="tip__label">Profi-Tipp</div>
+          <div class="tip__text">Profile mit Fotos erhalten <strong>42% mehr Routenanfragen</strong> und <strong>35% mehr Klicks</strong> auf die Website. Schick mir 3&ndash;5 gute Projektfotos, ich optimiere die Gr&ouml;&szlig;e f&uuml;r dich.</div>
+        </div>
+        <div class="step__done-badge" onclick="undoStep(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> <span class="badge-done-text">Erledigt</span><span class="badge-undo-text">R&uuml;ckg&auml;ngig?</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ HELP ═══ -->
+<section class="help">
+  <div class="container">
+    <div class="help__box anim">
+      <div>
+        <div class="help__title">Brauchst du Hilfe?</div>
+        <p class="help__text">Wenn du irgendwo nicht weiterkommst oder Fragen hast &ndash; schreib mir einfach. Ich kann dir auch bei der Beschreibung und den Fotos helfen.</p>
+      </div>
+      <a href="mailto:alexander.glaubitz@pro4media.de?subject=Frage%20zum%20Google%20Unternehmensprofil" class="help__btn">
+        Frage stellen
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container" style="max-width: 1100px;">
+    <div class="footer__left">
+      <img class="footer__logo" src="assets/pro4media-logo.png" alt="Pro4Media">
+      <span>&copy; 2026 Pro4Media Digitalagentur</span>
+    </div>
+    <span class="footer__right">Erstellt f&uuml;r Katrin Hammon &middot; <a href="mailto:alexander.glaubitz@pro4media.de">alexander.glaubitz@pro4media.de</a></span>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════
+   STATE
+   ═══════════════════════ */
+var state = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false };
+var TOTAL = 6;
+var CIRCUMFERENCE = 2 * Math.PI * 14; // ~88
+
+/* Original button labels — needed for undo */
+var btnLabels = {
+  2: '<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Profil angelegt &ndash; weiter!',
+  3: '<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg> Einzugsgebiet eingetragen',
+  4: '<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Kontaktdaten eingetragen',
+  5: '<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Verifizierung gestartet'
+};
+var confirmedLabel = '<svg viewBox="0 0 24 24" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg> Erledigt &ndash; klick zum R&uuml;ckg&auml;ngig';
+
+function loadState() {
+  var saved = localStorage.getItem('hammon-gbp-state');
+  if (saved) {
+    var parsed = JSON.parse(saved);
+    for (var k in parsed) state[k] = parsed[k];
+  }
+  for (var s = 1; s <= 6; s++) {
+    if (state[s]) restoreStepUI(s);
+  }
+  updateTracker();
+}
+
+function saveState() {
+  localStorage.setItem('hammon-gbp-state', JSON.stringify(state));
+}
+
+function restoreStepUI(stepNum) {
+  var stepEl = document.getElementById('step-' + stepNum);
+  stepEl.classList.add('completed');
+
+  if (stepNum === 1) {
+    var toggle = stepEl.querySelector('.step-toggle');
+    if (toggle) toggle.classList.add('active');
+  }
+  if (stepNum >= 2 && stepNum <= 5) {
+    var btn = stepEl.querySelector('.step-cta');
+    if (btn) {
+      btn.classList.add('confirmed');
+      btn.innerHTML = confirmedLabel;
+    }
+  }
+  if (stepNum === 6) {
+    var subState = localStorage.getItem('hammon-gbp-subs');
+    if (subState) {
+      var subs = JSON.parse(subState);
+      var subEls = document.querySelectorAll('#step6subs .step-sub');
+      subEls.forEach(function(el, i) { if (subs[i]) el.classList.add('done'); });
+    }
+  }
+}
+
+function completeStep(stepNum) {
+  if (state[stepNum]) return;
+  state[stepNum] = true;
+  saveState();
+  document.getElementById('step-' + stepNum).classList.add('completed');
+  updateTracker();
+}
+
+function uncompleteStep(stepNum) {
+  state[stepNum] = false;
+  saveState();
+  document.getElementById('step-' + stepNum).classList.remove('completed');
+  updateTracker();
+}
+
+/* ═══════════════════════
+   UNDO — triggered by done-badge or re-clicking confirmed button
+   ═══════════════════════ */
+function undoStep(badgeEl) {
+  var stepEl = badgeEl.closest('.step');
+  var stepNum = parseInt(stepEl.dataset.step);
+  resetStepUI(stepNum);
+  uncompleteStep(stepNum);
+}
+
+function resetStepUI(stepNum) {
+  var stepEl = document.getElementById('step-' + stepNum);
+
+  if (stepNum === 1) {
+    var toggle = stepEl.querySelector('.step-toggle');
+    if (toggle) toggle.classList.remove('active');
+  }
+  if (stepNum >= 2 && stepNum <= 5) {
+    var btn = stepEl.querySelector('.step-cta');
+    if (btn) {
+      btn.classList.remove('confirmed');
+      btn.innerHTML = btnLabels[stepNum];
+    }
+  }
+  if (stepNum === 6) {
+    var subs = document.querySelectorAll('#step6subs .step-sub');
+    subs.forEach(function(s) { s.classList.remove('done'); });
+    localStorage.removeItem('hammon-gbp-subs');
+  }
+}
+
+/* ═══════════════════════
+   TRACKER UPDATE
+   ═══════════════════════ */
+function updateTracker() {
+  var done = 0;
+  for (var s = 1; s <= TOTAL; s++) {
+    if (state[s]) done++;
+    var item = document.querySelector('.tracker__item[data-step="' + s + '"]');
+    if (item) {
+      item.classList.toggle('done', state[s]);
+      item.classList.remove('active');
+    }
+    var dot = document.querySelector('.tracker-mobile__dot[data-step="' + s + '"]');
+    if (dot) {
+      dot.classList.toggle('done', state[s]);
+      dot.classList.remove('active');
+    }
+  }
+  for (var s = 1; s <= TOTAL; s++) {
+    if (!state[s]) {
+      var item = document.querySelector('.tracker__item[data-step="' + s + '"]');
+      if (item) item.classList.add('active');
+      var dot = document.querySelector('.tracker-mobile__dot[data-step="' + s + '"]');
+      if (dot) dot.classList.add('active');
+      break;
+    }
+  }
+  var pct = Math.round((done / TOTAL) * 100);
+  var offset = CIRCUMFERENCE - (CIRCUMFERENCE * pct / 100);
+  document.getElementById('ringFill').style.strokeDashoffset = offset;
+  document.getElementById('pctNum').textContent = pct + '%';
+  document.getElementById('mobileFill').style.width = pct + '%';
+  document.getElementById('mobileText').textContent = done + '/' + TOTAL;
+  document.getElementById('trackerCard').classList.toggle('all-done', done === TOTAL);
+}
+
+function scrollToStep(num) {
+  var el = document.getElementById('step-' + num);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+/* ═══════════════════════
+   STEP 1 — Toggle switch
+   ═══════════════════════ */
+function toggleStep1(el) {
+  el.classList.toggle('active');
+  if (el.classList.contains('active')) {
+    completeStep(1);
+  } else {
+    uncompleteStep(1);
+  }
+}
+
+/* ═══════════════════════
+   STEP 2–5 — Confirm buttons (toggle)
+   ═══════════════════════ */
+function confirmStep(btn, stepNum) {
+  if (btn.classList.contains('confirmed')) {
+    /* Undo */
+    btn.classList.remove('confirmed');
+    btn.innerHTML = btnLabels[stepNum];
+    uncompleteStep(stepNum);
+  } else {
+    /* Confirm */
+    btn.classList.add('confirmed');
+    btn.innerHTML = confirmedLabel;
+    completeStep(stepNum);
+  }
+}
+
+/* ═══════════════════════
+   STEP 6 — Sub-checklist
+   ═══════════════════════ */
+function toggleSub(el) {
+  el.classList.toggle('done');
+  var subs = document.querySelectorAll('#step6subs .step-sub');
+  var doneCount = document.querySelectorAll('#step6subs .step-sub.done').length;
+
+  var subState = [];
+  subs.forEach(function(s) { subState.push(s.classList.contains('done')); });
+  localStorage.setItem('hammon-gbp-subs', JSON.stringify(subState));
+
+  if (doneCount >= 3) {
+    completeStep(6);
+  } else {
+    uncompleteStep(6);
+  }
+}
+
+/* ═══════════════════════
+   COPY HELPER
+   ═══════════════════════ */
+function copyText(el, text) {
+  navigator.clipboard.writeText(text).then(function() {
+    el.classList.add('copied');
+    setTimeout(function() { el.classList.remove('copied'); }, 1500);
+  });
+}
+
+/* ═══════════════════════
+   INIT
+   ═══════════════════════ */
+loadState();
+</script>
+
+</body>
+</html>
