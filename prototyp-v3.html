@@ -58,7 +58,7 @@
       background: var(--cream);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
-      padding-top: 42px;
+      padding-top: 0;
     }
     img { max-width: 100%; height: auto; display: block; }
     a { color: inherit; text-decoration: none; }
@@ -146,7 +146,7 @@
 
     /* ===== HEADER ===== */
     header {
-      position: fixed; top: 42px; left: 0; right: 0; z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 24px 0;
       transition: all 0.5s var(--ease);
     }
@@ -526,16 +526,37 @@
       border-radius: 6px;
       padding: 40px 28px;
       transition: transform 0.4s var(--ease);
+      border-top: 3px solid var(--copper);
     }
     .step:hover { transform: translateY(-3px); }
+    .step-head {
+      display: flex; align-items: baseline; gap: 12px;
+      margin-bottom: 8px;
+    }
     .step-num {
-      font-size: 48px; font-weight: 800;
-      color: var(--copper); opacity: 0.2;
-      line-height: 1; margin-bottom: 16px;
+      font-size: 36px; font-weight: 800;
+      color: var(--copper); opacity: 0.25;
+      line-height: 1;
       letter-spacing: -2px;
     }
-    .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
-    .step p { font-size: 15px; line-height: 1.7; color: var(--text-body); }
+    .step-phase {
+      font-size: 10px; font-weight: 600; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--copper); opacity: 0.7;
+    }
+    .step h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .step-intro { font-size: 14px; line-height: 1.7; color: var(--text-body); margin-bottom: 20px; }
+    .step-list { list-style: none; padding: 0; margin: 0; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 16px; }
+    .step-list li {
+      font-size: 13px; line-height: 1.5; color: var(--text-muted);
+      padding: 5px 0 5px 22px; position: relative;
+    }
+    .step-list li::before {
+      content: ''; position: absolute; left: 0; top: 11px;
+      width: 10px; height: 5px;
+      border-left: 1.5px solid var(--copper);
+      border-bottom: 1.5px solid var(--copper);
+      transform: rotate(-45deg);
+    }
 
     /* ===== CONTACT ===== */
     .contact {
@@ -755,8 +776,8 @@
   <div style="display:flex;align-items:center;gap:16px;">
     <div style="display:flex;gap:3px;background:rgba(255,255,255,.06);border-radius:6px;padding:3px;">
       <a href="prototyp-v1.html" style="font-size:10px;font-weight:500;padding:4px 12px;border-radius:4px;text-decoration:none;color:rgba(248,246,243,.5);transition:all .2s;">v1</a>
-      <a href="prototyp.html" style="font-size:10px;font-weight:600;padding:4px 12px;border-radius:4px;text-decoration:none;background:#c08040;color:#0e0e0e;transition:all .2s;">v2</a>
-      <a href="prototyp-v3.html" style="font-size:10px;font-weight:500;padding:4px 12px;border-radius:4px;text-decoration:none;color:rgba(248,246,243,.5);transition:all .2s;">v3 Aktuell</a>
+      <a href="prototyp.html" style="font-size:10px;font-weight:500;padding:4px 12px;border-radius:4px;text-decoration:none;color:rgba(248,246,243,.5);transition:all .2s;">v2</a>
+      <a href="prototyp-v3.html" style="font-size:10px;font-weight:600;padding:4px 12px;border-radius:4px;text-decoration:none;background:#c08040;color:#0e0e0e;transition:all .2s;">v3 Aktuell</a>
     </div>
     <span style="font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(248,246,243,.4);">Website Prototyp</span>
   </div>
@@ -921,7 +942,7 @@
       <div class="cards-row">
         <div class="card reveal">
           <div class="card-img">
-            <img src="assets/skizze-neubau.png" alt="Architekturskizze Neubau">
+            <img src="assets/skizze-neubau-v3.png" alt="Architekturskizze Neubau">
           </div>
           <div class="card-body">
             <h3>Neubau und Entwurf</h3>
@@ -930,7 +951,7 @@
         </div>
         <div class="card reveal d1">
           <div class="card-img">
-            <img src="assets/skizze-reetdach.png" alt="Architekturskizze Reetdachhaus mit Anbau">
+            <img src="assets/skizze-reetdach-v3.png" alt="Architekturskizze Reetdachhaus mit Anbau">
           </div>
           <div class="card-body">
             <h3>Bestand und Umbau</h3>
@@ -939,7 +960,7 @@
         </div>
         <div class="card reveal d2">
           <div class="card-img">
-            <img src="assets/skizze-beratung.png" alt="Architekturskizze Beratung und Planung">
+            <img src="assets/skizze-beratung-v3.png" alt="Architekturskizze Beratung und Planung">
           </div>
           <div class="card-body">
             <h3>Beratung und Verfahren</h3>
@@ -951,12 +972,11 @@
       <!-- §35 Feature -->
       <div class="feature reveal d1">
         <div class="feature-img">
-          <img src="assets/aussenbereich-realistisch.png" alt="Farmhaus im Außenbereich Schleswig-Holstein">
+          <img src="assets/skizze-aussenbereich-v3.png" alt="Lageplan Außenbereich Schleswig-Holstein">
         </div>
         <div class="feature-body">
-          <div class="overline">Spezialgebiet</div>
           <h3>Bauen im Außenbereich<br>nach § 35 BauGB</h3>
-          <p>Ihr Grundstück liegt im Außenbereich und wird nach dem BauGB § 35 bewertet? Ob Umnutzung eines landwirtschaftlichen Gebäudes, Ersatzbau oder Neubau als privilegiertes Vorhaben. Ich habe Erfahrung mit den Anforderungen der Genehmigungsbehörden in der Region und bringe Ihr Projekt auf den Weg.</p>
+          <p>Ob Umnutzung eines landwirtschaftlichen Gebäudes, Ersatzbau, Erweiterungen oder Neubau als privilegiertes Vorhaben. Ich habe Erfahrungen mit den Vorgaben des BauGB § 35 und bringe Ihr Projekt auf den Weg.</p>
           <div>
             <a href="#kontakt" class="btn btn-copper">
               Projekt besprechen
@@ -978,19 +998,49 @@
       </div>
       <div class="steps">
         <div class="step reveal">
-          <div class="step-num">01</div>
-          <h3>Grundstück und Erstgespräch</h3>
-          <p>Wir treffen uns bei Ihnen vor Ort. Ich schaue mir das Grundstück an, höre Ihre Vorstellungen und prüfe, was baurechtlich möglich ist. </p>
+          <div class="step-head">
+            <div class="step-num">01</div>
+            <span class="step-phase">Leistungsphase 1</span>
+          </div>
+          <h3>Projektaufnahme</h3>
+          <p class="step-intro">Erstgespräch und Grundlagenermittlung — ich prüfe die Machbarkeit Ihres Vorhabens und schaffe die Basis für alle weiteren Schritte.</p>
+          <ul class="step-list">
+            <li>Sichtung von Grundstück oder Gebäude</li>
+            <li>Prüfung der Machbarkeit</li>
+            <li>Bestandsaufnahme & Akteneinsicht</li>
+            <li>B-Plan, Katasterplan, Leitungsauskünfte</li>
+            <li>Klärung baurechtlicher Rahmenbedingungen</li>
+          </ul>
         </div>
         <div class="step reveal d1">
-          <div class="step-num">02</div>
-          <h3>Entwurf und Genehmigungsplanung</h3>
-          <p>Auf Basis unserer Abstimmung entwickle ich den Entwurf mit Grundrissen, Ansichten und Bauvoranfrage. Sie sehen jeden Zwischenstand und entscheiden mit.</p>
+          <div class="step-head">
+            <div class="step-num">02</div>
+            <span class="step-phase">Leistungsphasen 2–7</span>
+          </div>
+          <h3>Planung</h3>
+          <p class="step-intro">Vom ersten Entwurf bis zur Vergabe — Sie sind bei jedem Schritt eingebunden und entscheiden mit.</p>
+          <ul class="step-list">
+            <li>Vorplanung und Entwurfsplanung</li>
+            <li>Kostenermittlung</li>
+            <li>Bau- und Leistungsbeschreibung</li>
+            <li>Genehmigungsplanung</li>
+            <li>Vergabe der Bauleistungen</li>
+          </ul>
         </div>
         <div class="step reveal d2">
-          <div class="step-num">03</div>
-          <h3>Bauantrag und Genehmigung</h3>
-          <p>Ich stelle alle Unterlagen zusammen und reiche den Bauantrag bei der zuständigen Behörde ein. Rückfragen kläre ich direkt. Sie erhalten Ihre Baugenehmigung.</p>
+          <div class="step-head">
+            <div class="step-num">03</div>
+            <span class="step-phase">Leistungsphasen 8–9</span>
+          </div>
+          <h3>Objektüberwachung & Fertigstellung</h3>
+          <p class="step-intro">Koordination und Bauleitung in guter Zusammenarbeit mit Fachplanern und Unternehmen bis zur Fertigstellung.</p>
+          <ul class="step-list">
+            <li>Überwachung der Bauausführung</li>
+            <li>Koordination mit Fachplanern</li>
+            <li>Abnahme der Bauleistungen</li>
+            <li>Baufertigstellung & Dokumentation</li>
+            <li>Mängelmanagement & Objektbetreuung</li>
+          </ul>
         </div>
       </div>
     </div>
