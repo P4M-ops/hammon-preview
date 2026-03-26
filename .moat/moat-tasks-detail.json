@@ -1,0 +1,212 @@
+[
+  {
+    "id": "a9f9071f-742f-489c-a6c0-986ae09e6d01",
+    "title": "List",
+    "comment": "Klären der Aufgabenstellung\nSichtung von Grundstück oder Gebäude\nBestandsaufnahme & Akteneinsicht\nBedarfsplanung und Prüfen der Machbarkeit\nKlärung baurechtlicher Rahmenbedingungen \nAuswahl anderer an der Planung fachlicher Beteiligter",
+    "selector": "div.steps:nth-child(2) > div.step.reveal:nth-child(1) > ul.step-list",
+    "boundingRect": {
+      "x": 375,
+      "y": 297,
+      "w": 329,
+      "h": 165
+    },
+    "screenshotPath": "./screenshots/moat-1774513519018-8mejpjk1e.png",
+    "status": "done",
+    "timestamp": 1774513519083
+  },
+  {
+    "id": "5e03b0b1-bdd6-48a8-a4ea-ca5ff4d395fa",
+    "title": "List",
+    "comment": "Vorplanung und Entwurfsplanung\nKostenermittlung\nGenehmigungsplanung\nAusführungsplanung\nBau- und Leistungsbeschreibung\nVergabe der Bauleistungen",
+    "selector": "div.steps:nth-child(2) > div.step.reveal:nth-child(2) > ul.step-list",
+    "boundingRect": {
+      "x": 788,
+      "y": 297,
+      "w": 329,
+      "h": 165
+    },
+    "screenshotPath": "./screenshots/moat-1774513535629-chdrf0qrw.png",
+    "status": "done",
+    "timestamp": 1774513535699
+  },
+  {
+    "id": "6f01236a-561a-487c-a2eb-5f5465f19b0b",
+    "title": "List",
+    "comment": "Überwachung der Bauausführung\nKoordination der am Bau Beteiligten\nRechnungsprüfung\nAbnahme der Bauleistungen\nBaufertigstellung & Dokumentation\nMängelmanagement & Objektbetreuung",
+    "selector": "div.steps:nth-child(2) > div.step.reveal:nth-child(3) > ul.step-list",
+    "boundingRect": {
+      "x": 1201,
+      "y": 297,
+      "w": 329,
+      "h": 165
+    },
+    "screenshotPath": "./screenshots/moat-1774513559809-tdeh1hy5s.png",
+    "status": "done",
+    "timestamp": 1774513559879
+  },
+  {
+    "id": "7f0232fb-3d46-4aa1-a64e-d4a7c04b901a",
+    "title": "List",
+    "comment": "bitte als ersten Stichpunkt hinzufügen: Klären der Aufgabenstellung",
+    "selector": "div.steps:nth-child(2) > div.step.reveal:nth-child(1) > ul.step-list",
+    "boundingRect": {
+      "x": 375,
+      "y": 355,
+      "w": 329,
+      "h": 184
+    },
+    "screenshotPath": "./screenshots/moat-1774514162946-y3d3cihqb.png",
+    "status": "done",
+    "timestamp": 1774514163011
+  },
+  {
+    "id": "8ae19fae-ba69-4299-963f-a1e39afb4ab4",
+    "title": "List",
+    "comment": "Bitte als ersten Stichpunkt hinzufügen: Vorplanung und Entwurfsplanung",
+    "selector": "div.steps:nth-child(2) > div.step.reveal:nth-child(2) > ul.step-list",
+    "boundingRect": {
+      "x": 788,
+      "y": 355,
+      "w": 329,
+      "h": 165
+    },
+    "screenshotPath": "./screenshots/moat-1774514208848-bpfta4fwb.png",
+    "status": "done",
+    "timestamp": 1774514208909
+  },
+  {
+    "id": "ba216e44-a24c-4e13-a76c-ff4873651588",
+    "title": "List",
+    "comment": "Bitte als ersten Stichpunkt hinzufügen: Überwachung der Bauausführung",
+    "selector": "div.steps:nth-child(2) > div.step.reveal:nth-child(3) > ul.step-list",
+    "boundingRect": {
+      "x": 1201,
+      "y": 355,
+      "w": 329,
+      "h": 165
+    },
+    "screenshotPath": "./screenshots/moat-1774514231133-d3c3npbld.png",
+    "status": "done",
+    "timestamp": 1774514231203
+  },
+  {
+    "id": "423ae8e2-ce5d-4f00-acc8-385a0a7cbb6a",
+    "title": "Image: Architekturskizze Reetdachhaus mit Anbau",
+    "comment": "hier bitte dieses bild setzen \"C:\\Users\\alexa\\Documents\\Agentur\\pro4media\\Kunden\\hammon-architektur\\hammon-preview\\assets\\skizze-bestand.png\"",
+    "selector": "div.card.reveal:nth-child(2) > div.card-img:nth-child(1) > img",
+    "boundingRect": {
+      "x": 759,
+      "y": 111,
+      "w": 388,
+      "h": 243
+    },
+    "screenshotPath": "./screenshots/moat-1774514466390-ymrb43pai.png",
+    "status": "done",
+    "timestamp": 1774514466469
+  },
+  {
+    "id": "572e77e3-a516-4378-b973-990b451ddc3a",
+    "title": "Image: Architekturskizze Beratung und Planung",
+    "comment": "Vielleicht nur in einer Ecke ein Teil eines Grundrisses darstellen und dann ein Blatt Papier, auf dem der Bleistift und der Dreikantmaßstab liegt, darstellen. Die Grundrissdarstellung passt nicht so gut zur Projektentwicklung, Bauvoranfrage oder Machbarkeitsstudie.",
+    "selector": "div.card.reveal:nth-child(3) > div.card-img:nth-child(1) > img",
+    "boundingRect": {
+      "x": 1171,
+      "y": 311,
+      "w": 388,
+      "h": 243
+    },
+    "screenshotPath": "./screenshots/moat-1774514556179-5jkriaa6r.png",
+    "status": "done",
+    "timestamp": 1774514556241
+  },
+  {
+    "id": "c9cf628d-9d73-455a-a940-2888becefc22",
+    "title": "Container",
+    "comment": "das bild muss ersetzt werden weil wir auf der gesamten seite 3 bilder haben die ähnlich sind, hier wünscht sich die Kundin ein Arbeitsfoto, ich habe dir eine vorlage/beispiel gestzt, aber dies bild können wir nicht 1 zu 1 verwenden da es schwarz/weiß ist und nicht freigestellt ist und passen würde, nutze das bild als grundlagfe und erstellle ein passendes professionelles bild mit nano banana \"C:\\Users\\alexa\\Documents\\Agentur\\pro4media\\Kunden\\hammon-architektur\\assets\\katrin-portrait-sw-plan-seitlich.jpg\"",
+    "selector": "div.container > div.philosophy-grid > div.philosophy-portrait.reveal:nth-child(2)",
+    "boundingRect": {
+      "x": 1099,
+      "y": 180,
+      "w": 459,
+      "h": 540
+    },
+    "screenshotPath": "./screenshots/moat-1774514787829-1gj0utprg.png",
+    "status": "done",
+    "timestamp": 1774514787894
+  },
+  {
+    "id": "5044b6ae-ecf7-4827-a2cb-009f6789ea12",
+    "title": "Image: Architekturskizze Beratung und Verfahren",
+    "comment": "das ist jetzt so krass am rand positioniert der inhaltr des bildes, außerdem ist blatt, stift und dreikantmaßstab nicht im skizzenstil, bitte überlege dir wie du die vorherige vorgabe hier besser umsetzt",
+    "selector": "div.card.reveal:nth-child(3) > div.card-img:nth-child(1) > img",
+    "boundingRect": {
+      "x": 1171,
+      "y": 171,
+      "w": 388,
+      "h": 243
+    },
+    "screenshotPath": "./screenshots/moat-1774516866076-4wwsbiaar.png",
+    "status": "done",
+    "timestamp": 1774516866144
+  },
+  {
+    "id": "ccdcaa46-a328-458e-97f1-375e752df069",
+    "title": "Image: Katrin Hammon bei der Arbeit",
+    "comment": "bitte setze hier das freigestellte bild  \"C:\\Users\\alexa\\Documents\\Agentur\\pro4media\\Kunden\\hammon-architektur\\hammon-preview\\assets\\portrait-working-frei.png\" passend ein",
+    "selector": "div.philosophy-grid > div.philosophy-portrait.reveal:nth-child(2) > img",
+    "boundingRect": {
+      "x": 1149,
+      "y": -78,
+      "w": 360,
+      "h": 540
+    },
+    "screenshotPath": "./screenshots/moat-1774517331016-3fiav4nfu.png",
+    "status": "done",
+    "timestamp": 1774517331078
+  },
+  {
+    "id": "778fabb5-24a6-49b8-a1ee-655772fddce1",
+    "title": "Image: Architekturskizze Beratung und Verfahren",
+    "comment": "das ergeniss passt nicht auch nicht im zussamenhang zu den anderen bildern der anderen cards. die kundin hatte ursprünglich das dazu gesagt: Vielleicht nur ein wenig in einer Ecke ein Teil eines Grundrisses darstellen und dann ein Blatt Papier, auf dem der Bleistift und der Dreikantmaßstab liegt, darstellen, alles im selben stil wie die anderen bilder danebenDie Grundrissdarstellung passt nicht so gut zur Projektentwicklung, Bauvoranfrage oder Machbarkeitsstudie.",
+    "selector": "div.card.reveal:nth-child(3) > div.card-img:nth-child(1) > img",
+    "boundingRect": {
+      "x": 1171,
+      "y": 113,
+      "w": 388,
+      "h": 243
+    },
+    "screenshotPath": "./screenshots/moat-1774517510916-i0e008ppw.png",
+    "status": "done",
+    "timestamp": 1774517510996
+  },
+  {
+    "id": "cc454306-9da7-497e-b63c-1eebe4dc2735",
+    "title": "Image: Architekturskizze Beratung und Verfahren",
+    "comment": "das motiv/Bildinhalt könnte etwas gfrößer, wir haben zuviel freiraum links im bild",
+    "selector": "div.card.reveal:nth-child(3) > div.card-img:nth-child(1) > img",
+    "boundingRect": {
+      "x": 1171,
+      "y": 224,
+      "w": 388,
+      "h": 243
+    },
+    "screenshotPath": "./screenshots/moat-1774517962131-qoo0rpfij.png",
+    "status": "done",
+    "timestamp": 1774517962198
+  },
+  {
+    "id": "2e9666e1-8557-4092-b95c-1f4affa860d8",
+    "title": "Image: Katrin Hammon bei der Arbeit",
+    "comment": "das bild bitte etwas größer, der übergang vom hellen holztisch zum hintergrund ist leider zu hart, kannst du hier einen weicheren übergang einrichten so das es sich zum hintergrund einfügt und ein ensamble entspricht",
+    "selector": "div.philosophy-grid > div.philosophy-portrait.reveal:nth-child(2) > img",
+    "boundingRect": {
+      "x": 1149,
+      "y": 133,
+      "w": 360,
+      "h": 540
+    },
+    "screenshotPath": "./screenshots/moat-1774518085343-6vjl1o367.png",
+    "status": "done",
+    "timestamp": 1774518085405
+  }
+]

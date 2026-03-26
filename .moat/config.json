@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "projectName": "hammon-preview",
+  "createdAt": "2026-03-26T08:16:50.839Z",
+  "streaming": {
+    "enabled": true,
+    "format": "jsonl",
+    "cursorIntegration": true
+  },
+  "ui": {
+    "autoShowMoat": true,
+    "confirmBeforeSend": false
+  }
+}
